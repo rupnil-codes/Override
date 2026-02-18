@@ -9,14 +9,14 @@ function LockScreen() {
     const [showPin, setShowPin] = useState(false);
 
     useEffect(() => {
-        const handleKey = (e: KeyboardEvent) => {
+        const handleKey = (e) => {
             if (e.key === "Escape" && !e.repeat) {
                 setShowPin(false);
             }
-            if (e.key == "Enter") {
+            if (e.key === "Enter") {
                 setShowPin(true);
             }
-            if (e.key == " ") {
+            if (e.key === " ") {
                 setShowPin(true);
             }
         };
@@ -28,7 +28,7 @@ function LockScreen() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleSubmit = (e) => {
         if (e.key === "Enter") {
             if (password === "DuckyCelestron76700" || password === "42069") {
                 navigate("/desktop");
@@ -64,18 +64,18 @@ function LockScreen() {
                             className={"input"}
                             id={"password"}
                             placeholder={"Password"}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                            onChange={(e) => setPassword(e.target.value)}
                             onKeyDown={handleSubmit}
                             autoFocus={true}
                         />
                         <p className={"hint"}>
                             HINT: I love making <a
-                                className={"devlog"}
-                                href={"https://flavortown.hackclub.com/projects/13380"}
-                                target="_blank"
-                                rel="noopener noreferrer">
-                                Devlogs!
-                            </a>
+                            className={"devlog"}
+                            href={"https://flavortown.hackclub.com/projects/13380"}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Devlogs!
+                        </a>
                         </p>
                         {/*<p className={"hint"}>HINT: Check the oldest <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>*/}
                     </div>

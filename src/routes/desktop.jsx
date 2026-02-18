@@ -14,7 +14,7 @@ function Desktop() {
                             <div className={"file-explorer"} id={"file-explorer"}></div>
                         </div>
                         <div className={"app-item"}>
-                                <div className={"vs-code"} id={"vs-code"}></div>
+                            <div className={"vs-code"} id={"vs-code"}></div>
                         </div>
                         <div className={"app-item"}>
                             <div className={"settings"} id={"settings"}></div>
