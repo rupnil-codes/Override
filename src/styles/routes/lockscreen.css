@@ -8,7 +8,7 @@
     width: 100%;
 
     /*position: absolute;*/
-    background-image: url("../../assets/lockscreen3.jpg");
+    background-image: url("../../assets/lockscreen/4.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -188,4 +188,8 @@
 }
 .item:hover {
     background: var(--border);
+}
+
+.hidden {
+    display: none;
 }

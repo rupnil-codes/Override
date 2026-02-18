@@ -1,0 +1,138 @@
+.desktop {
+    z-index: -99999;
+    height: 100vh;
+    width: 100%;
+    background-image: url("../../assets/wallpaper.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.taskbar {
+    z-index: var(--z-taskbar);
+    bottom: 0;
+
+    position: fixed;
+    width: 100vw;
+    height: 3rem;
+    backdrop-filter: blur(2rem) brightness(0.2);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 1px solid var(--border);
+}
+
+.tray{
+    z-index: var(--z-taskbar);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-right: 1rem;
+
+    gap: 0;
+}
+
+.wifisound {
+    margin-top: 0.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.7rem 0.5rem 0.4rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.2rem;
+}
+
+.datetime {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+.notif {
+    padding: 0.6rem 0.6rem;
+    border-radius: 0.25rem;
+}
+
+.tray-container:hover {
+    background-color: var(--border);
+    cursor: pointer;
+}
+
+.apps{
+    /*flex: 1;*/
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.app-item{
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+.app-item:hover{
+    background-color: var(--border);
+}
+
+.start-menu{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/icons/Windows.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.file-explorer{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/icons/Explorer.ico");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.vs-code{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/icons/VSCode.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.settings {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/icons/Settings.ico");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.chrome{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/icons/Chrome.ico");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.terminal{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-image: url("../../assets/icons/Terminal.ico");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

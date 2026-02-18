@@ -30,7 +30,7 @@ function LockScreen() {
 
     const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            if (password === "1234") {
+            if (password === "DuckyCelestron76700") {
                 navigate("/desktop");
             }
         }
@@ -66,8 +66,9 @@ function LockScreen() {
                             placeholder={"PASSWORD"}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                             onKeyDown={handleSubmit}
+                            autoFocus={true}
                         />
-                        <p className={"hint"}>HINT: I love making <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>
+                        <p className={"hint hidden"}>HINT: I love making <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>
                         {/*<p className={"hint"}>HINT: Check the oldest <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>*/}
                     </div>
                     <div className={"system"}>
