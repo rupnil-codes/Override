@@ -68,7 +68,7 @@ function LockScreen() {
                             onKeyDown={handleSubmit}
                             autoFocus={true}
                         />
-                        <p className={"hint hidden"}>HINT: I love making <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>
+                        <p className={"hint"}>HINT: I love making <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>
                         {/*<p className={"hint"}>HINT: Check the oldest <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>*/}
                     </div>
                     <div className={"system"}>
