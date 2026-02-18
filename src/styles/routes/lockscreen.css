@@ -169,7 +169,7 @@
     background-size: cover;
 }
 
-.tray {
+.lockscreen-tray {
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -76,7 +76,7 @@ function LockScreen() {
                             <div className={"imgBx"}/>
                             <p className={"profile-username"}>Rupnil Codes</p>
                         </div>
-                        <div className={"tray"}>
+                        <div className={"lockscreen-tray"}>
                             <div className={"item"}>ENG</div>
                             <div className={"item"}>
                                 <Wifi />
