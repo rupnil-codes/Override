@@ -1,0 +1,191 @@
+.screen {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+
+    /*position: absolute;*/
+    background-image: url("../../assets/lockscreen3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.datetime-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.time-clip .day-date-clip {
+    overflow: hidden;
+}
+
+.time {
+    color: white;
+    font-size: 6rem;
+    font-weight: 450;
+}
+
+.day-date {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: -0.25rem;
+    font-weight: 400;
+}
+
+.pin {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    backdrop-filter: blur(0.35rem);
+
+    transform: translateY(200%);
+    transition: transform 0.35s ease-in-out;
+}
+
+
+.screen.show-pin .pin {
+    transform: translateY(0);
+}
+
+.lock {
+    transform: translateY(0);
+    transition: transform 0.35s ease-in-out;
+}
+
+.screen.show-pin .lock {
+    transform: translateY(-200%);
+}
+
+.pin{
+    padding-bottom: 0.5rem;
+}
+
+.pin .container{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+.pfp {
+    height: 10rem;
+    width: 10rem;
+
+    border-radius: 9999rem;
+    outline: 0.25rem solid var(--border);
+
+    background-image: url("../../assets/user.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.username {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.enter-pass {
+    color: var(--foreground);
+    font-size: 1.35rem;
+    font-weight: 350;
+}
+
+.input {
+    margin: 1rem 0;
+    border: 0;
+    outline: none;
+    width: 20vw;
+    padding: 0.5em 1em;
+    font-size: 1rem;
+    font-weight: 450;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--input);
+    border-radius: 0.25em;
+    border-bottom: 0.2em solid var(--input-border);
+}
+.input::placeholder {
+    font-weight: 400;
+}
+.input:focus {
+    border-bottom: 0.2em solid var(--blue);
+}
+
+.devlog {
+    text-decoration: none;
+    color: var(--blue);
+    font-weight: 500;
+}
+
+.system {
+    width: 95%;
+    padding: 0.25rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5em 1em;
+    gap: 1rem;
+}
+.profile:hover {
+    background: var(--border);
+    border-radius: 0.25rem;
+}
+
+.imgBx {
+    border-radius: 9999rem;
+    height: 2rem;
+    width: 2rem;
+    background-image: url("../../assets/user.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.tray {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.item {
+    display: flex;
+    border-radius: 0.25em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    /*background-image: url("../../assets/user.png");*/
+}
+.item:hover {
+    background: var(--border);
+}

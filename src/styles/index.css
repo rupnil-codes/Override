@@ -1,0 +1,10 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    display: block;
+    unicode-bidi: isolate;
+}
