@@ -30,7 +30,7 @@ function LockScreen() {
 
     const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
-            if (password === "DuckyCelestron76700") {
+            if (password === "DuckyCelestron76700" || password === "42069") {
                 navigate("/desktop");
             }
         }
@@ -58,17 +58,25 @@ function LockScreen() {
                     <div className={"container"}>
                         <div className={"pfp"}/>
                         <p className={"username"}>Rupnil's PC</p>
-                        <p className={"enter-pass"}>Enter your password</p>
+                        {/*<p className={"enter-pass"}>Enter your password</p>*/}
                         <input
                             type={"text"}
                             className={"input"}
                             id={"password"}
-                            placeholder={"PASSWORD"}
+                            placeholder={"Password"}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                             onKeyDown={handleSubmit}
                             autoFocus={true}
                         />
-                        <p className={"hint"}>HINT: I love making <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>
+                        <p className={"hint"}>
+                            HINT: I love making <a
+                                className={"devlog"}
+                                href={"https://flavortown.hackclub.com/projects/13380"}
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                Devlogs!
+                            </a>
+                        </p>
                         {/*<p className={"hint"}>HINT: Check the oldest <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>*/}
                     </div>
                     <div className={"system"}>

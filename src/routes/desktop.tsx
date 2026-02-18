@@ -30,17 +30,17 @@ function Desktop() {
                 <div className={"tray"}>
                     <div className={"wifisound tray-container"}>
                         <div className={"tray-item"}>
-                            <Wifi size={20} />
+                            <Wifi size={18} />
                         </div>
                         <div className={"tray-item"}>
-                            <Volume2 size={20} />
+                            <Volume2 size={18} />
                         </div>
                     </div>
                     <div className={"datetime tray-container"}>
                         <p>16:55</p>
                         <p>18-02-2026</p>
                     </div>
-                    <Bell className={"notif tray-item tray-container"} size={20}/>
+                    <Bell className={"notif tray-item tray-container"} size={18}/>
                 </div>
             </div>
         </div>
