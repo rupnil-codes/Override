@@ -36,11 +36,11 @@ function Desktop() {
     }), []);
 
     const handleIconStop = (e, data, id) => {
-        const gridX = window.innerWidth / 15;
-        const gridY = (window.innerHeight - 48) / 6;
+        const gridX = 5.35 * 16;
+        const gridY = 6 * 16;
 
-        const newCol = Math.max(1, Math.min(15, iconPositions[id].col + Math.round(data.x / gridX)));
-        const newRow = Math.max(1, Math.min(6, iconPositions[id].row + Math.round(data.y / gridY)));
+        const newCol = Math.max(1, Math.round(data.x / gridX) + iconPositions[id].col) ;
+        const newRow = Math.max(1, Math.round(data.y / gridY) + iconPositions[id].row);
 
         const isOccupied = Object.entries(iconPositions).some(([appId, pos]) => {
             return appId !== id && pos.col === newCol && pos.row === newRow;
