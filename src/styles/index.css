@@ -10,8 +10,3 @@ p {
     unicode-bidi: isolate;
 }
 
-.react-resizable-handle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-}

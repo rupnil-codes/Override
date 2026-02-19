@@ -1,7 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import Draggable from "react-draggable";
-import { ResizableBox } from "react-resizable";
-import "react-resizable/css/styles.css";
+import { Rnd } from "react-rnd";
 
 
 export let INITIAL_Z = 1000;
@@ -15,8 +13,6 @@ export default function AppWindow({
     title,
     src,
     zIndex,
-    width = 600,
-    height = 400,
     fullscreen = false,
     minimized = false,
     onFocus,
@@ -24,8 +20,11 @@ export default function AppWindow({
     onClose,
     onFullscreen,
 }) {
-    const nodeRef = useRef(null);
-    const [pos, setPos] = useState({ x: 0, y: 0 });
+    const [state, setState] = useState({
+        x: 200,
+        y: 100,
+    });
+    const [isInteracting, setIsInteracting] = useState(false);
 
     const [opening, setOpening] = useState(true);
 
@@ -35,83 +34,88 @@ export default function AppWindow({
 
 
     return (
-        <Draggable
-            nodeRef={nodeRef}
-            handle=".titlebar"
-            disabled={fullscreen}
-            position={fullscreen ? { x: 0, y: 0 } : pos}
-            onDrag={(e, data) => setPos({ x: data.x, y: data.y })}
-            onStart={onFocus}
+        <Rnd
+            size={fullscreen ? { width: "100vw", height: window.innerHeight - 48 } : { width: state.width, height: state.height }}
+            position={fullscreen ? { x: 0, y: 0 } : { x: state.x, y: state.y }}
+
+            disableDragging={fullscreen}
+            enableResizing={!fullscreen}
+
+            onDragStop={(e, d) => {
+                setState(prev => ({ ...prev, x: d.x, y: d.y }));
+                setIsInteracting(false);
+            }}
+            onResizeStop={(e, direction, ref, delta, position) => {
+                setState({
+                    width: ref.offsetWidth,
+                    height: ref.offsetHeight,
+                    ...position,
+                });
+                setIsInteracting(false);
+            }}
+            onDragStart={() => { onFocus(); setIsInteracting(true); }}
+            onResizeStart={() => setIsInteracting(true)}
+            onDrag={() => setIsInteracting(true)}
+
+            dragHandleClassName="titlebar"
+            style={
+            {
+                zIndex, position: fullscreen ? "fixed" : "absolute",
+                pointerEvents: minimized ? "none" : "auto",
+            }
+        }
+            minWidth={200}
+            minHeight={150}
         >
             <div
-                ref={nodeRef}
-                onMouseDownCapture={onFocus}
                 style={{
-                    position: fullscreen ? "fixed" : "absolute",
-                    zIndex,
-                    top: fullscreen ? 0 : undefined,
-                    left: fullscreen ? 0 : undefined,
-                    width: fullscreen ? "100vw" : undefined,
-                    height: fullscreen ? "calc(100vh - 48px)" : undefined,
-                    transform: fullscreen ? "none" : undefined,
-                    pointerEvents: minimized ? "none" : "auto",
+                    opacity: minimized ? 0 : 1,
+                    transition: isInteracting ? "none" : "transform 0.5s ease, opacity 0.5s ease",
+                    transform: minimized
+                        ? "translateY(200%)"
+                        : opening
+                            ? "translateY(200%)"
+                            : "translateY(0)",
+                    height: "100%",
+                    border: "1px solid gray",
+                    display: "flex",
+                    flexDirection: "column",
+                    background: "#111"
                 }}
             >
-                <ResizableBox
-                    width={fullscreen ? window.innerWidth : width}
-                    height={fullscreen ? window.innerHeight - 48 : height}
-                    resizeHandles={fullscreen ? [] : undefined}
+                <div
+                    className="titlebar"
+                    style={{
+                        cursor: "default",
+                        background: "#222",
+                        padding: "6px",
+                        display: "flex",
+                        justifyContent: "space-between"
+                    }}
                 >
-                    <div
-                        style={{
-                            opacity: minimized ? 0 : 1,
-                            transition: "transform 0.5s ease, opacity 0.5s ease",
-                            transform: minimized
-                                ? "translateY(200%)"
-                                : opening
-                                    ? "translateY(200%)"
-                                    : "translateY(0)",
-                            height: "100%",
-                            border: "1px solid gray",
-                            display: "flex",
-                            flexDirection: "column",
-                            background: "#111"
-                        }}
-                    >
-                        <div
-                            className="titlebar"
-                            style={{
-                                cursor: "move",
-                                background: "#222",
-                                padding: "6px",
-                                display: "flex",
-                                justifyContent: "space-between"
-                            }}
-                        >
-                            <span>{title}</span>
+                    <span>{title}</span>
 
-                            <div>
-                                <button onClick={onMinimize}>_</button>
-                                <button onClick={onFullscreen}>
-                                    {fullscreen ? "❐" : "□"}
-                                </button>
-                                <button onClick={onClose}>X</button>
-                            </div>
-                        </div>
-
-                            <iframe
-                                src={src}
-                                style={{
-                                    flex: 1,
-                                    border: "none",
-                                    width: "100%",
-                                    height: "100%"
-                                }}
-                                title={title}
-                            />
+                    <div>
+                        <button onClick={onMinimize}>_</button>
+                        <button onClick={onFullscreen}>
+                            {fullscreen ? "❐" : "□"}
+                        </button>
+                        <button onClick={onClose}>X</button>
                     </div>
-                </ResizableBox>
+                </div>
+
+                <iframe
+                    src={src}
+                    style={{
+                        flex: 1,
+                        border: "none",
+                        width: "100%",
+                        height: "100%",
+                        pointerEvents: isInteracting ? "none" : "auto"
+                    }}
+                    title={title}
+                />
             </div>
-        </Draggable>
+        </Rnd>
     );
 }
