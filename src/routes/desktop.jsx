@@ -6,28 +6,47 @@ import { APP_REGISTRY } from "../core/Apps.js";
 
 function Desktop() {
     const [apps, setApps] = useState({
-        explorer: { isOpen: false, minimized: false, fullscreen: false, zIndex: INITIAL_Z, data: null },
-        vscode:  { isOpen: false, minimized: false, fullscreen: false, zIndex: INITIAL_Z, data: null },
+        explorer: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
+        vscode:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
     });
 
+    const [focussed, setFocussed] = useState(null)
+
     function openApp(name) {
-        setApps(prev => ({
-            ...prev,
-            [name]: {
-                ...prev[name],
-                isOpen: true,
-                minimized: false,
-                zIndex: getNextZ()
-            }
-        }));
+        if (focussed === name) {
+            setApps(prev => ({
+                ...prev,
+                [name]: {
+                    ...prev[name],
+                    isOpen: true,
+                    minimized: !prev[name].minimized,
+                    zIndex: getNextZ()
+                }
+            }));
+        }
+        else {
+            focusApp(name);
+            setApps(prev => ({
+                ...prev,
+                [name]: {
+                    ...prev[name],
+                    isOpen: true,
+                    minimized: false,
+                    zIndex: getNextZ()
+                }
+            }));
+        }
+
     }
 
     function focusApp(name) {
+        setFocussed(name)
+
         setApps(prev => ({
             ...prev,
             [name]: {
                 ...prev[name],
-                zIndex: getNextZ()
+                zIndex: getNextZ(),
             }
         }));
     }
@@ -35,7 +54,11 @@ function Desktop() {
     function closeApp(name) {
         setApps(prev => ({
             ...prev,
-            [name]: { ...prev[name], isOpen: false }
+            [name]: {
+                ...prev[name],
+                isOpen: false,
+                minimized: true
+            }
         }));
     }
 

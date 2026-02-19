@@ -6,4 +6,5 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Add more stuff to Lockscreen.
 - [X] Animations in the Lockscreen.
 - [ ] A loading screen on desktop load and sound
-- [ ] BUG: Minimizing window still takes up the ZINdex and prevents from usign the other windows
+- [X] Minimizing window still takes up the zIndex and prevents from using it.(FIXED IN v0.1.3.3-alpha)
+- [X] Clicking app on task bar checks if it is focussed or not then: if focussed minimize it, else focus it. (v0.1.3.3-alpha)

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import Draggable from "react-draggable";
 import { ResizableBox } from "react-resizable";
 import "react-resizable/css/styles.css";
@@ -27,9 +27,12 @@ export default function AppWindow({
     const nodeRef = useRef(null);
     const [pos, setPos] = useState({ x: 0, y: 0 });
 
-    if (minimized) {
-        // Com'on do smthin
-    }
+    const [opening, setOpening] = useState(true);
+
+    useEffect(() => {
+        requestAnimationFrame(() => setOpening(false));
+    }, []);
+
 
     return (
         <Draggable
@@ -51,7 +54,7 @@ export default function AppWindow({
                     width: fullscreen ? "100vw" : undefined,
                     height: fullscreen ? "calc(100vh - 48px)" : undefined,
                     transform: fullscreen ? "none" : undefined,
-                    // opacity: minimized ? 0 : 1,
+                    pointerEvents: minimized ? "none" : "auto",
                 }}
             >
                 <ResizableBox
@@ -63,7 +66,11 @@ export default function AppWindow({
                         style={{
                             opacity: minimized ? 0 : 1,
                             transition: "transform 0.5s ease, opacity 0.5s ease",
-                            transform: minimized ? "translateY(200%)" : "translateY(0)",
+                            transform: minimized
+                                ? "translateY(200%)"
+                                : opening
+                                    ? "translateY(200%)"
+                                    : "translateY(0)",
                             height: "100%",
                             border: "1px solid gray",
                             display: "flex",
