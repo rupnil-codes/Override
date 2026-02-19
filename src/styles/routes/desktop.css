@@ -143,6 +143,10 @@
     background-size: cover;
 }
 
+.app-active {
+    background-color: var(--border);
+    border-bottom: 2px solid var(--border);
+}
 
 @media screen and (max-width: 670px) {
     .tray {

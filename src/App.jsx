@@ -13,8 +13,8 @@ function App() {
         <>
             <div className="app">
                 <Routes>
-                    <Route path="/" Component={LockScreen}/>
-                    <Route path="/desktop" Component={Desktop}/>
+                    <Route path="/desktop" Component={LockScreen}/>
+                    <Route path="/" Component={Desktop}/>
                 </Routes>
             </div>
         </>

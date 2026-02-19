@@ -1,10 +1,17 @@
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
+    overflow: hidden;
 }
 
 p {
     margin: 0;
     display: block;
     unicode-bidi: isolate;
+}
+
+.react-resizable-handle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
 }

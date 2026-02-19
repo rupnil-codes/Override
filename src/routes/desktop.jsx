@@ -1,20 +1,105 @@
 import '../styles/routes/desktop.css';
 import { Wifi, Volume2, Bell } from 'lucide-react';
+import AppWindow, {INITIAL_Z, getNextZ} from '../core/WindowManager.jsx';
+import {useRef, useState} from "react";
+import { APP_REGISTRY } from "../core/Apps.js";
 
 function Desktop() {
+    const [apps, setApps] = useState({
+        explorer: { isOpen: false, minimized: false, fullscreen: false, zIndex: INITIAL_Z, data: null },
+        vscode:  { isOpen: false, minimized: false, fullscreen: false, zIndex: INITIAL_Z, data: null },
+    });
+
+    function openApp(name) {
+        setApps(prev => ({
+            ...prev,
+            [name]: {
+                ...prev[name],
+                isOpen: true,
+                minimized: false,
+                zIndex: getNextZ()
+            }
+        }));
+    }
+
+    function focusApp(name) {
+        setApps(prev => ({
+            ...prev,
+            [name]: {
+                ...prev[name],
+                zIndex: getNextZ()
+            }
+        }));
+    }
+
+    function closeApp(name) {
+        setApps(prev => ({
+            ...prev,
+            [name]: { ...prev[name], isOpen: false }
+        }));
+    }
+
+    function minimizeApp(name) {
+        setApps(prev => ({
+            ...prev,
+            [name]: {
+                ...prev[name],
+                minimized: true,
+            }
+        }))
+    }
+
+    function toggleFullscreen(name) {
+        setApps(prev => ({
+            ...prev,
+            [name]: {
+                ...prev[name],
+                fullscreen: !prev[name].fullscreen,
+                zIndex: getNextZ()
+            }
+        }));
+    }
+
     return (
         <div>
             <div className={"desktop"}>
+                {Object.entries(apps).map(([name, app]) =>
+                    app.isOpen ? (
+                        <AppWindow
+                            key={name}
+                            title={APP_REGISTRY[name].title}
+                            src={APP_REGISTRY[name].src}
+                            zIndex={app.zIndex}
+                            fullscreen={app.fullscreen}
+                            minimized={app.minimized}
+                            onFocus={() => focusApp(name)}
+                            onMinimize={() => minimizeApp(name)}
+                            onClose={() => closeApp(name)}
+                            onFullscreen={() => toggleFullscreen(name)}
+                        />
+                    ) : null
+                )}
                 <div className={"taskbar"}>
                     <div className={"apps"}>
                         <div className={"app-item"}>
                             <div className={"start-menu"} id={"start-menu"}></div>
                         </div>
-                        <div className={"app-item"}>
-                            <div className={"file-explorer"} id={"file-explorer"}></div>
+                        <div className={`app-item ${apps.explorer.isOpen ? "app-active" : ""}`}
+                        onClick={() => openApp("explorer")}
+                        >
+                            <div
+                                className={"file-explorer"}
+                                id={"file-explorer"}
+                            ></div>
                         </div>
-                        <div className={"app-item"}>
-                            <div className={"vs-code"} id={"vs-code"}></div>
+                        <div
+                            className={`app-item ${apps.vscode.isOpen ? "app-active" : ""}`}
+                            onClick={() => openApp("vscode")}
+                        >
+                            <div
+                                className={"vs-code"}
+                                id={"vs-code"}
+                            ></div>
                         </div>
                         <div className={"app-item"}>
                             <div className={"settings"} id={"settings"}></div>
@@ -26,21 +111,21 @@ function Desktop() {
                             <div className={"terminal"} id={"terminal"}></div>
                         </div>
                     </div>
-                </div>
-                <div className={"tray"}>
-                    <div className={"wifisound tray-container"}>
-                        <div className={"tray-item"}>
-                            <Wifi size={18} />
+                    <div className={"tray"}>
+                        <div className={"wifisound tray-container"}>
+                            <div className={"tray-item"}>
+                                <Wifi size={18} />
+                            </div>
+                            <div className={"tray-item"}>
+                                <Volume2 size={18} />
+                            </div>
                         </div>
-                        <div className={"tray-item"}>
-                            <Volume2 size={18} />
+                        <div className={"datetime tray-container"}>
+                            <p>16:55</p>
+                            <p>18-02-2026</p>
                         </div>
+                        <Bell className={"notif tray-item tray-container"} size={18}/>
                     </div>
-                    <div className={"datetime tray-container"}>
-                        <p>16:55</p>
-                        <p>18-02-2026</p>
-                    </div>
-                    <Bell className={"notif tray-item tray-container"} size={18}/>
                 </div>
             </div>
         </div>
