@@ -81,10 +81,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.25rem;
 }
 
 .app-item{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
+
     padding: 0.5rem;
     border-radius: 0.25rem;
     transition: background-color var(--hover-animation) var(--hover-animation-type);
@@ -143,9 +149,38 @@
     background-size: cover;
 }
 
-.app-active {
+.app-item.open.active::before {
+    width: 50%;
+    background: var(--blue);
+}
+
+.app-item.open::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20%;
+    height: 0.25em;
+    border-radius: 0.25em;
+    background: var(--gray);
+    transition: all 0.3s ease;
+}
+
+.app-item.focussed {
     background-color: var(--border);
-    border-bottom: 2px solid var(--border);
+    border-radius: 4px; /* Optional: adds a slight curve to the focus background */
+}
+
+
+.app-item.focussed {
+    background-color: var(--border);
+}
+
+.app-active-underline {
+    background-color: var(--border);
+    height: 20px;
+    width: 50%;
 }
 
 @media screen and (max-width: 670px) {

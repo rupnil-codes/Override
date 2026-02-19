@@ -8,6 +8,9 @@ function Desktop() {
     const [apps, setApps] = useState({
         explorer: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
         vscode:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
+        settings:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
+        chrome:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
+        terminal:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
     });
 
     const [focussed, setFocussed] = useState(null)
@@ -52,6 +55,7 @@ function Desktop() {
     }
 
     function closeApp(name) {
+        setFocussed(null)
         setApps(prev => ({
             ...prev,
             [name]: {
@@ -68,6 +72,7 @@ function Desktop() {
             [name]: {
                 ...prev[name],
                 minimized: true,
+                isOpen: true,
             }
         }))
     }
@@ -107,8 +112,15 @@ function Desktop() {
                         <div className={"app-item"}>
                             <div className={"start-menu"} id={"start-menu"}></div>
                         </div>
-                        <div className={`app-item ${apps.explorer.isOpen ? "app-active" : ""}`}
-                        onClick={() => openApp("explorer")}
+                        <div
+                            className={`app-item ${
+                                !apps.explorer.isOpen
+                                    ? ""
+                                    : (focussed === "explorer" && !apps.explorer.minimized)
+                                        ? "open focussed active"
+                                        : "open"
+                            }`}
+                            onClick={() => openApp("explorer")}
                         >
                             <div
                                 className={"file-explorer"}
@@ -116,7 +128,13 @@ function Desktop() {
                             ></div>
                         </div>
                         <div
-                            className={`app-item ${apps.vscode.isOpen ? "app-active" : ""}`}
+                            className={`app-item ${
+                                !apps.vscode.isOpen
+                                    ? ""
+                                    : (focussed === "vscode" && !apps.vscode.minimized)
+                                        ? "open focussed active"
+                                        : "open"
+                            }`}
                             onClick={() => openApp("vscode")}
                         >
                             <div
@@ -124,13 +142,40 @@ function Desktop() {
                                 id={"vs-code"}
                             ></div>
                         </div>
-                        <div className={"app-item"}>
+                        <div
+                            className={`app-item ${
+                                !apps.settings.isOpen
+                                    ? ""
+                                    : (focussed === "settings" && !apps.settings.minimized)
+                                        ? "open focussed active"
+                                        : "open"
+                            }`}
+                            onClick={() => openApp("settings")}
+                        >
                             <div className={"settings"} id={"settings"}></div>
                         </div>
-                        <div className={"app-item"}>
+                        <div
+                            className={`app-item ${
+                                !apps.chrome.isOpen
+                                    ? ""
+                                    : (focussed === "chrome" && !apps.chrome.minimized)
+                                        ? "open focussed active"
+                                        : "open"
+                            }`}
+                            onClick={() => openApp("chrome")}
+                        >
                             <div className={"chrome"} id={"chrome"}></div>
                         </div>
-                        <div className={"app-item"}>
+                        <div
+                            className={`app-item ${
+                                !apps.terminal.isOpen
+                                    ? ""
+                                    : (focussed === "terminal" && !apps.terminal.minimized)
+                                        ? "open focussed active"
+                                        : "open"
+                            }`}
+                            onClick={() => openApp("terminal")}
+                        >
                             <div className={"terminal"} id={"terminal"}></div>
                         </div>
                     </div>
