@@ -12,19 +12,19 @@ export const APP_REGISTRY = {
         height: 600
       },
     settings: {
-        title: "VS Code",
+        title: "Settings",
         src: "/apps/settings.html",
         width: 900,
         height: 600
     },
     chrome: {
-        title: "VS Code",
+        title: "Chrome",
         src: "/apps/chrome.html",
         width: 900,
         height: 600
     },
     terminal: {
-        title: "VS Code",
+        title: "Terminal",
         src: "/apps/terminal.html",
         width: 900,
         height: 600
