@@ -1,6 +1,7 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import { Rnd } from "react-rnd";
-
+import "../styles/core/WindowManager.css"
+import { X, Square, Copy, Minus } from 'lucide-react';
 
 export let INITIAL_Z = 1000;
 
@@ -12,6 +13,7 @@ export function getNextZ() {
 export default function AppWindow({
     title,
     src,
+    imgSrc,
     zIndex,
     fullscreen = false,
     minimized = false,
@@ -19,10 +21,18 @@ export default function AppWindow({
     onMinimize,
     onClose,
     onFullscreen,
+    posX,
+    posY
 }) {
+    const DEFAULT_WIDTH = 600;
+    const DEFAULT_HEIGHT = 400;
+    const TASKBAR_HEIGHT = 48;
+
     const [state, setState] = useState({
-        x: 200,
-        y: 100,
+        x: posX,
+        y: posY,
+        width: DEFAULT_WIDTH,
+        height: DEFAULT_HEIGHT,
     });
     const [isInteracting, setIsInteracting] = useState(false);
 
@@ -35,6 +45,8 @@ export default function AppWindow({
 
     return (
         <Rnd
+            bounds="parent"
+            dragGrid={[1, 1]}
             size={fullscreen ? { width: "100vw", height: window.innerHeight - 48 } : { width: state.width, height: state.height }}
             position={fullscreen ? { x: 0, y: 0 } : { x: state.x, y: state.y }}
 
@@ -64,10 +76,13 @@ export default function AppWindow({
                 pointerEvents: minimized ? "none" : "auto",
             }
         }
-            minWidth={200}
-            minHeight={150}
+            minWidth={300}
+            minHeight={200}
+            maxHeight={window.innerHeight - TASKBAR_HEIGHT}
+            maxWidth={window.innerWidth}
         >
             <div
+                className={"window"}
                 style={{
                     opacity: minimized ? 0 : 1,
                     transition: isInteracting ? "none" : "transform 0.5s ease, opacity 0.5s ease",
@@ -76,35 +91,38 @@ export default function AppWindow({
                         : opening
                             ? "translateY(200%)"
                             : "translateY(0)",
-                    height: "100%",
-                    border: "1px solid gray",
-                    display: "flex",
-                    flexDirection: "column",
-                    background: "#111"
+                    borderRadius: fullscreen ? 0 : 10,
                 }}
             >
                 <div
                     className="titlebar"
                     style={{
-                        cursor: "default",
-                        background: "#222",
-                        padding: "6px",
-                        display: "flex",
-                        justifyContent: "space-between"
+                        borderRadius: fullscreen ? 0 : "10px 10px 0 0",
                     }}
                 >
-                    <span>{title}</span>
-
-                    <div>
-                        <button onClick={onMinimize}>_</button>
-                        <button onClick={onFullscreen}>
-                            {fullscreen ? "❐" : "□"}
+                    <div className="title">
+                        <img className={"icon"} src={ imgSrc } alt={"icon"}/>
+                        <span>{title}</span>
+                    </div>
+                    <div className={"controls"}>
+                        <button className={"control-item minimize"} onClick={onMinimize}>
+                            <Minus size={15}/>
                         </button>
-                        <button onClick={onClose}>X</button>
+                        <button className={"control-item fullscreen"} onClick={onFullscreen}>
+                            {fullscreen ? <Copy size={12} style={{transform: "scaleX(-1)"}}/> : <Square size={11}/>}
+                        </button>
+                        <button
+                            style={{
+                                borderRadius: fullscreen ? 0 : "0 9px 0 0",
+                            }}
+                            className={"control-item close"} onClick={onClose}>
+                            <X size={15}/>
+                        </button>
                     </div>
                 </div>
 
                 <iframe
+                    className={"window-obj"}
                     src={src}
                     style={{
                         flex: 1,

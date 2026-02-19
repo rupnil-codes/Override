@@ -1,27 +1,52 @@
 import '../styles/routes/desktop.css';
-import { Wifi, Volume2, Bell } from 'lucide-react';
+import {Wifi, Volume2, Bell} from 'lucide-react';
 import AppWindow, {INITIAL_Z, getNextZ} from '../core/WindowManager.jsx';
 import {useRef, useState} from "react";
-import { APP_REGISTRY } from "../core/Apps.js";
+import {APP_REGISTRY} from "../core/Apps.js";
 
 function Desktop() {
     const [apps, setApps] = useState({
-        explorer: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
-        vscode:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
-        settings:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
-        chrome:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
-        terminal:  { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, data: null },
+        explorer: {isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0, data: null},
+        vscode: {isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0, data: null},
+        settings: {isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0, data: null},
+        chrome: {isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0, data: null},
+        terminal: {isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0, data: null},
     });
 
     const [focussed, setFocussed] = useState(null)
 
+    const lastPos = useRef({x: 100, y: 100});
+    const OFFSET = 20;
+
     function openApp(name) {
+        const openApps = Object.values(apps).filter(
+            app => app.isOpen
+        );
+
+        let newX, newY;
+
+        if (openApps.length === 0) {
+            newX = (window.innerWidth / 2) - 300;
+            newY = (window.innerHeight / 2) - 250;
+            lastPos.current = {x: newX, y: newY};
+
+        } else {
+            newX = lastPos.current.x + OFFSET;
+            newY = lastPos.current.y + OFFSET;
+
+            if (newY > window.innerHeight - 500) newY = 100;
+            if (newX > window.innerWidth - 700) newX = 100;
+
+            lastPos.current = {x: newX, y: newY};
+        }
+
         if (focussed === name) {
             setApps(prev => ({
                 ...prev,
                 [name]: {
                     ...prev[name],
                     isOpen: true,
+                    fullscreen: false,
                     minimized: !prev[name].minimized,
                     zIndex: getNextZ()
                 }
@@ -35,7 +60,10 @@ function Desktop() {
                     ...prev[name],
                     isOpen: true,
                     minimized: false,
-                    zIndex: getNextZ()
+                    fullscreen: false,
+                    zIndex: getNextZ(),
+                    initialX: lastPos.current.x,
+                    initialY: lastPos.current.y,
                 }
             }));
         }
@@ -97,6 +125,7 @@ function Desktop() {
                             key={name}
                             title={APP_REGISTRY[name].title}
                             src={APP_REGISTRY[name].src}
+                            imgSrc={APP_REGISTRY[name].imgSrc}
                             zIndex={app.zIndex}
                             fullscreen={app.fullscreen}
                             minimized={app.minimized}
@@ -104,6 +133,8 @@ function Desktop() {
                             onMinimize={() => minimizeApp(name)}
                             onClose={() => closeApp(name)}
                             onFullscreen={() => toggleFullscreen(name)}
+                            posX={app.initialX}
+                            posY={app.initialY}
                         />
                     ) : null
                 )}
@@ -182,10 +213,10 @@ function Desktop() {
                     <div className={"tray"}>
                         <div className={"wifisound tray-container"}>
                             <div className={"tray-item"}>
-                                <Wifi size={18} />
+                                <Wifi size={18}/>
                             </div>
                             <div className={"tray-item"}>
-                                <Volume2 size={18} />
+                                <Volume2 size={18}/>
                             </div>
                         </div>
                         <div className={"datetime tray-container"}>
