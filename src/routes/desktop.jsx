@@ -2,7 +2,7 @@ import '../styles/routes/desktop.css';
 import { Wifi, Volume2, Bell } from 'lucide-react';
 import AppWindow, { INITIAL_Z, getNextZ } from '../core/WindowManager.jsx';
 import { createRef, useRef, useState, useMemo } from "react";
-import { APP_REGISTRY } from "../core/Apps.js";
+import { APP_REGISTRY } from "../data/Apps.js";
 import Draggable from 'react-draggable';
 
 function Desktop() {
@@ -192,7 +192,7 @@ function Desktop() {
             <div className={`taskbar ${ isAnyFullScreen ? 'is-fullscreen' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <div className="apps">
                     <div className="app-item">
-                        <div className="start-menu" id="start-menu"></div>
+                        <div className="taskbar-app start-menu" id="start-menu"></div>
                     </div>
                     {['explorer', 'vscode', 'settings', 'chrome', 'terminal'].map(id => (
                         <div
@@ -200,7 +200,7 @@ function Desktop() {
                             className={`app-item ${!apps[id].isOpen ? "" : (focussed === id && !apps[id].minimized) ? "open focussed active" : "open"}`}
                             onClick={() => openApp(id)}
                         >
-                            <div className={id === 'explorer' ? 'file-explorer' : id === 'vscode' ? 'vs-code' : id} id={id}></div>
+                            <div className={`taskbar-app ${id}`} id={id}></div>
                         </div>
                     ))}
                 </div>

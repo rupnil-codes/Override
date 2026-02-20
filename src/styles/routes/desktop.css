@@ -65,10 +65,10 @@
 }
 
 .app-icon {
-    height: 1.75rem;
+    height: 2.25rem;
 }
 .app-name {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 
@@ -170,53 +170,34 @@
     transition: background-color var(--hover-animation) var(--hover-animation-type);
 }
 
+.taskbar-app{
+    height: 1.5rem;
+    width: 1.5rem;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    pointer-events: none;
+}
+
 .start-menu{
-    height: 1.5rem;
-    width: 1.5rem;
     background-image: url("../../assets/icons/Windows.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
-.file-explorer{
-    height: 1.5rem;
-    width: 1.5rem;
+.explorer{
     background-image: url("../../assets/icons/Explorer.ico");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
-.vs-code{
-    height: 1.5rem;
-    width: 1.5rem;
+.vscode{
     background-image: url("../../assets/icons/VSCode.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 .settings {
-    height: 1.5rem;
-    width: 1.5rem;
     background-image: url("../../assets/icons/Settings.ico");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 .chrome{
-    height: 1.5rem;
-    width: 1.5rem;
     background-image: url("../../assets/icons/Chrome.ico");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 .terminal{
-    height: 1.5rem;
-    width: 1.5rem;
     background-image: url("../../assets/icons/Terminal.ico");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 .app-item.open.active::before {
