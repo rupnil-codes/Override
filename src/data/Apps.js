@@ -24,4 +24,10 @@ export const APP_REGISTRY = {
         src: "/?start=/apps/terminal",
         imgSrc: "/assets/icons/Terminal.ico",
     },
+
+    readme_txt: {
+        title: "README.txt",
+        src: "/?start=/apps/readme_txt",
+        imgSrc: "/assets/icons/Notepad.png",
+    }
 };

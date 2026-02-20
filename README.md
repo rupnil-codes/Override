@@ -16,4 +16,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Dynamic Grid (Fixed in v0.1.4.1)
 - [X] the text to icon ratio is too big, maybe either increase the size of the icon or decrease the size of the text (do both) (Done in v0.1.4.2)
 - [X] Routers for the desktop Apps. (Done in v0.1.4.2)
-- [ ] Make opaque and high zIndex when dragging desktop apps, to hide the bottom objects. 
+- [X] New apps (not pinned in the taskbar) should be shown in taskbar when opened. (Done in v0.1.4.3)
+- [X] Animation when popping up new items in the taskbar. (Done in v0.1.4.3)
+- [X] Make ~~opaque and~~ high zIndex when dragging desktop apps, to overlay the bottom objects. (Done in v0.1.4.3)
+- [X] BUG: In fullscreen clicking the app in taskbar toggles fullscreen, and it becomes not fullscreen. (Done in v0.1.4.3)

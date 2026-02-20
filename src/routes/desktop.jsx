@@ -3,7 +3,9 @@ import { Wifi, Volume2, Bell } from 'lucide-react';
 import AppWindow, { INITIAL_Z, getNextZ } from '../core/WindowManager.jsx';
 import { createRef, useRef, useState, useMemo } from "react";
 import { APP_REGISTRY } from "../data/Apps.js";
+
 import Draggable from 'react-draggable';
+import { motion, AnimatePresence } from "framer-motion";
 
 function Desktop() {
     const [iconPositions, setIconPositions] = useState({
@@ -12,6 +14,7 @@ function Desktop() {
         settings: { col: 1, row: 3 },
         chrome: { col: 2, row: 1 },
         terminal: { col: 2, row: 2 },
+        readme_txt: { col: 3, row: 3 },
     });
 
     const [selectedIcon, setSelectedIcon] = useState(null);
@@ -22,6 +25,7 @@ function Desktop() {
         settings: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
         chrome: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
         terminal: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
+        readme_txt: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
     });
 
     const lastPos = useRef({ x: 100, y: 100 });
@@ -33,7 +37,16 @@ function Desktop() {
         settings: createRef(),
         chrome: createRef(),
         terminal: createRef(),
+        readme_txt: createRef(),
     }), []);
+
+    const taskbarApps = useMemo(() => {
+        const pinned = ['explorer', 'vscode', 'settings', 'chrome', 'terminal'];
+        const openAppKeys = Object.keys(apps).filter(key => apps[key].isOpen);
+        return Array.from(new Set([...pinned, ...openAppKeys]));
+    }, [apps]);
+
+    const [draggingIcon, setDraggingIcon] = useState(null);
 
     const handleIconStop = (e, data, id) => {
         const gridX = 5.35 * 16;
@@ -78,7 +91,6 @@ function Desktop() {
                 [name]: {
                     ...prev[name],
                     isOpen: true,
-                    fullscreen: false,
                     minimized: !prev[name].minimized,
                     zIndex: getNextZ() }
             }));
@@ -89,7 +101,6 @@ function Desktop() {
                 [name]: {
                     ...prev[name],
                     isOpen: true,
-                    fullscreen: false,
                     minimized: false,
                     zIndex: getNextZ(),
                     initialX: lastPos.current.x,
@@ -145,8 +156,12 @@ function Desktop() {
                         onStart={(e) => {
                             e.stopPropagation();
                             setSelectedIcon(id);
+                            setDraggingIcon(id);
                         }}
-                        onStop={(e, data) => handleIconStop(e, data, id)}
+                        onStop={(e, data) => {
+                            setDraggingIcon(null);
+                            handleIconStop(e, data, id)
+                    }}
                         cancel=".icon, p"
                     >
                         <div
@@ -160,6 +175,10 @@ function Desktop() {
                             style={{
                                 gridColumn: iconPositions[id].col,
                                 gridRow: iconPositions[id].row,
+
+                                zIndex: draggingIcon === id ? 99999 : 1,
+                                opacity: draggingIcon === id ? 1 : undefined,
+                                position: 'relative'
                             }}
                         >
                             <img className="app-icon" src={APP_REGISTRY[id].imgSrc} draggable="false" alt="icon" />
@@ -191,18 +210,36 @@ function Desktop() {
 
             <div className={`taskbar ${ isAnyFullScreen ? 'is-fullscreen' : ''}`} onClick={(e) => e.stopPropagation()}>
                 <div className="apps">
-                    <div className="app-item">
-                        <div className="taskbar-app start-menu" id="start-menu"></div>
-                    </div>
-                    {['explorer', 'vscode', 'settings', 'chrome', 'terminal'].map(id => (
-                        <div
-                            key={id}
-                            className={`app-item ${!apps[id].isOpen ? "" : (focussed === id && !apps[id].minimized) ? "open focussed active" : "open"}`}
-                            onClick={() => openApp(id)}
+                    <AnimatePresence mode="popLayout">
+                        <motion.div
+                            layout
+                            initial={{ opacity: 0, width: 0, scale: 0.5 }}
+                            animate={{ opacity: 1, width: 24, scale: 1 }}
+                            exit={{ opacity: 0, width: 0, scale: 0.5 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            className="app-item"
                         >
-                            <div className={`taskbar-app ${id}`} id={id}></div>
-                        </div>
-                    ))}
+                            <div className="taskbar-app" id="start-menu">
+                                <img className={"taskbar-app-icon"} src={"/assets/icons/Windows.svg"} draggable="false" alt="icon" />
+                            </div>
+                        </motion.div>
+                        {taskbarApps.map(id => (
+                            <motion.div
+                                key={id}
+                                layout
+                                initial={{ opacity: 0, width: 0, scale: 0.5 }}
+                                animate={{ opacity: 1, width: 24, scale: 1 }}
+                                exit={{ opacity: 0, width: 0, scale: 0.5 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                className={`app-item ${!apps[id].isOpen ? "" : (focussed === id && !apps[id].minimized) ? "open focussed active" : "open"}`}
+                                onClick={() => openApp(id)}
+                            >
+                                <div className={`taskbar-app ${id}`} id={id}>
+                                    <img className={"taskbar-app-icon"} src={APP_REGISTRY[id].imgSrc} draggable="false" alt="icon" />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
                 </div>
                 <div className="tray">
                     <div className="wifisound tray-container">
