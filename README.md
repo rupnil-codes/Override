@@ -23,3 +23,4 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] BUG: In fullscreen clicking the app in taskbar toggles fullscreen, and it becomes not fullscreen. (Fixed in v0.1.4.3)
 - [X] BUG: Closing on fullscreen saves the state. On the opening again it starts in fullscreen. (Fixed in v0.1.4.3(1))
 - [ ] QOL: drag the window, even outside the bounding box, or the window keeping padding of like 1rem.
+- [ ] BUG: Clicking on the windows icon when the start menu is active causes a jittering effect and doesn't close it.
