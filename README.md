@@ -19,4 +19,5 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] New apps (not pinned in the taskbar) should be shown in taskbar when opened. (Done in v0.1.4.3)
 - [X] Animation when popping up new items in the taskbar. (Done in v0.1.4.3)
 - [X] Make ~~opaque and~~ high zIndex when dragging desktop apps, to overlay the bottom objects. (Done in v0.1.4.3)
-- [X] BUG: In fullscreen clicking the app in taskbar toggles fullscreen, and it becomes not fullscreen. (Done in v0.1.4.3)
+- [X] BUG: In fullscreen clicking the app in taskbar toggles fullscreen, and it becomes not fullscreen. (Fixed in v0.1.4.3)
+- [X] BUG: Closing on fullscreen saves the state. On the opening again it starts in fullscreen. (Fixed in v0.1.4.3(1))

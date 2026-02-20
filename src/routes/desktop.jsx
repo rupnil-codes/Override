@@ -126,7 +126,12 @@ function Desktop() {
         setFocussed(null);
         setApps(prev => ({
             ...prev,
-            [name]: { ...prev[name], isOpen: false, minimized: true }
+            [name]: {
+                ...prev[name],
+                isOpen: false,
+                fullscreen: false,
+                minimized: true
+            }
         }));
     }
 
