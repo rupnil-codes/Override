@@ -8,6 +8,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Animations in the Lockscreen.
 - [ ] A loading screen on lockscreen after correct pass slowly fade while loading desktop in the back + SOUND.
 - [X] Windows Design + Desktop Design (Done in v0.1.3... & v0.1.4... respectively)
+- [X] Windows start menu does nothing rn. (Done in v0.1.4.4)
 - [X] Minimizing window still takes up the zIndex and prevents from using it.(FIXED IN v0.1.3.3-alpha)
 - [X] Clicking app on task bar checks if it is focussed or not then: if focussed minimize it, else focus it. (v0.1.3.3-alpha)
 - [X] Bug: Closing all apps still makes one of them active (visual) (FIXED: v0.1.3.4-alpha)
@@ -21,3 +22,4 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Make ~~opaque and~~ high zIndex when dragging desktop apps, to overlay the bottom objects. (Done in v0.1.4.3)
 - [X] BUG: In fullscreen clicking the app in taskbar toggles fullscreen, and it becomes not fullscreen. (Fixed in v0.1.4.3)
 - [X] BUG: Closing on fullscreen saves the state. On the opening again it starts in fullscreen. (Fixed in v0.1.4.3(1))
+- [ ] QOL: drag the window, even outside the bounding box, or the window keeping padding of like 1rem.

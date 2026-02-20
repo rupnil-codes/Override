@@ -203,8 +203,68 @@
     pointer-events: none;
 }
 
-.start-menu{
-    background-image: url("../../assets/icons/Windows.svg");
+.start-menu {
+    bottom: 3.5rem;
+    left: calc(50vw - 25rem/2);
+
+    z-index: 10000;
+
+    position: fixed;
+    height: 28rem;
+    width: 25rem;
+
+    /*min-width: 25rem;*/
+    opacity: 0.5;
+
+    /*background-color: var(--gray);*/
+
+    backdrop-filter: blur(2rem) brightness(0.2);
+    transition: 0.5s var(--hover-animation-type);
+
+    border-top: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    transform: translateY(200%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
+}
+.start-menu.active {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+.start-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    height: 2.1rem;
+    width: 85%;
+
+    background: var(--background);
+
+    border-radius: 200rem;
+
+    border: 1px solid var(--border);
+
+    /*padding: 0.25rem;*/
+}
+
+.start-search-icon {
+    margin-left: 0.6rem;
+    margin-right: 0.25rem;
+}
+
+.start-search-bar{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
 .taskbar-app-icon {
