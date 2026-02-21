@@ -1,8 +1,9 @@
 import '../styles/routes/desktop.css';
 import { Wifi, Volume2, Bell, Search } from 'lucide-react';
-import AppWindow, { INITIAL_Z, getNextZ } from '../core/WindowManager.jsx';
 import {createRef, useRef, useState, useMemo, useEffect} from "react";
-import { APP_REGISTRY } from "../data/Apps.js";
+import { APP_REGISTRY, INITIAL_Z, getNextZ } from "../data/Apps.js";
+
+import AppWindow from "../core/WindowManager.jsx";
 
 import Draggable from 'react-draggable';
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,7 +12,6 @@ function Desktop() {
     const [isStartMenuActive, setIsStartMenuActive] = useState(false);
 
     const startMenuRef = useRef(null);
-
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (isStartMenuActive && startMenuRef.current && !startMenuRef.current.contains(event.target)) {
@@ -35,26 +35,29 @@ function Desktop() {
 
     const [selectedIcon, setSelectedIcon] = useState(null);
     const [focussed, setFocussed] = useState(null);
-    const [apps, setApps] = useState({
-        explorer: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
-        vscode: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
-        settings: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
-        chrome: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
-        terminal: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
-        readme_txt: { isOpen: false, minimized: true, fullscreen: false, zIndex: INITIAL_Z, initialX: 0, initialY: 0 },
+    const [apps, setApps] = useState(() => {
+        return Object.keys(APP_REGISTRY).reduce((acc, key) => {
+            acc[key] = {
+                isOpen: false,
+                minimized: true,
+                fullscreen: false,
+                zIndex: INITIAL_Z,
+                initialX: 0,
+                initialY: 0
+            };
+            return acc;
+        }, {});
     });
 
     const lastPos = useRef({ x: 100, y: 100 });
     const OFFSET = 20;
 
-    const nodeRefs = useMemo(() => ({
-        explorer: createRef(),
-        vscode: createRef(),
-        settings: createRef(),
-        chrome: createRef(),
-        terminal: createRef(),
-        readme_txt: createRef(),
-    }), []);
+    const nodeRefs = useMemo(() => {
+        return Object.keys(APP_REGISTRY).reduce((acc, key) => {
+            acc[key] = createRef();
+            return acc;
+        }, {});
+    }, []);
 
     const taskbarApps = useMemo(() => {
         const pinned = ['explorer', 'vscode', 'settings', 'chrome', 'terminal'];
@@ -235,7 +238,7 @@ function Desktop() {
                     <AppWindow
                         key={name}
                         title={APP_REGISTRY[name].title}
-                        src={APP_REGISTRY[name].src}
+                        AppComponent={APP_REGISTRY[name].component}
                         imgSrc={APP_REGISTRY[name].imgSrc}
                         zIndex={app.zIndex}
                         fullscreen={app.fullscreen}

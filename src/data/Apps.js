@@ -1,33 +1,47 @@
+import Chrome from "../apps/chrome.jsx";
+import Explorer from "../apps/explorer.jsx";
+import Settings from "../apps/settings.jsx";
+import VSCode from "../apps/vscode.jsx";
+import Terminal from "../apps/terminal.jsx";
+import Readme_txt from "../apps/README.txt.jsx";
+
+export let INITIAL_Z = 1000;
+
+export function getNextZ() {
+    INITIAL_Z += 1;
+    return INITIAL_Z;
+}
+
 export const APP_REGISTRY = {
     explorer: {
         title: "Explorer",
-        src: "/?start=/apps/explorer",
+        component: Explorer,
         imgSrc: "/assets/icons/Explorer.ico",
     },
     vscode: {
         title: "VS Code",
-        src: "/?start=/apps/vscode",
+        component: VSCode,
         imgSrc: "/assets/icons/VSCode.svg",
     },
     settings: {
         title: "Settings",
-        src: "/?start=/apps/settings",
+        component: Settings,
         imgSrc: "/assets/icons/Settings.ico",
     },
     chrome: {
         title: "Chrome",
-        src: "/?start=/apps/chrome",
+        component: Chrome,
         imgSrc: "/assets/icons/Chrome.ico",
     },
     terminal: {
         title: "Terminal",
-        src: "/?start=/apps/terminal",
+        component: Terminal,
         imgSrc: "/assets/icons/Terminal.ico",
     },
 
     readme_txt: {
         title: "README.txt",
-        src: "/?start=/apps/readme_txt",
+        component: Readme_txt,
         imgSrc: "/assets/icons/Notepad.png",
     }
 };

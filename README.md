@@ -10,10 +10,10 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Windows Design + Desktop Design (Done in v0.1.3... & v0.1.4... respectively)
 - [X] Windows start menu does nothing rn. (Done in v0.1.4.4)
 - [X] Minimizing window still takes up the zIndex and prevents from using it.(FIXED IN v0.1.3.3-alpha)
-- [X] Clicking app on task bar checks if it is focussed or not then: if focussed minimize it, else focus it. (v0.1.3.3-alpha)
+  - [X] FEAT: Clicking app on task bar checks if it is focussed or not then: if focussed minimize it, else focus it. (v0.1.3.3-alpha)
 - [X] Bug: Closing all apps still makes one of them active (visual) (FIXED: v0.1.3.4-alpha)
-- [X] Windows Lag when moving (FIXED in v0.1.3.5).
-- [X] Draggable component throughout (FIXED in v0.1.3.5).
+- [X] BUG: Windows Lag when moving (FIXED in v0.1.3.5).
+- [X] ~~Draggable~~ Extendable component throughout the window (FIXED in v0.1.3.5).
 - [X] Dynamic Grid (Fixed in v0.1.4.1)
 - [X] the text to icon ratio is too big, maybe either increase the size of the icon or decrease the size of the text (do both) (Done in v0.1.4.2)
 - [X] Routers for the desktop Apps. (Done in v0.1.4.2)
@@ -24,3 +24,5 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] BUG: Closing on fullscreen saves the state. On the opening again it starts in fullscreen. (Fixed in v0.1.4.3(1))
 - [ ] QOL: drag the window, even outside the bounding box, or the window keeping padding of like 1rem.
 - [ ] BUG: Clicking on the windows icon when the start menu is active causes a jittering effect and doesn't close it.
+- [X] OPTIMIZATION: Have ONLY App.js with all the necessary variables so that we do not need to manually add apps to each part. (Done in v0.1.4.5)
+- [X] OPTIMIZATION: (TruthEntity) thinks it is better to use React component than Iframes, as they are quite a memory hogger and a can degrade performance. (Done in v0.1.4.5)

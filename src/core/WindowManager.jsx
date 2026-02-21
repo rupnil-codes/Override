@@ -3,16 +3,9 @@ import { Rnd } from "react-rnd";
 import "../styles/core/WindowManager.css"
 import { X, Square, Copy, Minus } from 'lucide-react';
 
-export let INITIAL_Z = 1000;
-
-export function getNextZ() {
-    INITIAL_Z += 1;
-    return INITIAL_Z;
-}
-
 export default function AppWindow({
     title,
-    src,
+    AppComponent,
     imgSrc,
     zIndex,
     fullscreen = false,
@@ -121,18 +114,7 @@ export default function AppWindow({
                     </div>
                 </div>
 
-                <iframe
-                    className={"window-obj"}
-                    src={src}
-                    style={{
-                        flex: 1,
-                        border: "none",
-                        width: "100%",
-                        height: "100%",
-                        pointerEvents: isInteracting ? "none" : "auto"
-                    }}
-                    title={title}
-                />
+                < AppComponent />
             </div>
         </Rnd>
     );
