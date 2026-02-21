@@ -22,7 +22,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Make ~~opaque and~~ high zIndex when dragging desktop apps, to overlay the bottom objects. (Done in v0.1.4.3)
 - [X] BUG: In fullscreen clicking the app in taskbar toggles fullscreen, and it becomes not fullscreen. (Fixed in v0.1.4.3)
 - [X] BUG: Closing on fullscreen saves the state. On the opening again it starts in fullscreen. (Fixed in v0.1.4.3(1))
-- [ ] QOL: drag the window, even outside the bounding box, or the window keeping padding of like 1rem.
-- [ ] BUG: Clicking on the windows icon when the start menu is active causes a jittering effect and doesn't close it.
+- [X] QOL: drag the window, even outside the bounding box, or the window keeping padding of like 2.5rem.(Fixed in v0.1.4.6)
+- [X] BUG (Issue #3): Clicking on the windows icon when the start menu is active causes a jittering effect and doesn't close it. (Fixed in v0.1.4.6)
 - [X] OPTIMIZATION: Have ONLY App.js with all the necessary variables so that we do not need to manually add apps to each part. (Done in v0.1.4.5)
 - [X] OPTIMIZATION: (TruthEntity) thinks it is better to use React component than Iframes, as they are quite a memory hogger and a can degrade performance. (Done in v0.1.4.5)

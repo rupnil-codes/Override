@@ -20,6 +20,7 @@ export default function AppWindow({
     const DEFAULT_WIDTH = 600;
     const DEFAULT_HEIGHT = 400;
     const TASKBAR_HEIGHT = 48;
+    const PADDING = 36;
 
     const [state, setState] = useState({
         x: posX,
@@ -35,10 +36,37 @@ export default function AppWindow({
         requestAnimationFrame(() => setOpening(false));
     }, []);
 
+    const handleDrag = (e, d) => {
+        setState(prev => ({ ...prev, x: d.x, y: d.y }));
+        setIsInteracting(true);
+    };
+
+    const handleDragStop = (e, d) => {
+        let newX = d.x;
+        let newY = d.y;
+
+        if (newX > window.innerWidth - PADDING) {
+            newX = window.innerWidth - PADDING;
+        }
+        if (newX < -state.width + PADDING) {
+            newX = -state.width + PADDING;
+        }
+        if (newY > window.innerHeight - TASKBAR_HEIGHT - PADDING) {
+            newY = window.innerHeight - TASKBAR_HEIGHT - PADDING;
+        }
+
+        if (newY < 0) {
+            newY = 0;
+        }
+
+        setState(prev => ({ ...prev, x: newX, y: newY }));
+        setIsInteracting(false);
+    };
+
 
     return (
         <Rnd
-            bounds="parent"
+            bounds=""
             dragGrid={[1, 1]}
             size={fullscreen ? { width: "100vw", height: window.innerHeight - 48 } : { width: state.width, height: state.height }}
             position={fullscreen ? { x: 0, y: 0 } : { x: state.x, y: state.y }}
@@ -46,10 +74,9 @@ export default function AppWindow({
             disableDragging={fullscreen}
             enableResizing={!fullscreen}
 
-            onDragStop={(e, d) => {
-                setState(prev => ({ ...prev, x: d.x, y: d.y }));
-                setIsInteracting(false);
-            }}
+            onDrag={handleDrag}
+            onDragStop={handleDragStop}
+
             onResizeStop={(e, direction, ref, delta, position) => {
                 setState({
                     width: ref.offsetWidth,
@@ -60,7 +87,6 @@ export default function AppWindow({
             }}
             onDragStart={() => { onFocus(); setIsInteracting(true); }}
             onResizeStart={() => setIsInteracting(true)}
-            onDrag={() => setIsInteracting(true)}
 
             dragHandleClassName="titlebar"
             style={
@@ -71,6 +97,7 @@ export default function AppWindow({
         }
             minWidth={300}
             minHeight={200}
+
             maxHeight={window.innerHeight - TASKBAR_HEIGHT}
             maxWidth={window.innerWidth}
         >

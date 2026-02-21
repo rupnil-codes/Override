@@ -12,6 +12,11 @@ function Desktop() {
     const [isStartMenuActive, setIsStartMenuActive] = useState(false);
 
     const startMenuRef = useRef(null);
+    const menuActiveRef = useRef(isStartMenuActive);
+    useEffect(() => {
+        menuActiveRef.current = isStartMenuActive;
+    }, [isStartMenuActive]);
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (isStartMenuActive && startMenuRef.current && !startMenuRef.current.contains(event.target)) {
@@ -20,9 +25,21 @@ function Desktop() {
                 }
             }
         };
+
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [isStartMenuActive]);
+
+    useEffect(() => {
+        const handleKey = (e) => {
+            if (e.metaKey) {
+                e.preventDefault();
+                setIsStartMenuActive(prev => !prev);
+            }
+        };
+        window.addEventListener("keydown", handleKey);
+        return () => window.removeEventListener("keydown", handleKey);
+    }, []);
 
     const [iconPositions, setIconPositions] = useState({
         explorer: { col: 1, row: 1 },
@@ -168,19 +185,6 @@ function Desktop() {
         }));
     }
 
-    useEffect(() => {
-        const handleKey = (e) => {
-            if (e.metaKey) {
-                e.preventDefault();
-
-                setIsStartMenuActive(!isStartMenuActive);
-            }
-        };
-
-        window.addEventListener("keydown", handleKey);
-        return () => window.removeEventListener("keydown", handleKey);
-    });
-
     return (
         <div className="desktop" onMouseDown={() => {
             setSelectedIcon(null);
@@ -188,9 +192,6 @@ function Desktop() {
             <div
                 className="desktop-grid"
                 style={{ position: 'absolute', inset: 0, display: 'grid', zIndex: 1 }}
-                onClick={() => {
-                    setIsStartMenuActive(false);
-                }}
             >
                 {Object.keys(iconPositions).map((id) => (
                     <Draggable
@@ -263,7 +264,7 @@ function Desktop() {
                 </div>
             </div>
 
-            <div className={`taskbar ${ isAnyFullScreen ? 'is-fullscreen' : ''}`} onClick={(e) => e.stopPropagation()}>
+            <div className={`taskbar ${ isAnyFullScreen ? 'is-fullscreen' : ''}`}>
                 <div className="apps">
                     <AnimatePresence mode="popLayout">
                         <motion.div
@@ -273,7 +274,10 @@ function Desktop() {
                             exit={{ opacity: 0, width: 0, scale: 0.5 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             className="app-item"
-                            onClick={() => setIsStartMenuActive(!isStartMenuActive)}
+                            onMouseDown={(e) => {
+                                e.stopPropagation();
+                                setIsStartMenuActive(prev => !prev);
+                            }}
                         >
                             <div className="taskbar-app" id="start-menu-icon">
                                 <img className={"taskbar-app-icon"} src={"/assets/icons/Windows.svg"} draggable="false" alt="icon" />
