@@ -1,9 +1,11 @@
 import '../styles/routes/desktop.css';
+
 import { Wifi, Volume2, Bell, Search } from 'lucide-react';
 import {createRef, useRef, useState, useMemo, useEffect} from "react";
-import { APP_REGISTRY, INITIAL_Z, getNextZ } from "../data/Apps.js";
 
+import { APP_REGISTRY, INITIAL_Z, getNextZ } from "../data/Apps.js";
 import AppWindow from "../core/WindowManager.jsx";
+import { useDateTime } from "../components/DateTime.jsx";
 
 import Draggable from 'react-draggable';
 import { motion, AnimatePresence } from "framer-motion";
@@ -185,6 +187,8 @@ function Desktop() {
         }));
     }
 
+    const { timeString, dateString } = useDateTime();
+
     return (
         <div className="desktop" onMouseDown={() => {
             setSelectedIcon(null);
@@ -308,8 +312,8 @@ function Desktop() {
                         <div className="tray-item"><Volume2 size={18} /></div>
                     </div>
                     <div className="datetime tray-container">
-                        <p>16:55</p>
-                        <p>18-02-2026</p>
+                        <p>{timeString}</p>
+                        <p>{dateString}</p>
                     </div>
                     <Bell className="notif tray-item tray-container" size={18} />
                 </div>

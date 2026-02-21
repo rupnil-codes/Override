@@ -2,7 +2,7 @@
 Your PC has been compromised by a group called the "HackClub". Can you regain control?
 
 ### TODOS:
-- [ ] TIME AND DATE
+- [X] TIME AND DATE (Added in v0.1.5.0)
 - [ ] HINT after failed try.
 - [ ] Add more stuff to Lockscreen.
 - [X] Animations in the Lockscreen.
@@ -10,7 +10,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Windows Design + Desktop Design (Done in v0.1.3... & v0.1.4... respectively)
 - [X] Windows start menu does nothing rn. (Done in v0.1.4.4)
 - [X] Minimizing window still takes up the zIndex and prevents from using it.(FIXED IN v0.1.3.3-alpha)
-  - [X] FEAT: Clicking app on task bar checks if it is focussed or not then: if focussed minimize it, else focus it. (v0.1.3.3-alpha)
+- [X] FEAT: Clicking app on task bar checks if it is focussed or not then: if focussed minimize it, else focus it. (v0.1.3.3-alpha)
 - [X] Bug: Closing all apps still makes one of them active (visual) (FIXED: v0.1.3.4-alpha)
 - [X] BUG: Windows Lag when moving (FIXED in v0.1.3.5).
 - [X] ~~Draggable~~ Extendable component throughout the window (FIXED in v0.1.3.5).

@@ -5,6 +5,8 @@ import { Wifi, BatteryCharging } from 'lucide-react';
 import {useNavigate} from "react-router";
 import * as React from "react";
 
+import { useDateTime } from "../components/DateTime.jsx";
+
 function LockScreen() {
     const [showPin, setShowPin] = useState(false);
 
@@ -36,6 +38,8 @@ function LockScreen() {
         }
     }
 
+    const { timeString, monthString, dayString, numericMonthDay } = useDateTime();
+
     return (
         <div
             className={`screen ${showPin ? "show-pin" : ""}`}
@@ -46,10 +50,10 @@ function LockScreen() {
                 <div className={"lock"}>
                     <div className={"datetime-container"}>
                         <div className={"time-clip"}>
-                            <p className={"time"} id={"time"}>11:33</p>
+                            <p className={"time"} id={"time"}>{timeString}</p>
                         </div>
                         <div className={"day-date-clip"}>
-                            <p className={"day-date"} id={"day-date"}>Wednesday, February 18</p>
+                            <p className={"day-date"} id={"day-date"}>{dayString}, {monthString} {numericMonthDay}</p>
                         </div>
                     </div>
                 </div>
