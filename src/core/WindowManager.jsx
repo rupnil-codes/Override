@@ -95,8 +95,8 @@ export default function AppWindow({
                 pointerEvents: minimized ? "none" : "auto",
             }
         }
-            minWidth={300}
-            minHeight={200}
+            minWidth={450}
+            minHeight={300}
 
             maxHeight={window.innerHeight - TASKBAR_HEIGHT}
             maxWidth={window.innerWidth}
@@ -141,7 +141,9 @@ export default function AppWindow({
                     </div>
                 </div>
 
-                < AppComponent />
+                <div className={"app-component"}>
+                    < AppComponent />
+                </div>
             </div>
         </Rnd>
     );

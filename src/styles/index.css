@@ -7,9 +7,9 @@ body {
 }
 
 p {
-    color: white;
-    margin: 0;
-    display: block;
-    unicode-bidi: isolate;
+        color: white;
+        margin: 0;
+        display: block;
+        unicode-bidi: isolate;
 }
 

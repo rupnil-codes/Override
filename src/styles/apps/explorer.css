@@ -1,0 +1,94 @@
+
+.explorer-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.explorer-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-top: var(--border) 1px solid;
+    border-bottom: var(--border) 1px solid;
+}
+
+.explorer-navigation-bar {
+    width: calc(100% - 2rem);
+    height: 3.5rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1.5rem;
+}
+
+.explorer-navigation-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.explorer-navigation-search {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.5rem;
+}
+.explorer-dir {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 1rem 0;
+    border: 0;
+    outline: none;
+    width: 100%;
+    height: 1rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 450;
+
+    background: var(--input);
+    border-radius: 0.3rem;
+    border-bottom: transparent 0.2rem solid;
+
+    gap: 0.75rem;
+}
+.explorer-dir::placeholder {
+    font-weight: 400;
+}
+.explorer-search {
+    background-image: url("../../assets/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-origin: content-box;
+
+    padding-right: 1rem;
+
+    width: 35%;
+}
+.explorer-search:focus{
+    border-bottom: var(--blue) 0.2rem solid;
+}
+
+
+.explorer-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 1rem    ;
+}
