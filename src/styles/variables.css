@@ -49,5 +49,5 @@
 
     --animation-time: 1s;
     --hover-animation: 0.2s;
-    --hover-animation-type: ease;
+    --hover-animation-type: ease-in-out;
 }

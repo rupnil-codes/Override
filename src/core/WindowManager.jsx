@@ -141,9 +141,7 @@ export default function AppWindow({
                     </div>
                 </div>
 
-                <div className={"app-component"}>
-                    < AppComponent />
-                </div>
+                < AppComponent />
             </div>
         </Rnd>
     );
