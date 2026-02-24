@@ -48,8 +48,8 @@ function Explorer() {
                 </div>
                 <div className="explorer-content">
                     <div className="explorer-sidebar">
-                        <div className={"explorer-sidebar-container"}>
-                            <div className={"explorer-sidebar-icon-container sidebar-home-icon"}>
+                        <div className={"explorer-sidebar-container explorer-sidebar-selected"}>
+                            <div className={"explorer-sidebar-icon-container sidebar-home-icon "}>
                                 <p className={"explorer-sidebar-text"}>Home</p>
                             </div>
                         </div>

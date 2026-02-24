@@ -17,13 +17,13 @@
     align-items: center;
     justify-content: center;
 
-    border-top: var(--border) 1px solid;
+    /*border-top: var(--border) 1px solid;*/
     border-bottom: var(--border) 1px solid;
 }
 
 .explorer-navigation-bar {
     width: calc(100% - 2rem);
-    height: 3.5rem;
+    height: 3rem;
 
     display: flex;
     flex-direction: row;
@@ -74,7 +74,7 @@
     border: 0;
     outline: none;
     width: 100%;
-    height: 1rem;
+    height: 0.75rem;
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
     font-weight: 450;
@@ -137,7 +137,7 @@
 
 
     padding: 0.4rem;
-    width: calc(100% - 1.5rem);
+    width: calc(100% - 1.25rem);
 
     border-radius: 0.2rem;
 
@@ -158,6 +158,15 @@
     align-items: center;
     height: 1rem;
 }
+.explorer-sidebar-selected {
+    background-color: var(--border);
+    transition: all var(--hover-animation) var(--hover-animation-type);
+}
+.explorer-sidebar-selected:hover {
+    background-color: rgba(255, 255, 255, 0.2);;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
 .sidebar-home-icon {
     background-image: url("../../assets/icons/Home.ico");
 }
@@ -204,7 +213,7 @@
     gap: 0.75rem;
 
     height: 1px;
-    width: 80%;
+    width: 85%;
     background-color: var(--border);
 
     margin-top: 0.75rem;

@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import { Rnd } from "react-rnd";
 import "../styles/core/WindowManager.css"
-import { X, Square, Copy, Minus } from 'lucide-react';
+import {X, Square, Copy, Minus, Plus} from 'lucide-react';
 
 export default function AppWindow({
     title,
@@ -111,19 +111,37 @@ export default function AppWindow({
                         : opening
                             ? "translateY(200%)"
                             : "translateY(0)",
-                    borderRadius: fullscreen ? 0 : 10,
+                    borderRadius: fullscreen ? 0 : 8,
                 }}
             >
-                <div
-                    className="titlebar"
-                    style={{
-                        borderRadius: fullscreen ? 0 : "10px 10px 0 0",
+                { title === "Explorer" ?
+                    <div
+                        className="titlebar"
+                        style={{
+                        borderRadius: fullscreen ? 0 : "8px 8px 0 0",
                     }}
                 >
-                    <div className="title">
-                        <img className={"icon"} src={ imgSrc } alt={"icon"}/>
-                        <span>{title}</span>
+                    <div className={"title-tabs"}>
+                        <div className="title-explorer">
+                            <div style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                gap: "0.75rem",
+                            }}>
+                                <img className={"icon"} src={ imgSrc } alt={"icon"}/>
+                                <span>{title}</span>
+                            </div>
+                            <div className={"x-plorer-container"}>
+                                < X className={"x-plorer"} size={14} />
+                            </div>
+                        </div>
+                        <div className={"add-tabs"}>
+                            <Plus size={14}></Plus>
+                        </div>
                     </div>
+
                     <div className={"controls"}>
                         <button className={"control-item minimize"} onClick={onMinimize}>
                             <Minus size={15}/>
@@ -133,13 +151,39 @@ export default function AppWindow({
                         </button>
                         <button
                             style={{
-                                borderRadius: fullscreen ? 0 : "0 9px 0 0",
+                                borderRadius: fullscreen ? 0 : "0 7px 0 0",
                             }}
                             className={"control-item close"} onClick={onClose}>
                             <X size={15}/>
                         </button>
                     </div>
-                </div>
+                </div> :
+                    <div
+                        className="titlebar"
+                        style={{
+                            borderRadius: fullscreen ? 0 : "8px 8px 0 0",
+                        }}
+                    >
+                        <div className="title">
+                            <img className={"icon"} src={ imgSrc } alt={"icon"}/>
+                            <span>{title}</span>
+                        </div>
+                        <div className={"controls"}>
+                            <button className={"control-item minimize"} onClick={onMinimize}>
+                                <Minus size={15}/>
+                            </button>
+                            <button className={"control-item fullscreen"} onClick={onFullscreen}>
+                                {fullscreen ? <Copy size={12} style={{transform: "scaleX(-1)"}}/> : <Square size={11}/>}
+                            </button>
+                            <button
+                                style={{
+                                    borderRadius: fullscreen ? 0 : "0 7px 0 0",
+                                }}
+                                className={"control-item close"} onClick={onClose}>
+                                <X size={15}/>
+                            </button>
+                        </div>
+                    </div>   }
 
                 < AppComponent />
             </div>
