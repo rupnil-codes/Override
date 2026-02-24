@@ -4,6 +4,8 @@
     overflow: auto;
 }
 
+/*Navigation*/
+
 .explorer-navigation {
     display: flex;
     flex-direction: column;
@@ -112,6 +114,8 @@
     justify-content: space-between;
 }
 
+/* Sidebar */
+
 .explorer-sidebar {
     overflow: auto;
     display: flex;
@@ -219,3 +223,7 @@
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
 }
+
+/* Main */
+
+

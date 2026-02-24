@@ -107,7 +107,9 @@ function Explorer() {
 
                     </div>
                     <div className="explorer-main">
-                        <p>Main files bruv</p>
+                        <div className={"explorer-grid"}>
+
+                        </div>
                     </div>
                     <div className="explorer-details">
                         <p>Details</p>

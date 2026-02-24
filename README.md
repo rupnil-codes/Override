@@ -27,4 +27,4 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] OPTIMIZATION: Have ONLY App.js with all the necessary variables so that we do not need to manually add apps to each part. (Done in v0.1.4.5)
 - [X] OPTIMIZATION: (TruthEntity) thinks it is better to use React component than Iframes, as they are quite a memory hogger and a can degrade performance. (Done in v0.1.4.5)
 - [-] Make the system tray on the taskbar(right) more accurate to windows. (Partially Done in v0.1.5.1 The text doesn't match rn)
-- [-] Explorer App. (Started in v0.1.5.1). Sidebar (v0.1.5.2)
+- [-] Explorer App. (Started in v0.1.5.1). Sidebar (v0.1.5.2) Tabs (v0.1.5.3 BUG: TITLE EXPLORER IS OVERFLOWINGGG)
