@@ -67,6 +67,17 @@ export default function AppWindow({
 
     return (
         <Rnd
+            resizeHandleStyles={{
+                top: { cursor: 'ns-resize' },
+                bottom: { cursor: 'ns-resize' },
+                left: { cursor: 'ew-resize' },
+                right: { cursor: 'ew-resize' },
+                topRight: { cursor: 'nesw-resize' },
+                bottomRight: { cursor: 'nwse-resize' },
+                bottomLeft: { cursor: 'nesw-resize' },
+                topLeft: { cursor: 'nwse-resize' },
+            }}
+
             bounds=""
             dragGrid={[1, 1]}
             size={fullscreen ? { width: "100vw", height: window.innerHeight - 48 } : { width: state.width, height: state.height }}

@@ -30,6 +30,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Explorer App. (Started in v0.1.5.1). Sidebar (v0.1.5.2)
 - [X] Tabs v0.1.5.3 BUG: TITLE IS OVERFLOWING (Fixed v0.1.5.4)
 - [X] Universal tab feature (generalised) using `tabs: true` in App.js (Added in v0.1.5.4)
-- [ ] Notepad App
+- [X] Notepad App. (Made in v0.1.5.5)
+- [ ] Notepad Generalised component
 - [ ] CHANGE CHROME TO BRAVE
 - [ ] Terminal
