@@ -81,8 +81,8 @@
 .readme-body {
     height: 100%;
 
-    margin-left: 1rem;
-    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
 
     width: calc(100% - 1rem);
 

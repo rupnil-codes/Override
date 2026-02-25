@@ -31,6 +31,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Tabs v0.1.5.3 BUG: TITLE IS OVERFLOWING (Fixed v0.1.5.4)
 - [X] Universal tab feature (generalised) using `tabs: true` in App.js (Added in v0.1.5.4)
 - [X] Notepad App. (Made in v0.1.5.5)
+- [X] BUG: Notepad selection stops when it goes outside of the rnd window. (Fixed in v0.1.5.5(1))
 - [ ] Notepad Generalised component
 - [ ] CHANGE CHROME TO BRAVE
 - [ ] Terminal

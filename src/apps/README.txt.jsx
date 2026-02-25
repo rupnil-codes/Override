@@ -3,6 +3,12 @@ import { Heading1, Bold, Italic, Link2, Settings } from "lucide-react";
 
 function Readme_txt() {
 
+    const handleMouseDown = (e) => {
+        const target = e.currentTarget;
+        target.setPointerCapture(e.pointerId);
+        e.stopPropagation();
+    };
+
     return (
         <div className={"readme-app"}>
             <div className={"readme-ribbon"}>
@@ -37,7 +43,12 @@ function Readme_txt() {
                     </div>
                 </div>
             </div>
-            <div className={"readme-body"} contentEditable={true}>
+            <div
+                className="readme-body"
+                contentEditable={true}
+                onPointerDown={handleMouseDown}
+                style={{ userSelect: 'text' }}
+            >
                 Hello this is content editable btw
             </div>
         </div>
