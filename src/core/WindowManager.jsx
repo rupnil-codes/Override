@@ -64,6 +64,33 @@ export default function AppWindow({
         setIsInteracting(false);
     };
 
+    const rndStyle = {
+        zIndex,
+        position: fullscreen ? "fixed" : "absolute",
+        pointerEvents: minimized ? "none" : "auto",
+        transition: isInteracting ? "none" : "all 0.3s ease",
+    }
+
+    useEffect(() => {
+        const handleScreenResize = () => {
+            setState(prev => {
+                let newX = prev.x;
+                let newY = prev.y;
+
+                if (newX + prev.width > window.innerWidth) {
+                    newX = Math.max(0, window.innerWidth - prev.width);
+                }
+                if (newY + prev.height > window.innerHeight - TASKBAR_HEIGHT) {
+                    newY = Math.max(0, window.innerHeight - TASKBAR_HEIGHT - prev.height);
+                }
+
+                return { ...prev, x: newX, y: newY };
+            });
+        };
+
+        window.addEventListener('resize', handleScreenResize);
+        return () => window.removeEventListener('resize', handleScreenResize);
+    }, []);
 
     return (
         <Rnd
@@ -102,12 +129,8 @@ export default function AppWindow({
             onResizeStart={() => setIsInteracting(true)}
 
             dragHandleClassName="titlebar"
-            style={
-            {
-                zIndex, position: fullscreen ? "fixed" : "absolute",
-                pointerEvents: minimized ? "none" : "auto",
-            }
-        }
+            style={rndStyle}
+
             minWidth={450}
             minHeight={300}
 
