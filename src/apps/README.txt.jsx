@@ -1,11 +1,18 @@
 import "../styles/apps/readme_txt.css"
+import {ChevronRight, House, MoveLeft, MoveRight, MoveUp, RotateCw} from "lucide-react";
 
 function Readme_txt() {
 
     return (
-        <>
-            <p>Readme_txt</p>
-        </>
+        <div className={"readme-app"}>
+            <div className={"readme-ribbon"}>
+                <div className={"readme-file-edit-view"}>
+                    <div className={"readme-file-edit-view-container"}>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

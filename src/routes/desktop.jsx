@@ -244,6 +244,7 @@ function Desktop() {
                         title={APP_REGISTRY[name].title}
                         AppComponent={APP_REGISTRY[name].component}
                         imgSrc={APP_REGISTRY[name].imgSrc}
+                        tabs={APP_REGISTRY[name].tabs}
                         zIndex={app.zIndex}
                         fullscreen={app.fullscreen}
                         minimized={app.minimized}

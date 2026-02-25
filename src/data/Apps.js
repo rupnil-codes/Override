@@ -17,6 +17,7 @@ export const APP_REGISTRY = {
         title: "Explorer",
         component: Explorer,
         imgSrc: "/assets/icons/Explorer.ico",
+        tabs: true,
     },
     vscode: {
         title: "VS Code",
@@ -43,5 +44,6 @@ export const APP_REGISTRY = {
         title: "README.txt",
         component: Readme_txt,
         imgSrc: "/assets/icons/Notepad.png",
+        tabs: true,
     }
 };

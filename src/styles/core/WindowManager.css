@@ -8,6 +8,8 @@
 }
 
 .titlebar {
+    height: 2.75rem;
+
     cursor: default;
     background: #181818;
     display: flex;
@@ -34,8 +36,8 @@
     flex-direction: row;
     align-items: center;
 }
-.title-explorer {
-    height: 100%;
+.title-name-icon {
+    height: calc(100% - 0.4rem);
     width: 16rem;
 
     max-width: 30%;
@@ -44,7 +46,7 @@
     /*padding-right: 12%;*/
     padding-left: 1rem;
 
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
 
     display: flex;
     flex-direction: row;
@@ -56,10 +58,10 @@
 
     border-radius: 0.5rem 0.5rem 0 0;
 }
-.title-explorer span {
+.title-name-icon span {
     font-size: 13px;
 }
-.x-plorer-container {
+.tabs-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -72,7 +74,7 @@
 
     transition: background-color var(--hover-animation) var(--hover-animation-type);
 }
-.x-plorer-container:hover {
+.tabs-container:hover {
     background-color: var(--border);
 }
 .add-tabs {
@@ -115,8 +117,8 @@
     border: none;
     background-color: transparent;
     transition: var(--hover-animation) var(--hover-animation-type);
-    height: 2.25rem;
-    width: 2.5rem;
+    height: 2.5rem;
+    width: 2.75rem;
 }
 .control-item:hover {
     background-color: var(--border);

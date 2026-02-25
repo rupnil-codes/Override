@@ -7,6 +7,7 @@ export default function AppWindow({
     title,
     AppComponent,
     imgSrc,
+    tabs,
     zIndex,
     fullscreen = false,
     minimized = false,
@@ -114,7 +115,7 @@ export default function AppWindow({
                     borderRadius: fullscreen ? 0 : 8,
                 }}
             >
-                { title === "Explorer" ?
+                { tabs ?
                     <div
                         className="titlebar"
                         style={{
@@ -122,7 +123,7 @@ export default function AppWindow({
                     }}
                 >
                     <div className={"title-tabs"}>
-                        <div className="title-explorer">
+                        <div className="title-name-icon">
                             <div style={{
                                 display: "flex",
                                 flexDirection: "row",
@@ -133,8 +134,8 @@ export default function AppWindow({
                                 <img className={"icon"} src={ imgSrc } alt={"icon"}/>
                                 <span>{title}</span>
                             </div>
-                            <div className={"x-plorer-container"}>
-                                < X className={"x-plorer"} size={14} />
+                            <div className={"tabs-container"}>
+                                < X className={"tabs"} size={14} />
                             </div>
                         </div>
                         <div className={"add-tabs"}>

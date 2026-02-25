@@ -20,24 +20,26 @@ function Explorer() {
                     <div className="explorer-navigation-bar">
                         <div className={"explorer-navigation-icons"}>
                             <div className={"explorer-navigation-icons-container"}>
-                                <MoveLeft size={18} strokeWidth={1.5} />
+                                <MoveLeft size={15} strokeWidth={2} />
                             </div>
                             <div className={"explorer-navigation-icons-container"}>
-                                <MoveRight size={18} strokeWidth={1.5} />
+                                <MoveRight size={15} strokeWidth={2} />
                             </div>
                             <div className={"explorer-navigation-icons-container"}>
-                                <MoveUp size={18} strokeWidth={1.5} />
+                                <MoveUp size={15} strokeWidth={2} />
                             </div>
                             <div className={"explorer-navigation-icons-container"}>
-                                <RotateCw size={18} strokeWidth={1.5} />
+                                <RotateCw size={15} strokeWidth={2} />
                             </div>
                         </div>
                         <div className={"explorer-navigation-search"}>
                             <div className={"explorer-dir"}>
-                                <House size={18} strokeWidth={1.5} />
-                                <ChevronRight size={18} strokeWidth={1.5} />
-                                <p>Home</p>
-                                <ChevronRight size={18} strokeWidth={1.5} />
+                                <div className={"explorer-dir-icons"}>
+                                    <House size={15} strokeWidth={2} />
+                                    <ChevronRight size={15} strokeWidth={2} />
+                                    <p>Home</p>
+                                    <ChevronRight size={15} strokeWidth={2} />
+                                </div>
                             </div>
                             <input
                                 className={"explorer-dir explorer-search"}

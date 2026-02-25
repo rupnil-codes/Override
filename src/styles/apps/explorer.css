@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: center;
 
-    /*border-top: var(--border) 1px solid;*/
+    border-top: #0e0e0e 1px solid;
     border-bottom: var(--border) 1px solid;
 }
 
@@ -90,6 +90,15 @@
 .explorer-dir::placeholder {
     font-weight: 400;
 }
+.explorer-dir-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    margin-top: 0.1rem;
+}
 .explorer-search {
     background-image: url("../../assets/icons/search.svg");
     background-repeat: no-repeat;
@@ -129,6 +138,8 @@
     padding-top: 0.5rem;
 
     border-right: 1px solid var(--border);
+
+    gap: 1px;
 }
 
 .explorer-sidebar-container{
