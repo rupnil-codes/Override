@@ -131,7 +131,7 @@ export default function AppWindow({
             dragHandleClassName="titlebar"
             style={rndStyle}
 
-            minWidth={450}
+            minWidth={490}
             minHeight={300}
 
             maxHeight={window.innerHeight - TASKBAR_HEIGHT}
