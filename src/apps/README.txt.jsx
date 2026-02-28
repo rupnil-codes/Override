@@ -1,5 +1,5 @@
 import "../styles/apps/readme_txt.css"
-import { Heading1, Bold, Italic, Underline, Settings } from "lucide-react";
+import {Heading1, Bold, Italic, Underline, Settings, Strikethrough} from "lucide-react";
 import React from "react";
 
 function Readme_txt() {
@@ -19,12 +19,14 @@ function Readme_txt() {
         bold: false,
         italic: false,
         underline: false,
+        strikethrough: false,
     });
     const checkStyles = () => {
         setActiveStyles({
             bold: document.queryCommandState("bold"),
             italic: document.queryCommandState("italic"),
             underline: document.queryCommandState("underline"),
+            strikethrough: document.queryCommandState("strikethrough"),
         })
     }
 
@@ -72,6 +74,14 @@ function Readme_txt() {
                         }}
                     >
                         <Underline size={18} strokeWidth={1.5} />
+                    </div>
+                    <div
+                        className={`readme-button-container ${ activeStyles.strikethrough ? "active-style" : "" }`}
+                        onMouseDown={(e) => {
+                            e.preventDefault(); applyStyle('strikethrough');
+                        }}
+                    >
+                        <Strikethrough size={18} strokeWidth={1.5} />
                     </div>
                 </div>
                 <div className={"readme-settings"}>
