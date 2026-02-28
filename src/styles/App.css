@@ -1,0 +1,38 @@
+
+.progress-container {
+    cursor: default;
+
+    top: 0.75rem;
+    right: 0.75rem;
+
+    z-index: 10;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 0.5rem;
+
+    padding: 0.5rem 1rem;
+
+    border-radius: 0.625rem;
+
+    backdrop-filter: blur(2rem) brightness(2);
+
+    transition: all var(--hover-animation) var(--hover-animation-type);
+}
+.progress-container:hover {
+    padding: 0.7rem 1.2rem;
+
+    backdrop-filter: blur(2rem) brightness(3);
+}
+
+.progress-sidebar {
+    position: fixed;
+
+    background-color: var(--sidebar);
+    width: 2rem;
+    height: 2rem;
+
+}
