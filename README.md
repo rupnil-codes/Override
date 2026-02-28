@@ -38,6 +38,6 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Notepad Generalised component
 - [ ] CHANGE CHROME TO BRAVE
 - [ ] Terminal
-- [ ] Make a Progress Panel and HINT icon that always stays on top of the screen (below apps above desktop)
+- [X] Make a Progress Panel and HINT icon that always stays on top of the screen (below apps above desktop)
 - [ ] Progress Panel and Hint page with proper functionalities
 - [X] Remove Border on Fullscreen (Fixed v0.1.5.8(2))

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+const appStartTime = Date.now();
+
 export const useDateTime = () => {
     const [now, setNow] = useState(new Date());
 
@@ -36,3 +38,28 @@ export const useDateTime = () => {
 
     return { timeString, dateString, monthString, dayString, numericMonthDay };
 }
+
+export const useElapsedTime = () => {
+    const [elapsed, setElapsed] = useState("00:00:00");
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const now = Date.now();
+            const diffInSeconds = Math.floor((now - appStartTime) / 1000);
+
+            const h = Math.floor(diffInSeconds / 3600);
+            const m = Math.floor((diffInSeconds % 3600) / 60);
+            const s = diffInSeconds % 60;
+
+            const formatted = [h, m, s]
+                .map(unit => String(unit).padStart(2, '0'))
+                .join(':');
+
+            setElapsed(formatted);
+        }, 1000);
+
+        return () => clearInterval(timer);
+    }, []);
+
+    return elapsed;
+};
