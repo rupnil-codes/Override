@@ -1,13 +1,24 @@
 
 .progress-container {
-    cursor: default;
+    height: 100%;
+
+    z-index: 90;
+
+    position: fixed;
 
     top: 0.75rem;
     right: 0.75rem;
 
-    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+}
 
-    position: fixed;
+.progress-button {
+    cursor: default;
+
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,22 +28,43 @@
     padding: 0.5rem 1rem;
 
     border-radius: 0.625rem;
+    border: 1px solid transparent;
 
-    backdrop-filter: blur(2rem) brightness(2);
-
+    /*backdrop-filter: blur(2rem) brightness(2);*/
+    /*background-color: rgba(0, 120, 215, 0.2);*/
+    
     transition: all var(--hover-animation) var(--hover-animation-type);
 }
-.progress-container:hover {
+.progress-button-active {
+    padding: 0.7rem 1.2rem;
+
+    backdrop-filter: blur(2rem) brightness(3);
+
+    border: 1px solid var(--blue);
+}
+.progress-button:hover {
     padding: 0.7rem 1.2rem;
 
     backdrop-filter: blur(2rem) brightness(3);
 }
 
 .progress-sidebar {
-    position: fixed;
+    border-radius: 0.625rem;
+    backdrop-filter: blur(2rem) brightness(2);
+    width: 15rem;
+    height: 60%;
 
-    background-color: var(--sidebar);
-    width: 2rem;
-    height: 2rem;
+    transform-origin: top;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
 
+.progress-hidden {
+    transform: scaleY(0);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.progress-active {
+    transform: scaleY(1);
+    opacity: 1;
 }
