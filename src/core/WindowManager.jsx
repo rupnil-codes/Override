@@ -141,13 +141,15 @@ export default function AppWindow({
                 className={"window"}
                 style={{
                     opacity: minimized ? 0 : 1,
-                    transition: isInteracting ? "none" : "transform 0.5s ease, opacity 0.5s ease",
+                    // transition: isInteracting ? "none" : "all 0.5s ease",
+                    transition: "all 0.3s ease",
                     transform: minimized
                         ? "translateY(200%)"
                         : opening
                             ? "translateY(200%)"
                             : "translateY(0)",
                     borderRadius: fullscreen ? 0 : 8,
+                    borderWidth: fullscreen ? 0 : 1,
                 }}
             >
                 { tabs ?

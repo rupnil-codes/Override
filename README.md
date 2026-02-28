@@ -40,4 +40,4 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Terminal
 - [ ] Make a Progress Panel and HINT icon that always stays on top of the screen (below apps above desktop)
 - [ ] Progress Panel and Hint page with proper functionalities
-- [ ] Remove Border on Fullscreen
+- [X] Remove Border on Fullscreen (Fixed v0.1.5.8(2))

@@ -32,7 +32,7 @@
 
     /*backdrop-filter: blur(2rem) brightness(2);*/
     /*background-color: rgba(0, 120, 215, 0.2);*/
-    
+
     transition: all var(--hover-animation) var(--hover-animation-type);
 }
 .progress-button-active {
@@ -40,7 +40,7 @@
 
     backdrop-filter: blur(2rem) brightness(3);
 
-    border: 1px solid var(--blue);
+    border: 1px solid wheat;
 }
 .progress-button:hover {
     padding: 0.7rem 1.2rem;
