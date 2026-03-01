@@ -5,7 +5,7 @@ import './styles/variables.css'
 
 import LockScreen from "./routes/lockscreen.jsx";
 import Desktop from "./routes/desktop.jsx";
-import {ProgressBar} from "./components/ProgressBar.jsx";
+import {ProgressPanel} from "./components/ProgressPanel.jsx";
 
 
 function App() {
@@ -13,11 +13,11 @@ function App() {
     return (
         <>
             <div className="app">
-                <ProgressBar/>
+                <ProgressPanel/>
 
                 <Routes>
-                    <Route path="/desktop" Component={LockScreen}/>
-                    <Route path="/" Component={Desktop}/>
+                    <Route path="/" Component={LockScreen}/>
+                    <Route path="/desktop" Component={Desktop}/>
                 </Routes>
             </div>
         </>

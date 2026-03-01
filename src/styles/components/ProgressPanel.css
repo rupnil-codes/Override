@@ -4,8 +4,8 @@
 
     position: absolute;
 
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 1rem;
+    right: 1rem;
 
     cursor: default;
 
@@ -43,8 +43,8 @@
 
     position: absolute;
 
-    top: 4.6rem;
-    right: 0.75rem;
+    top: 4.85rem;
+    right: 1rem;
 
     display: flex;
     flex-direction: column;
@@ -84,3 +84,40 @@
     font-size: 2.5rem;
     font-weight: 600;
 }
+
+.progress-sidebar-separator {
+    margin: 0.5rem 1rem 1rem 1rem;
+    height: 1px;
+    width: 80%;
+
+    background-color: white;
+}
+
+    .progress-item-container{
+        width: 80%;
+        height: 68%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+
+        overflow: auto;
+    }
+    .progress-item {
+        height: 3rem;
+        width: 95%;
+
+        margin-right: 0.5rem;
+
+        flex-shrink: 0;
+
+        border-radius: 0.625rem;
+        /*backdrop-filter: brightness(0);*/
+        background-color: var(--border);
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }

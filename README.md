@@ -33,7 +33,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Tabs v0.1.5.3 BUG: TITLE IS OVERFLOWING (Fixed v0.1.5.4)
 - [X] Universal tab feature (generalised) using `tabs: true` in App.js (Added in v0.1.5.4)
 - [X] Notepad App. (Made in v0.1.5.5)
-- [X] BUG: Notepad selection stops when it goes outside of the rnd window. (Fixed in v0.1.5.5(1))
+- [X] BUG: Notepad selection stops when it goes outside the rnd window. (Fixed in v0.1.5.5(1))
 - [ ] Window App's title bar and tab bar colors need adjusting.
 - [ ] Notepad Generalised component
 - [ ] CHANGE CHROME TO BRAVE
@@ -41,3 +41,5 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Make a Progress Panel and HINT icon that always stays on top of the screen (below apps above desktop)
 - [ ] Progress Panel and Hint page with proper functionalities
 - [X] Remove Border on Fullscreen (Fixed v0.1.5.8(2))
+- [ ] BUG: The windows menu opens but the indicator is not shown in the taskbar
+- [ ] Make Progress Panel actually show progress.
