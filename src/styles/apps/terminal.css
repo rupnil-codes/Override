@@ -1,0 +1,33 @@
+.terminal-app {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 250;
+    font-size: 0.9rem;
+
+    height: 100%;
+    overflow-y: auto;
+}
+
+.terminal-app p {
+    white-space: pre-wrap;
+}
+
+.input-line {
+    display: flex;
+    gap: 5px;
+}
+
+.input-line input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    flex: 1;
+    font-family: "JetBrains Mono", monospace;
+    font-size: inherit;
+    font-weight: 250;
+}

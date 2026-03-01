@@ -43,3 +43,4 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Remove Border on Fullscreen (Fixed v0.1.5.8(2))
 - [ ] BUG: The windows menu opens but the indicator is not shown in the taskbar
 - [ ] Make Progress Panel actually show progress.
+- [ ] Terminal (Proper) Selection, Proper fonts

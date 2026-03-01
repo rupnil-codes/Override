@@ -116,7 +116,8 @@
     margin: 1rem 0;
     border: 0;
     outline: none;
-    width: 20vw;
+    width: 17.5rem;
+    max-width: 20vw;
     padding: 0.5em 1em;
     font-size: 1rem;
     font-weight: 450;

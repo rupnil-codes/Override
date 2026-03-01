@@ -38,6 +38,7 @@ export const APP_REGISTRY = {
         title: "Terminal",
         component: Terminal,
         imgSrc: "/assets/icons/Terminal.ico",
+        tabs: true,
     },
 
     readme_txt: {

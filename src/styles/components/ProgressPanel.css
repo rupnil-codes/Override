@@ -93,31 +93,31 @@
     background-color: white;
 }
 
-    .progress-item-container{
-        width: 80%;
-        height: 68%;
+.progress-item-container{
+    width: 80%;
+    height: 68%;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 
-        overflow: auto;
-    }
-    .progress-item {
-        height: 3rem;
-        width: 95%;
+    overflow: auto;
+}
+.progress-item {
+    height: 3rem;
+    width: 95%;
 
-        margin-right: 0.5rem;
+    margin-right: 0.5rem;
 
-        flex-shrink: 0;
+    flex-shrink: 0;
 
-        border-radius: 0.625rem;
-        /*backdrop-filter: brightness(0);*/
-        background-color: var(--border);
+    border-radius: 0.625rem;
+    /*backdrop-filter: brightness(0);*/
+    background-color: var(--border);
 
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
