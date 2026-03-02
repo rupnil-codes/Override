@@ -75,6 +75,7 @@ function Terminal() {
         }
     };
 
+
     return (
         <div
             className="terminal-app"
@@ -99,7 +100,6 @@ function Terminal() {
                         value={input}
                         onChange={(e) => {
                             setInput(e.target.value);
-                            e.target.parentElement.style.setProperty('--char-count', e.target.value.length);
                         }}
                         onKeyDown={handleKeyDown}
                         autoComplete="off"

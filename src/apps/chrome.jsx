@@ -4,7 +4,10 @@ function Chrome() {
 
     return (
         <>
-            <p>Chrome Browser :P</p>
+            <iframe
+                className={"chrome-iframe"}
+                src={"https://5.39.47.103/#/cast/browser"}
+            />
         </>
     )
 }

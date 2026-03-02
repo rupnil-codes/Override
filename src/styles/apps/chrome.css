@@ -1,0 +1,10 @@
+
+.chrome-iframe {
+    height: 100%;
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    border-radius: 0 0 0.5rem 0.5rem;
+}
