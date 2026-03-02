@@ -1,4 +1,6 @@
 .terminal-app {
+    cursor: text;
+
     display: flex;
     flex-direction: column;
 
@@ -10,6 +12,11 @@
 
     height: 100%;
     overflow-y: auto;
+    contain: content;
+}
+.terminal-app ::selection {
+    background: #ffffff;
+    color: #0e0e0e;
 }
 
 .terminal-app p {
@@ -18,16 +25,26 @@
 
 .input-line {
     display: flex;
-    gap: 5px;
+    gap: 6.5px;
+}
+
+.input-wrapper {
+    display: flex;
+    position: relative;
+    flex: 1;
 }
 
 .input-line input {
+    height: 1rem;
+
     background: transparent;
     border: none;
     color: white;
     outline: none;
     flex: 1;
     font-family: "JetBrains Mono", monospace;
-    font-size: inherit;
+    font-size: 0.9rem;
     font-weight: 250;
+
+    caret-shape: bar;
 }

@@ -96,7 +96,7 @@ function Readme_txt() {
                 onPointerDown={handleMouseDown}
                 onMouseUp={checkStyles}
                 onKeyUp={checkStyles}
-                style={{ userSelect: 'text' }}
+                style={{ userSelect: 'text', msUserSelect: "text" }}
             >
                 Hello this is content editable btw
             </div>

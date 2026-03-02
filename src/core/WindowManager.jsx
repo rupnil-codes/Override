@@ -94,7 +94,7 @@ export default function AppWindow({
 
     return (
         <Rnd
-            cancel=".readme-body"
+            cancel=".readme-body .terminal-app"
             resizeHandleStyles={{
                 top: { cursor: 'ns-resize' },
                 bottom: { cursor: 'ns-resize' },

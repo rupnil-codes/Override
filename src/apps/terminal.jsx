@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/apps/terminal.css";
 import { COMMANDS } from "../data/Cmd.js";
+import {Bold, Italic, Settings, Strikethrough, Underline} from "lucide-react";
 
 function Terminal() {
     const [history, setHistory] = useState([
@@ -52,28 +53,62 @@ function Terminal() {
         }
     };
 
+    const handleTerminalClick = () => {
+        const selection = window.getSelection().toString();
+
+        if (!selection) {
+            inputRef.current?.focus();
+        }
+    };
+
+    const handleContextMenu = async (e) => {
+        e.preventDefault();
+
+        const selection = window.getSelection().toString();
+
+        if (selection) {
+            await navigator.clipboard.writeText(selection);
+            window.getSelection().removeAllRanges();
+        } else {
+            const text = await navigator.clipboard.readText();
+            setInput(prev => prev + text);
+        }
+    };
+
     return (
         <div
-            className="terminal-app terminal-content"
+            className="terminal-app"
             ref={terminalRef}
-            onClick={() => inputRef.current?.focus()}
+            onClick={handleTerminalClick}
+            onContextMenu={handleContextMenu}
+            style={{ userSelect: 'text', msUserSelect: "text" }}
         >
             {history.map((line, i) => (
                 <p key={i} className={`line ${line.type}`}>{line.content}</p>
             ))}
 
-                <div className="input-line">
-                    <span className="prompt">C:\Users\rupnil{'>'}</span>
+            <div className="input-line">
+                <span className="prompt">C:\Users\rupnil{'>'}</span>
+
+                <div className={"input-wrapper"}>
+
                     <input
+                        id="terminalInput"
                         ref={inputRef}
                         type="text"
                         value={input}
-                        onChange={(e) => setInput(e.target.value)}
+                        onChange={(e) => {
+                            setInput(e.target.value);
+                            e.target.parentElement.style.setProperty('--char-count', e.target.value.length);
+                        }}
                         onKeyDown={handleKeyDown}
                         autoComplete="off"
                         spellCheck="false"
+
                     />
+                    {/*<span className={"underscore-caret"}></span>*/}
                 </div>
+            </div>
         </div>
     );
 }
