@@ -260,7 +260,7 @@ function Desktop() {
 
             <div
                 ref={startMenuRef}
-                className={`start-menu ${isStartMenuActive ? "active" : ""}`}
+                className={`start-menu ${ isStartMenuActive ? "active" : ""}`}
             >
                 <div className={"start-search"}>
                     <Search className={"start-search-icon"} />
@@ -277,13 +277,13 @@ function Desktop() {
                             animate={{ opacity: 1, width: 24, scale: 1 }}
                             exit={{ opacity: 0, width: 0, scale: 0.5 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="app-item"
+                            className={`app-item ${isStartMenuActive ? "focussed" : ""}`}
                             onMouseDown={(e) => {
                                 e.stopPropagation();
                                 setIsStartMenuActive(prev => !prev);
                             }}
                         >
-                            <div className="taskbar-app" id="start-menu-icon">
+                            <div className={"taskbar-app"} id="start-menu-icon">
                                 <img className={"taskbar-app-icon"} src={"/assets/icons/Windows.svg"} draggable="false" alt="icon" />
                             </div>
                         </motion.div>

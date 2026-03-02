@@ -143,11 +143,18 @@ export default function AppWindow({
                     opacity: minimized ? 0 : 1,
                     // transition: isInteracting ? "none" : "all 0.5s ease",
                     transition: "all 0.3s ease",
+                    // transform: minimized
+                    //     ? "translateY(200%)"
+                    //     : opening
+                    //         ? "translateY(200%)"
+                    //         : "translateY(0)",
                     transform: minimized
-                        ? "translateY(200%)"
+                        ? "translateY(100vh) scale(0.1)"
                         : opening
-                            ? "translateY(200%)"
-                            : "translateY(0)",
+                            ? "translateY(100vh) scale(0.1)"
+                            : "translateY(0) scale(1)",
+                    transformOrigin: "bottom center",
+
                     borderRadius: fullscreen ? 0 : 8,
                     borderWidth: fullscreen ? 0 : 1,
                 }}

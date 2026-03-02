@@ -16,8 +16,8 @@ function App() {
                 <ProgressPanel/>
 
                 <Routes>
-                    <Route path="/desktop" Component={LockScreen}/>
-                    <Route path="/" Component={Desktop}/>
+                    <Route path="/" Component={LockScreen}/>
+                    <Route path="/desktop" Component={Desktop}/>
                 </Routes>
             </div>
         </>

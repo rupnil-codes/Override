@@ -7,6 +7,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Add more stuff to Lockscreen.
 - [X] Animations in the Lockscreen.
 - [ ] A loading screen on lockscreen after correct pass slowly fade while loading desktop in the back + SOUND.
+- [X] Fullscreen after login (Done v0.1.6.3)
 - [X] Windows Design + Desktop Design (Done in v0.1.3... & v0.1.4... respectively)
 - [X] Windows start menu does nothing rn. (Done in v0.1.4.4)
 - [X] Minimizing window still takes up the zIndex and prevents from using it.(FIXED IN v0.1.3.3-alpha)
@@ -25,16 +26,17 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] QOL: drag the window, even outside the bounding box, or the window keeping padding of like 2.5rem.(Fixed in v0.1.4.6)
 - [X] BUG (Issue #3): Clicking on the windows icon when the start menu is active causes a jittering effect and doesn't close it. (Fixed in v0.1.4.6)
 - [X] OPTIMIZATION: Have ONLY App.js with all the necessary variables so that we do not need to manually add apps to each part. (Done in v0.1.4.5)
+- [ ] OPTIMIZATION: Cache System for caching the iframes as they take up lot of time to load
 - [X] OPTIMIZATION: (TruthEntity) thinks it is better to use React component than Iframes, as they are quite a memory hogger and a can degrade performance. (Done in v0.1.4.5)
 - [X] Animation while resizing windows. (Done in v0.1.5.6)
-- [ ] Animation (like transform into a small rectangle) on minimize!
-- [ ] Make the system tray on the taskbar(right) more accurate to windows. (Partially Done in v0.1.5.1 The text doesn't match rn)
+- [X] Animation (like transform into a small rectangle) on minimize! (Done v0.1.6.3)
+- [X] Make the system tray on the taskbar(right) more accurate to windows. (Done in v0.1.5.1)
 - [ ] Explorer App. (Started in v0.1.5.1). Sidebar (v0.1.5.2)
 - [X] Tabs v0.1.5.3 BUG: TITLE IS OVERFLOWING (Fixed v0.1.5.4)
 - [X] Universal tab feature (generalised) using `tabs: true` in App.js (Added in v0.1.5.4)
 - [X] Notepad App. (Made in v0.1.5.5)
 - [X] BUG: Notepad selection stops when it goes outside the rnd window. (Fixed in v0.1.5.5(1))
-- [ ] Window App's title bar and tab bar colors need adjusting.
+- [X] Window App's title bar and tab bar colors need adjusting. (Its fine lol)
 - [ ] Notepad Generalised component
 - [ ] CHANGE CHROME TO BRAVE
 - [X] VSCode App (Added v0.1.6.2)
@@ -43,6 +45,5 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Make a Progress Panel and HINT icon that always stays on top of the screen (below apps above desktop)
 - [ ] Progress Panel and Hint page with proper functionalities
 - [X] Remove Border on Fullscreen (Fixed v0.1.5.8(2))
-- [ ] BUG: The windows menu opens but the indicator is not shown in the taskbar
+- [X] BUG: The windows menu opens but the indicator is not shown in the taskbar (Fixed v0.1.6.3)
 - [ ] Make Progress Panel actually show progress.
-- 

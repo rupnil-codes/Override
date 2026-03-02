@@ -33,6 +33,14 @@ function LockScreen() {
     const handleSubmit = (e) => {
         if (e.key === "Enter") {
             if (password === "DuckyCelestron76700" || password === "42069") {
+
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen().catch(err => {
+                        console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                    });
+                }
+
                 navigate("/desktop");
             }
         }

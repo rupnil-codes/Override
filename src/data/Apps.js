@@ -18,27 +18,32 @@ export const APP_REGISTRY = {
         component: Explorer,
         imgSrc: "/assets/icons/Explorer.ico",
         tabs: true,
+        cache: false,
     },
     vscode: {
         title: "VS Code",
         component: VSCode,
         imgSrc: "/assets/icons/VSCode.svg",
+        cache: true,
     },
     settings: {
         title: "Settings",
         component: Settings,
         imgSrc: "/assets/icons/Settings.ico",
+        cache: false,
     },
     chrome: {
         title: "Chrome",
         component: Chrome,
         imgSrc: "/assets/icons/Chrome.ico",
+        cache: false,
     },
     terminal: {
         title: "Terminal",
         component: Terminal,
         imgSrc: "/assets/icons/Terminal.ico",
         tabs: true,
+        cache: false,
     },
 
     readme_txt: {
@@ -46,5 +51,6 @@ export const APP_REGISTRY = {
         component: Readme_txt,
         imgSrc: "/assets/icons/Notepad.png",
         tabs: true,
+        cache: false,
     }
 };
