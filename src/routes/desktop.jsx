@@ -10,8 +10,14 @@ import Draggable from 'react-draggable';
 import { motion, AnimatePresence } from "framer-motion";
 
 import SystemTray from "../components/SystemTray.jsx";
+import LockScreen from "./lockscreen.jsx";
+
 
 function Desktop() {
+    const startupSound = new Audio("/sounds/startup.mp3");
+    startupSound.volume = Math.min(1.5, 1.0);
+    startupSound.play().catch(e => console.log("Audio play blocked", e));
+
     const [isStartMenuActive, setIsStartMenuActive] = useState(false);
 
     const startMenuRef = useRef(null);

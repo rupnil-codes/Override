@@ -4,8 +4,12 @@ import '../styles/routes/lockscreen.css';
 import { Wifi, BatteryCharging } from 'lucide-react';
 import {useNavigate} from "react-router";
 import * as React from "react";
-
 import { useDateTime } from "../components/DateTime.jsx";
+
+import { GridLoader } from "react-spinners";
+
+
+console.log("Password is: DuckyCelestron76700");
 
 function LockScreen() {
     const [showPin, setShowPin] = useState(false);
@@ -30,18 +34,21 @@ function LockScreen() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleSubmit = (e) => {
         if (e.key === "Enter") {
             if (password === "DuckyCelestron76700" || password === "42069") {
-
                 const elem = document.documentElement;
-                if (elem.requestFullscreen) {
-                    elem.requestFullscreen().catch(err => {
+                elem.requestFullscreen().catch(err => {
                         console.error(`Error attempting to enable fullscreen: ${err.message}`);
-                    });
-                }
+                });
 
-                navigate("/desktop");
+                setIsLoading(true);
+
+                setTimeout(() => {
+                    navigate("/desktop");
+                }, 3000);
             }
         }
     }
@@ -71,25 +78,38 @@ function LockScreen() {
                         <div className={"pfp"}/>
                         <p className={"username"}>Rupnil's PC</p>
                         {/*<p className={"enter-pass"}>Enter your password</p>*/}
-                        <input
-                            type={"text"}
-                            className={"input"}
-                            id={"password"}
-                            placeholder={"Password"}
-                            onChange={(e) => setPassword(e.target.value)}
-                            onKeyDown={handleSubmit}
-                            autoFocus={true}
-                        />
-                        <p className={"hint"}>
-                            HINT: I love making <a
-                            className={"devlog"}
-                            href={"https://flavortown.hackclub.com/projects/13380"}
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            Devlogs!
-                        </a>
-                        </p>
-                        {/*<p className={"hint"}>HINT: Check the oldest <a className={"devlog"} href={"https://flavortown.hackclub.com/projects/13380"}>Devlogs!</a></p>*/}
+
+                        {!isLoading ? (
+                            <>
+                                <input
+                                    type={"text"}
+                                    className={"input"}
+                                    id={"password"}
+                                    placeholder={"Password"}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    onKeyDown={handleSubmit}
+                                    autoFocus={true}
+                                />
+                                <p className={"hint"}>
+                                    Ps: Check the first <a
+                                    className={"devlog"}
+                                    href={"https://flavortown.hackclub.com/projects/13380"}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    Devlogs
+                                </a> or Console!
+                                </p>
+                            </>
+                        ) : (
+                            <div className="loading-container">
+                                <GridLoader
+                                    color="#ffffff"
+                                    size={8}
+                                    margin={4}
+                                    speedMultiplier={1}
+                                />
+                            </div>
+                        )}
                     </div>
                     <div className={"system"}>
                         <div className={"profile"}>

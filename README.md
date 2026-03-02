@@ -6,7 +6,8 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] HINT after failed try.
 - [ ] Add more stuff to Lockscreen.
 - [X] Animations in the Lockscreen.
-- [ ] A loading screen on lockscreen after correct pass slowly fade while loading desktop in the back + SOUND.
+- [X] A loading screen on lockscreen after correct pass + SOUND. (Done v0.1.6.4)
+- [ ] loading screen slowly fade while loading desktop in the back.
 - [X] Fullscreen after login (Done v0.1.6.3)
 - [X] Windows Design + Desktop Design (Done in v0.1.3... & v0.1.4... respectively)
 - [X] Windows start menu does nothing rn. (Done in v0.1.4.4)
@@ -38,7 +39,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] BUG: Notepad selection stops when it goes outside the rnd window. (Fixed in v0.1.5.5(1))
 - [X] Window App's title bar and tab bar colors need adjusting. (Its fine lol)
 - [ ] Notepad Generalised component
-- [ ] CHANGE CHROME TO BRAVE
+- [ ] ~~CHANGE CHROME TO BRAVE~~ (I aint doing this)
 - [X] VSCode App (Added v0.1.6.2)
 - [X] Terminal (v0.1.6.0 ... v0.1.6.1)
 - [X] Terminal (Proper) Selection, Proper fonts, Polish (Done v0.1.6.1)
