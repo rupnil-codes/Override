@@ -8,6 +8,7 @@ import Desktop from "./routes/desktop.jsx";
 import {ProgressPanel} from "./components/ProgressPanel.jsx";
 
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                 </Routes>
 
                 <Analytics />
+                <SpeedInsights />
             </div>
         </>
     )
