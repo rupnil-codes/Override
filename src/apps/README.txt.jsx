@@ -98,7 +98,13 @@ function Readme_txt() {
                 onKeyUp={checkStyles}
                 style={{ userSelect: 'text', msUserSelect: "text" }}
             >
-                Hello this is content editable btw
+                Hello <i>applicant</i>,<br/>
+                We carefully reviewed your application. Impressive but, its not that easy.<br/>
+                However, we decided to give you a chance.<br/>
+                Let's see if you are upto the mark.<br/> <br/>
+                <b>DO NOT CLOSE THIS TAB. DO EVERYTHING IN A NEW TAB.</b>
+                <br/>The following will be your first clue.<br/>
+                <br/><i>2F 30 31 31 30 31 30 30 30 2F 30 31 31 30 30 30 31 31 2E 68 74 6D 6C</i>
             </div>
         </div>
     )

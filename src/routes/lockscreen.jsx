@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import '../styles/routes/lockscreen.css';
 
 import { Wifi, BatteryCharging } from 'lucide-react';
@@ -34,10 +34,8 @@ function LockScreen() {
     }, []);
 
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isExiting, setIsExiting] = useState(false);
     const [isRemoved, setIsRemoved] = useState(false);
 
@@ -52,14 +50,18 @@ function LockScreen() {
                 setIsLoading(true);
 
                 setTimeout(() => {
-                    setIsAuthenticated(true);
                     setIsExiting(true);
 
                     setTimeout(() => {
                         setIsRemoved(true);
+
+                        const startupSound = new Audio("/sounds/startup.mp3");
+                        startupSound.volume = Math.min(1.5, 1.0);
+                        startupSound.play().catch(e => console.log("Audio play blocked", e));
+
                         // navigate("/desktop");
                     }, 1000);
-                }, 2500);
+                }, 2000);
             }
         }
     }
@@ -68,11 +70,9 @@ function LockScreen() {
 
     return (
         <div className={"app-viewport"}>
-            {isAuthenticated && (
-                <div className="background-desktop">
-                    <Desktop />
-                </div>
-            )}
+            <div className="background-desktop">
+                <Desktop />
+            </div>
 
             {!isRemoved && (<div
                 className={`screen ${showPin ? "show-pin" : ""} ${isExiting ? "exit-animation" : ""}`}
