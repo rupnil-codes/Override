@@ -5,6 +5,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] TIME AND DATE (Added in v0.1.5.0)
 - [ ] HINT after failed try.
 - [ ] Add more stuff to Lockscreen.
+- [ ] Cool Wallpapers
 - [X] Animations in the Lockscreen.
 - [X] A loading screen on lockscreen after correct pass + SOUND. (Done v0.1.6.4)
 - [X] BUG: Whatever you click, delete a window, add a window, ALL THE TIMES, sound is played (Fixed v0.1.6.5)
@@ -49,3 +50,9 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Remove Border on Fullscreen (Fixed v0.1.5.8(2))
 - [X] BUG: The windows menu opens but the indicator is not shown in the taskbar (Fixed v0.1.6.3)
 - [ ] Make Progress Panel actually show progress.
+- [ ] bring window to front by clicking on actual window instead of titlebar (By Matthias)
+
+
+Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed
+
+BROWSER SUPPLIED BY: redac1ed
