@@ -7,6 +7,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Add more stuff to Lockscreen.
 - [X] Animations in the Lockscreen.
 - [X] A loading screen on lockscreen after correct pass + SOUND. (Done v0.1.6.4)
+- [ ] BUG: Whatever you click, delete a window, add a window, ALL THE TIMES, sound is played
 - [ ] loading screen slowly fade while loading desktop in the back.
 - [X] Fullscreen after login (Done v0.1.6.3)
 - [X] Windows Design + Desktop Design (Done in v0.1.3... & v0.1.4... respectively)

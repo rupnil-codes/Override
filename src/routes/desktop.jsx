@@ -14,9 +14,15 @@ import LockScreen from "./lockscreen.jsx";
 
 
 function Desktop() {
-    const startupSound = new Audio("/sounds/startup.mp3");
-    startupSound.volume = Math.min(1.5, 1.0);
-    startupSound.play().catch(e => console.log("Audio play blocked", e));
+    const [startup, setStartup] = useState(true);
+
+    if (startup) {
+        const startupSound = new Audio("/sounds/startup.mp3");
+        startupSound.volume = Math.min(1.5, 1.0);
+        startupSound.play().catch(e => console.log("Audio play blocked", e));
+
+        setStartup(false);
+    }
 
     const [isStartMenuActive, setIsStartMenuActive] = useState(false);
 
