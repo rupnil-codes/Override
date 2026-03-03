@@ -5,4 +5,5 @@ export const COMMANDS = {
     shiden: "https://flavortown.hackclub.com/projects/10866",
     "rm -rf": "Are you f**king mad?? This is windows you idiot.",
     dih: "https://tomwebsites.nl",
+    "ipconfig /dns --history": "BRO IM MAKING IT ALR??? PLEASE SLOW DOWN"
 };
