@@ -7,6 +7,7 @@ import LockScreen from "./routes/lockscreen.jsx";
 import Desktop from "./routes/desktop.jsx";
 import {ProgressPanel} from "./components/ProgressPanel.jsx";
 
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
                     <Route path="/" Component={LockScreen}/>
                     <Route path="/desktop" Component={Desktop}/>
                 </Routes>
+
+                <Analytics />
             </div>
         </>
     )
