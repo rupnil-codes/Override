@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
 .terminal-app {
     cursor: text;
 
@@ -17,6 +20,7 @@
 .terminal-app ::selection {
     background: #ffffff;
     color: #0e0e0e;
+    font-family: monospace;
 }
 
 .terminal-app p {
