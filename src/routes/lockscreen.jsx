@@ -6,6 +6,8 @@ import {useNavigate} from "react-router";
 import * as React from "react";
 import { useDateTime } from "../components/DateTime.jsx";
 
+import Desktop from "./desktop.jsx";
+
 import { GridLoader } from "react-spinners";
 
 
@@ -35,6 +37,9 @@ function LockScreen() {
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isExiting, setIsExiting] = useState(false);
+    const [isRemoved, setIsRemoved] = useState(false);
 
     const handleSubmit = (e) => {
         if (e.key === "Enter") {
@@ -47,8 +52,14 @@ function LockScreen() {
                 setIsLoading(true);
 
                 setTimeout(() => {
-                    navigate("/desktop");
-                }, 3000);
+                    setIsAuthenticated(true);
+                    setIsExiting(true);
+
+                    setTimeout(() => {
+                        setIsRemoved(true);
+                        // navigate("/desktop");
+                    }, 1000);
+                }, 2500);
             }
         }
     }
@@ -56,78 +67,86 @@ function LockScreen() {
     const { timeString, monthString, dayString, numericMonthDay } = useDateTime();
 
     return (
-        <div
-            className={`screen ${showPin ? "show-pin" : ""}`}
-            onClick={() => setShowPin(true)}
-        >
-            <div className={"screen"}>
-                {/*<p>Enter your pin to Sign In</p>*/}
-                <div className={"lock"}>
-                    <div className={"datetime-container"}>
-                        <div className={"time-clip"}>
-                            <p className={"time"} id={"time"}>{timeString}</p>
-                        </div>
-                        <div className={"day-date-clip"}>
-                            <p className={"day-date"} id={"day-date"}>{dayString}, {monthString} {numericMonthDay}</p>
-                        </div>
-                    </div>
+        <div className={"app-viewport"}>
+            {isAuthenticated && (
+                <div className="background-desktop">
+                    <Desktop />
                 </div>
+            )}
 
-                <div className={"pin"}>
-                    <div className={"container"}>
-                        <div className={"pfp"}/>
-                        <p className={"username"}>Rupnil's PC</p>
-                        {/*<p className={"enter-pass"}>Enter your password</p>*/}
-
-                        {!isLoading ? (
-                            <>
-                                <input
-                                    type={"text"}
-                                    className={"input"}
-                                    id={"password"}
-                                    placeholder={"Password"}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    onKeyDown={handleSubmit}
-                                    autoFocus={true}
-                                />
-                                <p className={"hint"}>
-                                    Ps: Check the first <a
-                                    className={"devlog"}
-                                    href={"https://flavortown.hackclub.com/projects/13380"}
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                    Devlogs
-                                </a> or Console!
-                                </p>
-                            </>
-                        ) : (
-                            <div className="loading-container">
-                                <GridLoader
-                                    color="#ffffff"
-                                    size={8}
-                                    margin={4}
-                                    speedMultiplier={1}
-                                />
+            {!isRemoved && (<div
+                className={`screen ${showPin ? "show-pin" : ""} ${isExiting ? "exit-animation" : ""}`}
+                onClick={() => setShowPin(true)}
+            >
+                    {/*<p>Enter your pin to Sign In</p>*/}
+                    <div className={"lock"}>
+                        <div className={"datetime-container"}>
+                            <div className={"time-clip"}>
+                                <p className={"time"} id={"time"}>{timeString}</p>
                             </div>
-                        )}
-                    </div>
-                    <div className={"system"}>
-                        <div className={"profile"}>
-                            <div className={"imgBx"}/>
-                            <p className={"profile-username"}>Rupnil Codes</p>
-                        </div>
-                        <div className={"lockscreen-tray"}>
-                            <div className={"item"}>ENG</div>
-                            <div className={"item"}>
-                                <Wifi />
-                            </div>
-                            <div className={"item"}>
-                                <BatteryCharging />
+                            <div className={"day-date-clip"}>
+                                <p className={"day-date"}
+                                   id={"day-date"}>{dayString}, {monthString} {numericMonthDay}</p>
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div className={"pin"}>
+                        <div className={"container"}>
+                            <div className={"pfp"}/>
+                            <p className={"username"}>Rupnil's PC</p>
+                            {/*<p className={"enter-pass"}>Enter your password</p>*/}
+
+                            {!isLoading ? (
+                                <>
+                                    <input
+                                        type={"text"}
+                                        className={"input"}
+                                        id={"password"}
+                                        placeholder={"Password"}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        onKeyDown={handleSubmit}
+                                        autoFocus={true}
+                                    />
+                                    <p className={"hint"}>
+                                        Ps: Check the first <a
+                                        className={"devlog"}
+                                        href={"https://flavortown.hackclub.com/projects/13380"}
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        Devlogs
+                                    </a> or Console!
+                                    </p>
+                                </>
+                            ) : (
+                                <div className="loading-container">
+                                    <GridLoader
+                                        color="#ffffff"
+                                        size={8}
+                                        margin={4}
+                                        speedMultiplier={1}
+                                    />
+                                </div>
+                            )}
+                        </div>
+                        <div className={"system"}>
+                            <div className={"profile"}>
+                                <div className={"imgBx"}/>
+                                <p className={"profile-username"}>Rupnil Codes</p>
+                            </div>
+                            <div className={"lockscreen-tray"}>
+                                <div className={"item"}>ENG</div>
+                                <div className={"item"}>
+                                    <Wifi/>
+                                </div>
+                                <div className={"item"}>
+                                    <BatteryCharging/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
+            )}
         </div>
     )
 }

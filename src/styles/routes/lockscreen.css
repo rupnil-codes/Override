@@ -1,4 +1,7 @@
 .screen {
+    position: fixed;
+    z-index: 100;
+
     display: flex;
     flex-direction: column;
     /*justify-content: center;*/
@@ -12,6 +15,21 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+.exit-animation {
+    opacity: 0 !important;
+}
+
+.background-desktop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .datetime-container {
