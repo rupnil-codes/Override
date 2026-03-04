@@ -15,7 +15,6 @@ function App() {
     return (
         <>
             <div className="app">
-                <ProgressPanel/>
 
                 <Routes>
                     <Route path="/" Component={LockScreen}/>

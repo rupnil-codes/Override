@@ -9,6 +9,7 @@ import { useDateTime } from "../components/DateTime.jsx";
 import Desktop from "./desktop.jsx";
 
 import { GridLoader } from "react-spinners";
+import {ProgressPanel} from "../components/ProgressPanel.jsx";
 
 
 console.log("Password is: DuckyCelestron76700");
@@ -86,6 +87,7 @@ function LockScreen() {
                 className={`screen ${showPin ? "show-pin" : ""} ${isExiting ? "exit-animation" : ""}`}
                 onClick={() => setShowPin(true)}
             >
+                    <ProgressPanel />
                     {/*<p>Enter your pin to Sign In</p>*/}
                     <div className={"lock"}>
                         <div className={"datetime-container"}>

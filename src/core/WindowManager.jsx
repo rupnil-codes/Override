@@ -140,6 +140,8 @@ export default function AppWindow({
             <div
                 className={"window"}
                 style={{
+                    zIndex: zIndex,
+                    position: "relative",
                     opacity: minimized ? 0 : 1,
                     // transition: isInteracting ? "none" : "all 0.5s ease",
                     transition: "all 0.3s ease",

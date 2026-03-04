@@ -10,6 +10,7 @@ import Draggable from 'react-draggable';
 import { motion, AnimatePresence } from "framer-motion";
 
 import SystemTray from "../components/SystemTray.jsx";
+import {ProgressPanel} from "../components/ProgressPanel.jsx";
 
 
 function Desktop() {
@@ -193,6 +194,7 @@ function Desktop() {
         <div className="desktop" onMouseDown={() => {
             setSelectedIcon(null);
         }}>
+            <ProgressPanel />
             <div
                 className="desktop-grid"
                 style={{ position: 'absolute', inset: 0, display: 'grid', zIndex: 1 }}
