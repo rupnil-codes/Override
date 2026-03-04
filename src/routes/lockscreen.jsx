@@ -42,6 +42,8 @@ function LockScreen() {
     const handleSubmit = (e) => {
         if (e.key === "Enter") {
             if (password === "DuckyCelestron76700" || password === "42069") {
+                confirm("Remember to check README.txt in the desktop");
+
                 const elem = document.documentElement;
                 elem.requestFullscreen().catch(err => {
                         console.error(`Error attempting to enable fullscreen: ${err.message}`);
@@ -58,6 +60,12 @@ function LockScreen() {
                         const startupSound = new Audio("/sounds/startup.mp3");
                         startupSound.volume = Math.min(1.5, 1.0);
                         startupSound.play().catch(e => console.log("Audio play blocked", e));
+                            // .then(() => {
+                            //     setTimeout(() => {
+                            //         alert("Remember to check README.txt in the desktop");
+                            //     }, 800);
+                            // })
+                            //
 
                         // navigate("/desktop");
                     }, 1000);
