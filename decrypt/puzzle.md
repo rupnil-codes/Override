@@ -10,6 +10,6 @@ ARG: https://www.youtube.com/watch?v=yn6pePV2CS8
 4. Links to an image with a command: `ipconfig /dns --history`
 5. Type the command in the terminal, Internet history, we will find a yt link.
 6. In the video, a tts (with captions and a bg) will explain:
-   > I'm going to list a command that you need to type in the terminal
+   > I'm going to give you a command that you need to type in the terminal.
    > BUT, there is a catch. I'll list the command one character at a time.
    > So open your favourite notes app, or pen and paper and let's get started. 

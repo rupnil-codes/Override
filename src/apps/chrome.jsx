@@ -7,12 +7,12 @@ function Chrome() {
     return (
         <>
             <iframe
+                className={"chrome-iframe"}
                 src={browserUrl}
                 title="Browser Content"
                 referrerPolicy="origin"
                 allow="accelerometer; autoplay; clipboard-read; clipboard-write; encrypted-media; gyroscope; picture-in-picture; display-capture; camera; microphone; fullscreen"
                 allowFullScreen
-                style={{ width: '100%', height: '100%', border: 'none' }}
             />
         </>
     )
