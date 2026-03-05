@@ -4,8 +4,8 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 ### TODOS:
 - [X] TIME AND DATE (Added in v0.1.5.0)
 - [X] ~~HINT after failed try.~~
-- [ ] Make the input shake after failed try (+ RED)
-- [X] Hint beside the P.S. for my "other friends" (Added v0.1.7.5)
+- [X] Make the input shake after failed try (+RED) (Done in v0.1.7.5(1))
+- [X] Hint beside the P.S. for my "other friends" (Added in v0.1.7.5)
 - [ ] Add more stuff to Lockscreen.
 - [ ] Cool Wallpapers
 - [X] Animations in the Lockscreen.

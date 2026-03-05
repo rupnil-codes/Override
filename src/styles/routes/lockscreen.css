@@ -136,20 +136,37 @@
     outline: none;
     width: 17.5rem;
     max-width: 20vw;
-    padding: 0.5em 1em;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: 450;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: var(--input);
-    border-radius: 0.25em;
-    border-bottom: 0.2em solid var(--input-border);
+    border-radius: 0.25rem;
+    border-bottom: 0.2rem solid var(--input-border);
 }
 .input::placeholder {
     font-weight: 400;
 }
 .input:focus {
-    border-bottom: 0.2em solid var(--blue);
+    border-bottom: 0.2rem solid var(--blue);
 }
+.input.failed:focus {
+    border-bottom: 0.2rem solid var(--red);
+}
+
+.input.failed.shake {
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+}
+
 .hint-container {
     display: flex;
     flex-direction: row;

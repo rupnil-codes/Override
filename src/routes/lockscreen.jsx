@@ -17,6 +17,8 @@ function LockScreen() {
     const [isOpenProgressPanel, setIsOpenProgressPanel] = useState(false);
 
     const [showPin, setShowPin] = useState(false);
+    const [failedPin, setFailedPin] = useState(false);
+    const [shake, setShake] = useState(false);
 
     useEffect(() => {
         const handleKey = (e) => {
@@ -44,6 +46,9 @@ function LockScreen() {
     const handleSubmit = (e) => {
         if (e.key === "Enter") {
             if (password === "DuckyCelestron76700" || password === "42069") {
+                setShake(false);
+                setFailedPin(false);
+
                 confirm("Remember to check README.txt in the desktop");
 
                 const elem = document.documentElement;
@@ -72,6 +77,10 @@ function LockScreen() {
                         // navigate("/desktop");
                     }, 1000);
                 }, 2000);
+            }
+            else {
+                setFailedPin(true);
+                setShake(true);
             }
         }
     }
@@ -116,12 +125,17 @@ function LockScreen() {
                                 <>
                                     <input
                                         type={"text"}
-                                        className={"input"}
+                                        className={`input ${failedPin ? "failed" : ""} ${shake ? "shake" : ""}`}
                                         id={"password"}
                                         placeholder={"Password"}
-                                        onChange={(e) => setPassword(e.target.value)}
+                                        onChange={(e) => {
+                                            setPassword(e.target.value)
+                                            setShake(false)
+                                            // setFailedPin(false)
+                                        }}
                                         onKeyDown={handleSubmit}
-                                        autoFocus={true}
+                                        onAnimationEnd={() => setShake(false)}
+                                        autoFocus
                                     />
                                     <div className={"hint-container"}>
                                         <p className={"hint"}>
