@@ -3,7 +3,9 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 
 ### TODOS:
 - [X] TIME AND DATE (Added in v0.1.5.0)
-- [ ] HINT after failed try.
+- [X] ~~HINT after failed try.~~
+- [ ] Make the input shake after failed try (+ RED)
+- [X] Hint beside the P.S. for my "other friends" (Added v0.1.7.5)
 - [ ] Add more stuff to Lockscreen.
 - [ ] Cool Wallpapers
 - [X] Animations in the Lockscreen.
@@ -51,7 +53,8 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] BUG: The windows menu opens but the indicator is not shown in the taskbar (Fixed v0.1.6.3)
 - [ ] Make Progress Panel actually show progress.
 - [ ] bring window to front by clicking on actual window instead of titlebar (By Matthias)
-- [ ] Reduce flashes in the ARG video (Req: Flux3tor + redac1ed)
+- [X] Reduce flashes in the ARG video (Req: Flux3tor + redac1ed) (RENDER #3)
+- [ ] PIN the comment
 
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed

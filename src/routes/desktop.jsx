@@ -11,9 +11,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import SystemTray from "../components/SystemTray.jsx";
 import {ProgressPanel} from "../components/ProgressPanel.jsx";
+import * as React from "react";
 
 
 function Desktop() {
+    const [isOpenProgressPanel, setIsOpenProgressPanel] = useState(false);
     const [isStartMenuActive, setIsStartMenuActive] = useState(false);
 
     const startMenuRef = useRef(null);
@@ -194,7 +196,10 @@ function Desktop() {
         <div className="desktop" onMouseDown={() => {
             setSelectedIcon(null);
         }}>
-            <ProgressPanel />
+            <ProgressPanel
+                isOpenProgressPanel={isOpenProgressPanel}
+                setIsOpenProgressPanel={setIsOpenProgressPanel}
+            />
             <div
                 className="desktop-grid"
                 style={{ position: 'absolute', inset: 0, display: 'grid', zIndex: 1 }}

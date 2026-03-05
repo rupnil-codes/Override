@@ -8,7 +8,7 @@ ARG: https://www.youtube.com/watch?v=yn6pePV2CS8
     2. The hexadecimal code when decoded gives a link to /01101000/01100011.html (h/c.html redirects)
 3. HTML contains a hint to check source code. `Go to /696D67/70757A7A6C6534.png`
 4. Links to an image with a command: `ipconfig /dns --history`
-5. Type the command in the terminal, Internet history, we will find a yt link.
+5. Type the command in the terminal, Internet history, we will find a yt link (https://13380.flux3tor.xyz/).
 6. In the video, a tts (with captions and a bg) will explain:
    > Stunning, you have successfully solved five puzzles that I meticulously constructed to test your technical knowledge. 
    > I'm going to keep this puzzle simple, but you must show your determination.
@@ -18,3 +18,4 @@ ARG: https://www.youtube.com/watch?v=yn6pePV2CS8
    > [Authoritative] See you again, in the terminal.
    > 
    > CMD is  `ssh flux3tor@5.161.100.52`
+   > pass: konnect@13380

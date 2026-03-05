@@ -2,11 +2,12 @@ import "../styles/components/ProgressPanel.css";
 
 import {Info} from "lucide-react";
 import {useElapsedTime} from "./DateTime.jsx";
-import {useState} from "react";
 
-export function ProgressPanel() {
+export function ProgressPanel({
+     isOpenProgressPanel,
+     setIsOpenProgressPanel
+}) {
 
-    const [isOpenProgressPanel, setIsOpenProgressPanel] = useState(false);
     const timeActive = useElapsedTime();
 
     return (

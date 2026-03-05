@@ -1,8 +1,7 @@
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 import '../styles/routes/lockscreen.css';
 
-import { Wifi, BatteryCharging } from 'lucide-react';
-import {useNavigate} from "react-router";
+import { Wifi, BatteryCharging, Lightbulb } from 'lucide-react';
 import * as React from "react";
 import { useDateTime } from "../components/DateTime.jsx";
 
@@ -15,6 +14,8 @@ import {ProgressPanel} from "../components/ProgressPanel.jsx";
 console.log("Password is: DuckyCelestron76700");
 
 function LockScreen() {
+    const [isOpenProgressPanel, setIsOpenProgressPanel] = useState(false);
+
     const [showPin, setShowPin] = useState(false);
 
     useEffect(() => {
@@ -79,15 +80,19 @@ function LockScreen() {
 
     return (
         <div className={"app-viewport"}>
-            <div className="background-desktop">
-                <Desktop />
+            {isLoading && <div className="background-desktop">
+                <Desktop/>
             </div>
+            }
 
             {!isRemoved && (<div
                 className={`screen ${showPin ? "show-pin" : ""} ${isExiting ? "exit-animation" : ""}`}
                 onClick={() => setShowPin(true)}
             >
-                    <ProgressPanel />
+                    <ProgressPanel
+                        isOpenProgressPanel={isOpenProgressPanel}
+                        setIsOpenProgressPanel={setIsOpenProgressPanel}
+                    />
                     {/*<p>Enter your pin to Sign In</p>*/}
                     <div className={"lock"}>
                         <div className={"datetime-container"}>
@@ -118,15 +123,25 @@ function LockScreen() {
                                         onKeyDown={handleSubmit}
                                         autoFocus={true}
                                     />
-                                    <p className={"hint"}>
-                                        Ps: Check the first <a
-                                        className={"devlog"}
-                                        href={"https://flavortown.hackclub.com/projects/13380"}
-                                        target="_blank"
-                                        rel="noopener noreferrer">
-                                        Devlogs
-                                    </a> or Console!
-                                    </p>
+                                    <div className={"hint-container"}>
+                                        <p className={"hint"}>
+                                            Ps: Check the first <a
+                                            className={"devlog"}
+                                            href={"https://flavortown.hackclub.com/projects/13380"}
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                            Devlogs
+                                        </a> or Console!
+                                        </p>
+                                        <div
+                                            className={`hint-icon-container ${isOpenProgressPanel ? "active" : ""}`}
+                                            onClick={() => setIsOpenProgressPanel(!isOpenProgressPanel)}
+                                        >
+                                            <Lightbulb size={18} style={{
+                                                color: "#EAB308FF",
+                                            }}/>
+                                        </div>
+                                    </div>
                                 </>
                             ) : (
                                 <div className="loading-container">
