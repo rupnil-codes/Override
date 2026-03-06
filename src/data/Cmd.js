@@ -1,5 +1,5 @@
 
-export const COMMANDS = {
+export const WIDOW_COMMANDS = {
     help: "Available commands: help, dih, clear/cls, about, shiden",
     about: "Go find out",
     "rm -rf": "This is windows you nitwit, poopy head.",
@@ -18,3 +18,7 @@ export const COMMANDS = {
         // "  ----------------------------------\n" +
         // "  \"kali linux iso download\"",
 };
+
+export const SSH_COMMANDS = {
+    help: "COMING SOON! STAY TUNEDDD",
+}

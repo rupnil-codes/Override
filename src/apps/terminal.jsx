@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/apps/terminal.css";
-import { COMMANDS } from "../data/Cmd.js";
+import { WIDOW_COMMANDS, SSH_COMMANDS } from "../data/Cmd.js";
 
 function Terminal() {
     const [history, setHistory] = useState([
@@ -105,8 +105,14 @@ function Terminal() {
             }
 
             if (isSSH && isSSHConnected) {
-                if (cmd === "help") {
-                    response = {type: "output", content: "exit, ls,  bruh you need to wait\n " };
+
+                if (SSH_COMMANDS[cmd]) {
+                    const output = typeof SSH_COMMANDS[cmd] === 'function' ? SSH_COMMANDS[cmd]() : SSH_COMMANDS[cmd]+"\n ";
+                    response = { type: 'output', content: output };
+                }
+
+                else {
+                    response = { type: 'error', content: `bash: ${cmd}: command not found\n ` };
                 }
             }
 
@@ -149,9 +155,9 @@ function Terminal() {
                         }, startTime + (interval * 4));
                     };
 
-                    runAnimation("Validating connection", 750, "Connection allowed.", 0);
+                    runAnimation("Validating connection", 750, "IP allowed the connection.", 0);
 
-                    runAnimation("Connecting", 750, "Connection established.", 750 * 5);
+                    runAnimation("Establishing connecting", 750, "Connection established.", 750 * 5);
 
                     setTimeout(() => {
                         const welcomeMsg = {
@@ -169,7 +175,7 @@ function Terminal() {
                     setIsSSH(false);
                     setIsSSHConnected(false);
 
-                    loader("Establishing connection", 750, "IP Refused to connect.");
+                    loader("Validating connection", 750, "IP refused the connection.");
                     setTimeout(() => {
                         const asyncResponse = { type: 'error', content: `Permission denied, please try again.\nDid you read the description?\n `};
 
@@ -198,7 +204,8 @@ function Terminal() {
                         const output =
                             `The authenticity of host '5.161.100.52 (5.161.100.52)' can't be established.\n` +
                             `ED25519 key fingerprint is SHA256:IMQ8moL7eaMu1QwXVlmgtEBpH34VBswrylvylzO3AGs.\n` +
-                            `Warning: Permanently added '5.161.100.52' (ED25519) to the list of known hosts.\n `;
+                            `Warning: Permanently added '5.161.100.52' (ED25519) to the list of known hosts.\n` +
+                            `\nYou read the description, right?\n `;
 
                         const asyncResponse = { type: 'output', content: output};
 
@@ -209,8 +216,8 @@ function Terminal() {
                     return;
                 }
 
-                else if (COMMANDS[cmd]) {
-                    const output = typeof COMMANDS[cmd] === 'function' ? COMMANDS[cmd]() : COMMANDS[cmd]+"\n ";
+                else if (WIDOW_COMMANDS[cmd]) {
+                    const output = typeof WIDOW_COMMANDS[cmd] === 'function' ? WIDOW_COMMANDS[cmd]() : WIDOW_COMMANDS[cmd]+"\n ";
                     response = { type: 'output', content: output };
                 }
 
