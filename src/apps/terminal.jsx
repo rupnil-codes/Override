@@ -14,6 +14,8 @@ function Terminal() {
     const [lastCmd, setLastCmd] = useState("");
 
     const DEFAULT_PROMPT = "C:\\Users\\rupnil> "
+    const SSH_PROMPT = "flux3tor@5.161.100.52:"
+
     const [prompt, setPrompt] = useState(DEFAULT_PROMPT);
     const [isSSH, setIsSSH] = useState(false);
     const [isSSHConnected, setIsSSHConnected] = useState(false);
@@ -37,61 +39,144 @@ function Terminal() {
             const newEntry = { type: 'cmd', content: `${prompt}${cleanInput}` };
             let response = null;
 
-            if (cmd === "") {
-                setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
-                return;
-            }
-
-            if (cmd === "load") {
+            const loader = (text, interval, final_text) => {
                 setHistory(prev => [...prev, newEntry]);
                 setPrompt("");
                 setInput("");
 
                 setTimeout(() => {
-                    setHistory(prev => [...prev, { type: 'output', content: "connecting" }]);
-                }, 500);
+                    setHistory(prev => [...prev, { type: 'output', content: text }]);
+                }, interval);
 
                 setTimeout(() => {
                     setHistory(prev => {
                         const newHistory = [...prev];
                         const lastIndex = newHistory.length - 1;
-                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: "connecting." };
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: `${text}.` };
                         return newHistory;
                     });
-                }, 1000);
+                }, interval*2);
 
                 setTimeout(() => {
                     setHistory(prev => {
                         const newHistory = [...prev];
                         const lastIndex = newHistory.length - 1;
-                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: "connecting.." };
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: `${text}..` };
                         return newHistory;
                     });
-                }, 1500);
+                }, interval*3);
 
                 setTimeout(() => {
                     setHistory(prev => {
                         const newHistory = [...prev];
                         const lastIndex = newHistory.length - 1;
-                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: "connecting..." };
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: `${text}...` };
                         return newHistory;
                     });
-                    setPrompt(DEFAULT_PROMPT);
-                }, 2000);
+                }, interval*4);
 
+                setTimeout(() => {
+                    setHistory(prev => {
+                        const newHistory = [...prev];
+                        const lastIndex = newHistory.length - 1;
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: final_text };
+                        return newHistory;
+                    });
+                }, interval*5);
+
+                setTimeout(() => {
+                    setHistory(prev => {
+                        const newHistory = [...prev];
+                        const lastIndex = newHistory.length - 1;
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: final_text };
+                        return newHistory;
+                    });
+                }, interval*6);
+            }
+
+            if (cmd === "") {
+                setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
                 return;
             }
 
-            if (isSSH) {
-                if (cmd === sshPassword) {
-                    setIsSSH(false);
-                    response = { type: 'output', content: `Password is correct damn\n `};
-                    setPrompt(DEFAULT_PROMPT)
+            if (cmd === "loader") {
+                loader("Loading", 750, "Loaded!");
+                return;
+            }
+
+            if (isSSH && isSSHConnected) {
+                if (cmd === "help") {
+                    response = {type: "output", content: "exit, ls,  bruh you need to wait\n " };
                 }
+            }
+
+            else if (isSSH) {
+                if (cmd === sshPassword) {
+                    setIsSSH(true);
+                    setIsSSHConnected(true);
+
+                    setHistory(prev => [...prev, newEntry]);
+                    setPrompt("");
+                    setInput("");
+
+                    const runAnimation = (text, interval, final_text, startTime) => {
+
+                        setTimeout(() => {
+                            setHistory(prev => [...prev, { type: 'output', content: text }]);
+                        }, startTime);
+
+                        [1, 2, 3].forEach(dotCount => {
+                            setTimeout(() => {
+                                setHistory(prev => {
+                                    const newHistory = [...prev];
+                                    const lastIndex = newHistory.length - 1;
+                                    newHistory[lastIndex] = {
+                                        ...newHistory[lastIndex],
+                                        content: `${text}${'.'.repeat(dotCount)}`
+                                    };
+                                    return newHistory;
+                                });
+                            }, startTime + (interval * dotCount));
+                        });
+
+                        setTimeout(() => {
+                            setHistory(prev => {
+                                const newHistory = [...prev];
+                                const lastIndex = newHistory.length - 1;
+                                newHistory[lastIndex] = { ...newHistory[lastIndex], content: final_text };
+                                return newHistory;
+                            });
+                        }, startTime + (interval * 4));
+                    };
+
+                    runAnimation("Validating connection", 750, "Connection allowed.", 0);
+
+                    runAnimation("Connecting", 750, "Connection established.", 750 * 5);
+
+                    setTimeout(() => {
+                        const welcomeMsg = {
+                            type: 'output',
+                            content: `\nWELCOME TO SYSTEM TERMINAL. PLEASE TYPE \`help\` TO BEGIN.\n `
+                        };
+                        setHistory(prev => [...prev, welcomeMsg]);
+                        setPrompt(SSH_PROMPT + " ");
+                    }, 750 * 10);
+
+                    return;
+                }
+
                 else {
                     setIsSSH(false);
-                    response = { type: 'error', content: `Permission denied, please try again.\n `};
-                    setPrompt(DEFAULT_PROMPT)
+                    setIsSSHConnected(false);
+
+                    loader("Establishing connection", 750, "IP Refused to connect.");
+                    setTimeout(() => {
+                        const asyncResponse = { type: 'error', content: `Permission denied, please try again.\nDid you read the description?\n `};
+
+                        setPrompt(DEFAULT_PROMPT);
+                        setHistory(prev => [...prev, asyncResponse]);
+                    }, 750*6);
+                    return;
                 }
             }
 
@@ -118,7 +203,7 @@ function Terminal() {
                         const asyncResponse = { type: 'output', content: output};
 
                         setHistory(prev => [...prev, asyncResponse]);
-                        setPrompt("flux3tor@5.161.100.52's password: ")
+                        setPrompt(`${SSH_PROMPT}'s password: `)
                     }, 1000);
 
                     return;
