@@ -54,9 +54,11 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Make Progress Panel actually show progress.
 - [ ] bring window to front by clicking on actual window instead of titlebar (By Matthias)
 - [X] Reduce flashes in the ARG video (Req: Flux3tor + redac1ed) (RENDER #3)
-- [ ] PIN the comment
+- [X] PIN the comment
+- [ ] Fix Subtitles and rerender (again-)
+- [X] Fix the Hex in README.txt & Add full url not just /../.. (Fixed v0.1.7.6)
 
 
-Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed
+Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity
 
 BROWSER SUPPLIED BY: redac1ed

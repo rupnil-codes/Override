@@ -13,7 +13,8 @@ ARG: https://www.youtube.com/watch?v=yn6pePV2CS8
    > Stunning, you have successfully solved five puzzles that I meticulously constructed to test your technical knowledge. 
    > I'm going to keep this puzzle simple, but you must show your determination.
    > I'm going to give you a command that you need to type in the terminal. 
-   > [giggles] But, there is a catch. I'll list the command one character at a time. [sarcastically] So open your favourite note-taking app, or pen and paper and let's get started.
+   > [giggles] But, there is a catch. I'll list the command one character at a time. 
+   > [sarcastically] So open your favourite note-taking app, or pen and paper and let's get started.
    > s s h space f l u x 3 t o r @ five point one six one point one zero zero point five two
    > [Authoritative] See you again, in the terminal.
    > 

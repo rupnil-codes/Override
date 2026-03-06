@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/apps/terminal.css";
 import { COMMANDS } from "../data/Cmd.js";
-import {Bold, Italic, Settings, Strikethrough, Underline} from "lucide-react";
 
 function Terminal() {
     const [history, setHistory] = useState([
@@ -14,11 +13,13 @@ function Terminal() {
     const inputRef = useRef(null);
     const [lastCmd, setLastCmd] = useState("");
 
-    useEffect(() => {
-        if (terminalRef.current) {
-            terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-        }
-    }, [history]);
+    const DEFAULT_PROMPT = "C:\\Users\\rupnil> "
+    const [prompt, setPrompt] = useState(DEFAULT_PROMPT);
+    const [isSSH, setIsSSH] = useState(false);
+    const [isSSHConnected, setIsSSHConnected] = useState(false);
+
+    const sshCmd = import.meta.env.VITE_SSH_CMD
+    const sshPassword = import.meta.env.VITE_SSH_PASSWORD
 
     const handleKeyDown = (e) => {
 
@@ -33,19 +34,102 @@ function Terminal() {
 
             setInput("");
 
-            if (cmd === "clear" || cmd === "cls") {
-                setHistory([]);
+            const newEntry = { type: 'cmd', content: `${prompt}${cleanInput}` };
+            let response = null;
+
+            if (cmd === "") {
+                setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
                 return;
             }
 
-            const newEntry = { type: 'cmd', content: `C:\\Users\\rupnil> ${cleanInput}` };
-            let response = null;
+            if (cmd === "load") {
+                setHistory(prev => [...prev, newEntry]);
+                setPrompt("");
+                setInput("");
 
-            if (cmd !== "") {
-                if (COMMANDS[cmd]) {
+                setTimeout(() => {
+                    setHistory(prev => [...prev, { type: 'output', content: "connecting" }]);
+                }, 500);
+
+                setTimeout(() => {
+                    setHistory(prev => {
+                        const newHistory = [...prev];
+                        const lastIndex = newHistory.length - 1;
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: "connecting." };
+                        return newHistory;
+                    });
+                }, 1000);
+
+                setTimeout(() => {
+                    setHistory(prev => {
+                        const newHistory = [...prev];
+                        const lastIndex = newHistory.length - 1;
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: "connecting.." };
+                        return newHistory;
+                    });
+                }, 1500);
+
+                setTimeout(() => {
+                    setHistory(prev => {
+                        const newHistory = [...prev];
+                        const lastIndex = newHistory.length - 1;
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: "connecting..." };
+                        return newHistory;
+                    });
+                    setPrompt(DEFAULT_PROMPT);
+                }, 2000);
+
+                return;
+            }
+
+            if (isSSH) {
+                if (cmd === sshPassword) {
+                    setIsSSH(false);
+                    response = { type: 'output', content: `Password is correct damn\n `};
+                    setPrompt(DEFAULT_PROMPT)
+                }
+                else {
+                    setIsSSH(false);
+                    response = { type: 'error', content: `Permission denied, please try again.\n `};
+                    setPrompt(DEFAULT_PROMPT)
+                }
+            }
+
+            else {
+                if (cmd === "clear" || cmd === "cls") {
+                    setHistory([]);
+                    return;
+                }
+
+                else if (cmd === sshCmd) {
+
+                    setHistory(prev => [...prev, newEntry]);
+                    setPrompt("")
+                    setInput("")
+
+                    setTimeout(() => {
+                        setIsSSH(true);
+
+                        const output =
+                            `The authenticity of host '5.161.100.52 (5.161.100.52)' can't be established.\n` +
+                            `ED25519 key fingerprint is SHA256:IMQ8moL7eaMu1QwXVlmgtEBpH34VBswrylvylzO3AGs.\n` +
+                            `Warning: Permanently added '5.161.100.52' (ED25519) to the list of known hosts.\n `;
+
+                        const asyncResponse = { type: 'output', content: output};
+
+                        setHistory(prev => [...prev, asyncResponse]);
+                        setPrompt("flux3tor@5.161.100.52's password: ")
+                    }, 1000);
+
+                    return;
+                }
+
+                else if (COMMANDS[cmd]) {
                     const output = typeof COMMANDS[cmd] === 'function' ? COMMANDS[cmd]() : COMMANDS[cmd]+"\n ";
                     response = { type: 'output', content: output };
-                } else {
+                }
+
+                else {
                     response = { type: 'error', content: `'${cmd}' is not recognized as an internal or external command, \noperable program or batch file.\n ` };
                 }
             }
@@ -60,6 +144,12 @@ function Terminal() {
             inputRef.current?.focus();
         }
     };
+
+    useEffect(() => {
+        if (terminalRef.current) {
+            terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+        }
+    }, [history]);
 
     const handleContextMenu = async (e) => {
         e.preventDefault();
@@ -85,11 +175,14 @@ function Terminal() {
             style={{ userSelect: 'text', msUserSelect: "text" }}
         >
             {history.map((line, i) => (
-                <p key={i} className={`line ${line.type}`}>{line.content}</p>
+                <p
+                    key={i}
+                    className={`line ${line.type}`}>{line.content}
+                </p>
             ))}
 
             <div className="input-line">
-                <span className="prompt">C:\Users\rupnil{'>'}</span>
+                <span className="prompt">{prompt}</span>
 
                 <div className={"input-wrapper"}>
 

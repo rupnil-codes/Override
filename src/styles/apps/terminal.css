@@ -11,7 +11,8 @@
 
     font-family: "JetBrains Mono", monospace;
     font-weight: 250;
-    font-size: 0.9rem;
+    font-size: 0.94rem;
+    line-height: 1.3rem;
 
     height: 100%;
     overflow-y: auto;
@@ -29,7 +30,8 @@
 
 .input-line {
     display: flex;
-    gap: 6.5px;
+    gap: 7px;
+    /*padding-top: 5px;*/
 }
 
 .input-wrapper {
@@ -39,7 +41,7 @@
 }
 
 .input-line input {
-    height: 1rem;
+    height: 1.15rem;
 
     background: transparent;
     border: none;
@@ -47,7 +49,7 @@
     outline: none;
     flex: 1;
     font-family: "JetBrains Mono", monospace;
-    font-size: 0.9rem;
+    font-size: 0.94rem;
     font-weight: 250;
 
     caret-shape: bar;

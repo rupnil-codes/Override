@@ -104,7 +104,7 @@ function Readme_txt() {
                 Let's see if you are upto the mark.<br/> <br/>
                 <b>DO NOT CLOSE THIS TAB. DO EVERYTHING IN A NEW TAB.</b>
                 <br/>The following will be your first clue.<br/>
-                <br/><i>2F 30 31 31 30 31 30 30 30 2F 30 31 31 30 30 30 31 31 2E 68 74 6D 6C</i>
+                    <br/><i>6F766572726964652E7275706E696C2E636F6465732F30313130313030302F30313130303031312E68746D6C</i>
             </div>
         </div>
     )
