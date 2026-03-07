@@ -2,7 +2,7 @@ Here I will be writing the puzzle ideas I have:
 
 ARG: https://www.youtube.com/watch?v=yn6pePV2CS8
 
-1. The login password will be found in the oldest devlogs & in console.
+0. The login password will be found in the oldest devlogs & in console.
 
 1. In the README.txt a note from the hacker will be present:
     1. There will be a hexadecimal code, 2F 30 31 31 30 31 30 30 30 2F 30 31 31 30 30 30 31 31 2E 68 74 6D 6C
