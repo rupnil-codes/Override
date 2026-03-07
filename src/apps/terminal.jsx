@@ -27,6 +27,8 @@ function Terminal() {
     const [isSSHDisconnecting, setIsSSHDisconnecting] = useState(false);
     const [isDetaching, setIsDetaching] = useState(false);
 
+    const [isWon, setIsWon] = useState(false);
+
     const handleKeyDown = (e) => {
 
         if (e.key === "ArrowUp") {
@@ -128,6 +130,31 @@ function Terminal() {
                 }, startTime + (interval * 4));
             };
 
+            const runTypewriter = (text, speed, startTime, onComplete) => {
+                setTimeout(() => {
+                    setHistory(prev => [...prev, { type: 'output', content: '' }]);
+                }, startTime);
+
+                for (let i = 0; i < text.length; i++) {
+                    setTimeout(() => {
+                        setHistory(prev => {
+                            const newHistory = [...prev];
+                            const lastIndex = newHistory.length - 1;
+
+                            newHistory[lastIndex] = {
+                                ...newHistory[lastIndex],
+                                content: text.substring(0, i + 1)
+                            };
+                            return newHistory;
+                        });
+
+                        if (i === text.length - 1 && onComplete) {
+                            onComplete();
+                        }
+                    }, startTime + (i * speed));
+                }
+            };
+
             if (cmd === "") {
                 if (!isSSHDisconnecting && !isDetaching ) {
                     setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
@@ -180,21 +207,52 @@ function Terminal() {
                     setIsSSH(false);
                     setIsDetaching(false);
 
-                    runAnimation("TODO", 600, "Attempting to revoke device control... ALLOWED.", 0);
-
-                    // runAnimation("Establishing secure shell", 750, "Connected to Kali node.", 400 * 5);
+                    runAnimation("Revoking permissions", 400, "Revoking permissions... SUCCESS", 0);
+                    runAnimation("Terminating remote tunnels", 400, "Terminating remote tunnels... SUCCESS", 400 * 5);
+                    runAnimation("Disconnecting attacker nodes", 600, "Disconnecting attacker nodes... SUCCESS", 400 * 10);
 
                     setTimeout(() => {
-                        const welcomeMsg = {
+                        const msg = {
                             type: 'output',
                             content:
-                                `\nUhm wattesigma.\n` +
-                                `HOLD UP I WILL MAKE THIS.\n\n`
+                                `\nworkstation-c        - disconnected\n` +
+                                `hackclub-wifi-3f     - disconnected\n` +
+                                `unknown-device-8     - disconnected\n\n`
+                                // `HOLD UP I WILL MAKE THIS.\n\n`
                         };
-                        setHistory(prev => [...prev, welcomeMsg]);
-                        setPrompt(DEFAULT_PROMPT);
-                    }, 600*5);
+                        setHistory(prev => [...prev, msg]);
+                        // setPrompt(DEFAULT_PROMPT);
+                    }, 400*10 + 600*5);
 
+                    runAnimation("Restoring original host control", 500, "Restoring original host control... SUCCESS", 400*10 + 600*5)
+
+                    setTimeout(() => {
+                        const msg = {
+                            type: 'output',
+                            content:
+                                `\nSystem integrity: 100%\n\n`
+                        };
+                        setHistory(prev => [...prev, msg]);
+                        // setPrompt(DEFAULT_PROMPT);
+                    }, 400*10 + 600*5 + 500*5);
+
+                    runAnimation("", 750, "...", 400*10 + 600*5 + 500*5);
+
+                    runTypewriter(
+                        "\nInteresting.\n" +
+                        "Most applicants fail to reach this point.   \n" +
+                        "Now, for the moment of truth...      \n\n" +
+                        "You passed the `practical` test\n" +
+                        "You showed exceptional observation, persistence and problem solving abilities...      \n\n" +
+                        "WELCOME TO HACKCLUB.\n" +
+                        "Application status: ACCEPTED\n\n\n",
+                        75, 400*10 + 600*5 + 500*5 + 750*5,
+                        () => {
+                            setPrompt(DEFAULT_PROMPT);
+                        }
+                    )
+
+                    setIsWon(true);
                     return;
                 }
                 else if (cmd === "no" || cmd ==="n" || cmd === "") {
@@ -322,26 +380,35 @@ function Terminal() {
 
                 else if (cmd === sshCmd) {
 
-                    setHistory(prev => [...prev, newEntry]);
-                    setPrompt("")
-                    setInput("")
+                    if (isWon) {
+                        response = {
+                            type: 'error',
+                            content: `WARNING: The connection is closed.\nYou are already recruited!\n `
+                        }
+                    }
 
-                    setTimeout(() => {
-                        setIsSSH(true);
+                    else {
+                        setHistory(prev => [...prev, newEntry]);
+                        setPrompt("")
+                        setInput("")
 
-                        const output =
-                            `The authenticity of host '${ SSH_IP } (${ SSH_IP })' can't be established.\n` +
-                            `ED25519 key fingerprint is SHA256:IMQ8moL7eaMu1QwXVlmgtEBpH34VBswrylvylzO3AGs.\n` +
-                            `Warning: Permanently added '${ SSH_IP }' (ED25519) to the list of known hosts.\n` +
-                            `\nYou read the description, right?\n `;
+                        setTimeout(() => {
+                            setIsSSH(true);
 
-                        const asyncResponse = { type: 'output', content: output};
+                            const output =
+                                `The authenticity of host '${ SSH_IP } (${ SSH_IP })' can't be established.\n` +
+                                `ED25519 key fingerprint is SHA256:IMQ8moL7eaMu1QwXVlmgtEBpH34VBswrylvylzO3AGs.\n` +
+                                `Warning: Permanently added '${ SSH_IP }' (ED25519) to the list of known hosts.\n` +
+                                `\nYou read the description, right?\n `;
 
-                        setHistory(prev => [...prev, asyncResponse]);
-                        setPrompt(`${SSH_USER}'s password: `)
-                    }, 1000);
+                            const asyncResponse = { type: 'output', content: output};
 
-                    return;
+                            setHistory(prev => [...prev, asyncResponse]);
+                            setPrompt(`${SSH_USER}'s password: `)
+                        }, 1000);
+
+                        return;
+                    }
                 }
 
                 else if (WIDOW_COMMANDS[cmd]) {
