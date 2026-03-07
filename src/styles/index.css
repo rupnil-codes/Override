@@ -4,6 +4,9 @@ body {
 
     margin: 0;
     overflow: hidden;
+
+    color: white;
+    /*background-color: #0e0e0e;*/
 }
 
 p {
@@ -12,4 +15,6 @@ p {
         display: block;
         unicode-bidi: isolate;
 }
+
+
 
