@@ -14,11 +14,13 @@ function Terminal() {
     const [lastCmd, setLastCmd] = useState("");
 
     const DEFAULT_PROMPT = "C:\\Users\\rupnil> "
-    const SSH_PROMPT = "flux3tor@5.161.100.52:"
+    const SSH_USER = "flux3tor@5.161.100.52"
+    const SSH_PROMPT = SSH_USER + ": "
 
     const [prompt, setPrompt] = useState(DEFAULT_PROMPT);
     const [isSSH, setIsSSH] = useState(false);
     const [isSSHConnected, setIsSSHConnected] = useState(false);
+    const [isSSHDisconnecting, setIsSSHDisconnecting] = useState(false);
 
     const sshCmd = import.meta.env.VITE_SSH_CMD
     const sshPassword = import.meta.env.VITE_SSH_PASSWORD
@@ -94,7 +96,7 @@ function Terminal() {
                 }, interval*6);
             }
 
-            if (cmd === "") {
+            if (!isSSHDisconnecting && cmd === "") {
                 setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
                 return;
             }
@@ -104,9 +106,47 @@ function Terminal() {
                 return;
             }
 
-            if (isSSH && isSSHConnected) {
+            const DISCONNECT_ABORT_MSG = `MISSION ABORT HELL YEAH\n `
 
-                if (SSH_COMMANDS[cmd]) {
+            if (isSSHDisconnecting) {
+                if (cmd === "yes" || cmd ==="y") {
+                    setIsSSH(false);
+                    setIsSSHConnected(false);
+                    setIsSSHDisconnecting(false);
+
+                    loader("Closing connection", 500, "Connection closed.");
+                    setTimeout(() => {
+                        const asyncResponse = { type: 'output', content: `\n `};
+
+                        setPrompt(DEFAULT_PROMPT);
+                        setHistory(prev => [...prev, asyncResponse]);
+                    }, 750*6);
+                    return;
+                }
+                else if (cmd === "no" || cmd ==="n" || cmd === "") {
+                    setIsSSH(true);
+                    setIsSSHConnected(true);
+                    setIsSSHDisconnecting(false);
+
+                    response = { type: 'output', content: "\n" };
+                    setPrompt(SSH_PROMPT);
+                }
+                else {
+                    // response = { type: 'output', content: DISCONNECT_ABORT_MSG };
+                    // setPrompt(SSH_PROMPT);
+                    return;
+                }
+
+            }
+
+            else if (isSSH && isSSHConnected) {
+
+                if (cmd === "exit" || cmd === "quit"){
+                    setPrompt("Are you sure? (y/N): ")
+                    setIsSSHDisconnecting(true);
+                }
+
+                else if (SSH_COMMANDS[cmd]) {
                     const output = typeof SSH_COMMANDS[cmd] === 'function' ? SSH_COMMANDS[cmd]() : SSH_COMMANDS[cmd]+"\n ";
                     response = { type: 'output', content: output };
                 }
@@ -118,9 +158,6 @@ function Terminal() {
 
             else if (isSSH) {
                 if (cmd === sshPassword) {
-                    setIsSSH(true);
-                    setIsSSHConnected(true);
-
                     setHistory(prev => [...prev, newEntry]);
                     setPrompt("");
                     setInput("");
@@ -155,18 +192,22 @@ function Terminal() {
                         }, startTime + (interval * 4));
                     };
 
-                    runAnimation("Validating connection", 750, "IP allowed the connection.", 0);
+                    runAnimation("Validating connection", 750, "IP accepted.", 0);
 
-                    runAnimation("Establishing connecting", 750, "Connection established.", 750 * 5);
+                    runAnimation("Establishing secure shell", 750, "Connected to Kali node.", 750 * 5);
 
                     setTimeout(() => {
                         const welcomeMsg = {
                             type: 'output',
-                            content: `\nWELCOME TO SYSTEM TERMINAL. PLEASE TYPE \`help\` TO BEGIN.\n `
+                            content: `\nFlux node synchronized\nSystem privileges temporarily elevated.\n\n`
+                                + `WELCOME BACK, APPLICANT. TYPE \`help\` TO BEGIN.\n `
                         };
                         setHistory(prev => [...prev, welcomeMsg]);
-                        setPrompt(SSH_PROMPT + " ");
+                        setPrompt(SSH_PROMPT);
                     }, 750 * 10);
+
+                    setIsSSH(true);
+                    setIsSSHConnected(true);
 
                     return;
                 }
@@ -175,7 +216,7 @@ function Terminal() {
                     setIsSSH(false);
                     setIsSSHConnected(false);
 
-                    loader("Validating connection", 750, "IP refused the connection.");
+                    loader("Validating connection", 750, "IP refused.");
                     setTimeout(() => {
                         const asyncResponse = { type: 'error', content: `Permission denied, please try again.\nDid you read the description?\n `};
 
@@ -210,7 +251,7 @@ function Terminal() {
                         const asyncResponse = { type: 'output', content: output};
 
                         setHistory(prev => [...prev, asyncResponse]);
-                        setPrompt(`${SSH_PROMPT}'s password: `)
+                        setPrompt(`${SSH_USER}'s password: `)
                     }, 1000);
 
                     return;

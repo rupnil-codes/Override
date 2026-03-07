@@ -20,3 +20,4 @@ ARG: https://www.youtube.com/watch?v=yn6pePV2CS8
    > 
    > CMD is  `ssh flux3tor@5.161.100.52`
    > pass: konnect@13380
+7. 
