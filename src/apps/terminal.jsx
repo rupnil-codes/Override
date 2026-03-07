@@ -25,6 +25,7 @@ function Terminal() {
     const [isSSH, setIsSSH] = useState(false);
     const [isSSHConnected, setIsSSHConnected] = useState(false);
     const [isSSHDisconnecting, setIsSSHDisconnecting] = useState(false);
+    const [isDetaching, setIsDetaching] = useState(false);
 
     const handleKeyDown = (e) => {
 
@@ -97,9 +98,41 @@ function Terminal() {
                 }, interval*6);
             }
 
-            if (!isSSHDisconnecting && cmd === "") {
-                setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
-                return;
+            const runAnimation = (text, interval, final_text, startTime) => {
+
+                setTimeout(() => {
+                    setHistory(prev => [...prev, { type: 'output', content: text }]);
+                }, startTime);
+
+                [1, 2, 3].forEach(dotCount => {
+                    setTimeout(() => {
+                        setHistory(prev => {
+                            const newHistory = [...prev];
+                            const lastIndex = newHistory.length - 1;
+                            newHistory[lastIndex] = {
+                                ...newHistory[lastIndex],
+                                content: `${text}${'.'.repeat(dotCount)}`
+                            };
+                            return newHistory;
+                        });
+                    }, startTime + (interval * dotCount));
+                });
+
+                setTimeout(() => {
+                    setHistory(prev => {
+                        const newHistory = [...prev];
+                        const lastIndex = newHistory.length - 1;
+                        newHistory[lastIndex] = { ...newHistory[lastIndex], content: final_text };
+                        return newHistory;
+                    });
+                }, startTime + (interval * 4));
+            };
+
+            if (cmd === "") {
+                if (!isSSHDisconnecting && !isDetaching ) {
+                    setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
+                    return;
+                }
             }
 
             if (cmd === "loader") {
@@ -107,9 +140,7 @@ function Terminal() {
                 return;
             }
 
-            const DISCONNECT_ABORT_MSG = `MISSION ABORT HELL YEAH\n `
-
-            if (isSSHDisconnecting) {
+            if (isSSH && isSSHConnected && isSSHDisconnecting) {
                 if (cmd === "yes" || cmd ==="y") {
                     setIsSSH(false);
                     setIsSSHConnected(false);
@@ -121,7 +152,7 @@ function Terminal() {
 
                         setPrompt(DEFAULT_PROMPT);
                         setHistory(prev => [...prev, asyncResponse]);
-                    }, 750*6);
+                    }, 500*6);
                     return;
                 }
                 else if (cmd === "no" || cmd ==="n" || cmd === "") {
@@ -137,7 +168,49 @@ function Terminal() {
                     // setPrompt(SSH_PROMPT);
                     return;
                 }
+            }
 
+            else if (isSSH && isSSHConnected && isDetaching) {
+                if (cmd === "yes" || cmd ==="y") {
+                    setInput("");
+                    setPrompt("");
+
+                    setIsSSHDisconnecting(false);
+                    setIsSSHConnected(false);
+                    setIsSSH(false);
+                    setIsDetaching(false);
+
+                    runAnimation("TODO", 600, "Attempting to revoke device control... ALLOWED.", 0);
+
+                    // runAnimation("Establishing secure shell", 750, "Connected to Kali node.", 400 * 5);
+
+                    setTimeout(() => {
+                        const welcomeMsg = {
+                            type: 'output',
+                            content:
+                                `\nUhm wattesigma.\n` +
+                                `HOLD UP I WILL MAKE THIS.\n\n`
+                        };
+                        setHistory(prev => [...prev, welcomeMsg]);
+                        setPrompt(DEFAULT_PROMPT);
+                    }, 600*5);
+
+                    return;
+                }
+                else if (cmd === "no" || cmd ==="n" || cmd === "") {
+                    setIsSSH(true);
+                    setIsSSHConnected(true);
+                    setIsSSHDisconnecting(false);
+                    setIsDetaching(false);
+
+                    response = { type: 'output', content: "\n" };
+                    setPrompt(SSH_PROMPT);
+                }
+                else {
+                    // response = { type: 'output', content: DISCONNECT_ABORT_MSG };
+                    // setPrompt(SSH_PROMPT);
+                    return;
+                }
             }
 
             else if (isSSH && isSSHConnected) {
@@ -161,12 +234,33 @@ function Terminal() {
 
                 else if (cmd.startsWith("detach")) {
                     if (cmd === "detach 1") {
-                        response = { type: 'output', content: `WIP PLEASE STAND BY-\n ` };
+                        setHistory(prev => [...prev, newEntry]);
+                        setPrompt("");
+                        setInput("");
+
+                        runAnimation("Attempting to revoke device control", 600, "Attempting to revoke device control... ALLOWED.", 0);
+
+                        // runAnimation("Establishing secure shell", 750, "Connected to Kali node.", 400 * 5);
+
+                        setTimeout(() => {
+                            const welcomeMsg = {
+                                type: 'output',
+                                content:
+                                    `\nWARNING: Device 1 is the primary control node.\n` +
+                                    `Detaching will terminate attacker's session.\n\n`
+                            };
+                            setHistory(prev => [...prev, welcomeMsg]);
+                            setPrompt("Proceed? (y/N): ");
+                        }, 600*5);
+
+                        setIsDetaching(true);
+                        setIsSSHDisconnecting(false);
+
+                        return;
                     }
                     else {
                         response = { type: 'error', content: `Permission denied.\nDevice protected by administrator\n ` };
                     }
-
                 }
 
                 else if (SSH_COMMANDS[cmd]) {
@@ -179,41 +273,11 @@ function Terminal() {
                 }
             }
 
-            else if (isSSH) {
+            else if (isSSH && !isSSHConnected) {
                 if (cmd === sshPassword) {
                     setHistory(prev => [...prev, newEntry]);
                     setPrompt("");
                     setInput("");
-
-                    const runAnimation = (text, interval, final_text, startTime) => {
-
-                        setTimeout(() => {
-                            setHistory(prev => [...prev, { type: 'output', content: text }]);
-                        }, startTime);
-
-                        [1, 2, 3].forEach(dotCount => {
-                            setTimeout(() => {
-                                setHistory(prev => {
-                                    const newHistory = [...prev];
-                                    const lastIndex = newHistory.length - 1;
-                                    newHistory[lastIndex] = {
-                                        ...newHistory[lastIndex],
-                                        content: `${text}${'.'.repeat(dotCount)}`
-                                    };
-                                    return newHistory;
-                                });
-                            }, startTime + (interval * dotCount));
-                        });
-
-                        setTimeout(() => {
-                            setHistory(prev => {
-                                const newHistory = [...prev];
-                                const lastIndex = newHistory.length - 1;
-                                newHistory[lastIndex] = { ...newHistory[lastIndex], content: final_text };
-                                return newHistory;
-                            });
-                        }, startTime + (interval * 4));
-                    };
 
                     runAnimation("Validating connection", 750, "IP accepted.", 0);
 
@@ -289,6 +353,7 @@ function Terminal() {
                     response = { type: 'error', content: `'${cmd}' is not recognized as an internal or external command, \noperable program or batch file.\n ` };
                 }
             }
+
             setHistory(prev => response ? [...prev, newEntry, response] : [...prev, newEntry]);
         }
     };
