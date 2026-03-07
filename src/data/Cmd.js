@@ -11,7 +11,7 @@ export const WIDOW_COMMANDS = {
     "ipconfig /dns --history": "" +
         "\nWindows IP Configuration\n\n" +
         "  13380.flux3tor.xyz\n" +
-        "  ----------------------------------\n" +
+        "  ------------------------------------\n" +
         "  No records of type A\n\n" +
         "Need hints? See 'Progress' panel on the top-right\n\n",
         // "  google.com\n" +
@@ -20,5 +20,38 @@ export const WIDOW_COMMANDS = {
 };
 
 export const SSH_COMMANDS = {
-    help: "COMING SOON! STAY TUNEDDD",
+    help:
+        "\nAvailable commands:\n" +
+        "--------------------------------------\n" +
+        "  help       - list available commands\n" +
+        "  whoami     - show current user\n" +
+        "  history    - show recent terminal activity\n" +
+        "  devices    - list connected devices",
+    whoami: "flux3tor@kali",
+    history:
+        "\nLogged history:\n" +
+        "--------------------------------------\n" +
+        "  ssh root@hackclub:           - 5h ago\n" +
+        "  nmap 66.33.60.129/26:        - 10h ago\n" +
+        `  google: "A curious mind!":   - 14h ago\n` +
+        "  sudo rm -rf /home/evidence:  - 3d ago",
+    devices:
+        "\nConnected devices:\n" +
+        "--------------------------------------\n" +
+        "  1. Rupnil's PC          - 2m ago\n" +
+        "  2. workstation-c        - 9h ago\n" +
+        "  3. hackclub-wifi-3f     - Just now\n" +
+        "  4. unknown-device-8     - 34d ago\n\n" +
+        "TYPE `devices help` FOR MORE INFO.",
+    "devices help":
+        "\nAvailable device commands:\n" +
+        "--------------------------------------\n" +
+        "  ping <device id>     - ping the device\n" +
+        "  info <device id>     - get info of the device\n" +
+        "  detach <device id>   - give up control",
+
+    "ssh root@hackclub": "Permission denied.\nProtected by administrator\n",
+    "nmap 66.33.60.129/26": "Permission denied.\nProtected by administrator\n",
+    "sudo rm -rf /home/evidence": "Permission denied.\nProtected by administrator\n",
+    google: "Permission denied.\nProtected by administrator\n",
 }

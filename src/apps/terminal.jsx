@@ -13,17 +13,18 @@ function Terminal() {
     const inputRef = useRef(null);
     const [lastCmd, setLastCmd] = useState("");
 
+    const sshCmd = import.meta.env.VITE_SSH_CMD
+    const sshPassword = import.meta.env.VITE_SSH_PASSWORD
+    const SSH_USER = import.meta.env.VITE_SSH_USER
+    const SSH_IP = import.meta.env.VITE_SSH_IP
+
     const DEFAULT_PROMPT = "C:\\Users\\rupnil> "
-    const SSH_USER = "flux3tor@5.161.100.52"
     const SSH_PROMPT = SSH_USER + ": "
 
     const [prompt, setPrompt] = useState(DEFAULT_PROMPT);
     const [isSSH, setIsSSH] = useState(false);
     const [isSSHConnected, setIsSSHConnected] = useState(false);
     const [isSSHDisconnecting, setIsSSHDisconnecting] = useState(false);
-
-    const sshCmd = import.meta.env.VITE_SSH_CMD
-    const sshPassword = import.meta.env.VITE_SSH_PASSWORD
 
     const handleKeyDown = (e) => {
 
@@ -140,10 +141,32 @@ function Terminal() {
             }
 
             else if (isSSH && isSSHConnected) {
-
                 if (cmd === "exit" || cmd === "quit"){
                     setPrompt("Are you sure? (y/N): ")
                     setIsSSHDisconnecting(true);
+                }
+
+                else if (cmd.startsWith("ping") || cmd.startsWith("info")) {
+                    response = { type: 'error', content: `Permission denied.\nDevice protected by administrator\n ` };
+                }
+
+                else if (
+                    cmd.startsWith("ssh") ||
+                    cmd.startsWith("nmap") ||
+                    cmd.startsWith("sudo") ||
+                    cmd.startsWith("google")
+                ) {
+                    response = { type: 'error', content: `Permission denied.\nProtected by administrator\n ` };
+                }
+
+                else if (cmd.startsWith("detach")) {
+                    if (cmd === "detach 1") {
+                        response = { type: 'output', content: `WIP PLEASE STAND BY-\n ` };
+                    }
+                    else {
+                        response = { type: 'error', content: `Permission denied.\nDevice protected by administrator\n ` };
+                    }
+
                 }
 
                 else if (SSH_COMMANDS[cmd]) {
@@ -243,9 +266,9 @@ function Terminal() {
                         setIsSSH(true);
 
                         const output =
-                            `The authenticity of host '5.161.100.52 (5.161.100.52)' can't be established.\n` +
+                            `The authenticity of host '${ SSH_IP } (${ SSH_IP })' can't be established.\n` +
                             `ED25519 key fingerprint is SHA256:IMQ8moL7eaMu1QwXVlmgtEBpH34VBswrylvylzO3AGs.\n` +
-                            `Warning: Permanently added '5.161.100.52' (ED25519) to the list of known hosts.\n` +
+                            `Warning: Permanently added '${ SSH_IP }' (ED25519) to the list of known hosts.\n` +
                             `\nYou read the description, right?\n `;
 
                         const asyncResponse = { type: 'output', content: output};
