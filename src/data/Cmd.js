@@ -46,8 +46,8 @@ export const SSH_COMMANDS = {
     "devices help":
         "\nAvailable device commands:\n" +
         "--------------------------------------\n" +
-        "  ping <device id>     - ping the device\n" +
-        "  info <device id>     - get info of the device\n" +
+        "  ping <device id>     - ping the device (locked)\n" +
+        "  info <device id>     - get info of the device (locked)\n" +
         "  detach <device id>   - give up control",
 
     "ssh root@hackclub": "Permission denied.\nProtected by administrator\n",

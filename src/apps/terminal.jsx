@@ -245,7 +245,7 @@ function Terminal() {
                         "You passed the `practical` test\n" +
                         "You showed exceptional observation, persistence and problem solving abilities...      \n\n" +
                         "WELCOME TO HACKCLUB.\n" +
-                        "Application status: ACCEPTED\n\n\n",
+                        "Application status: ACCEPTED\n\n",
                         75, 400*10 + 600*5 + 500*5 + 750*5,
                         () => {
                             setPrompt(DEFAULT_PROMPT);
@@ -291,7 +291,7 @@ function Terminal() {
                 }
 
                 else if (cmd.startsWith("detach")) {
-                    if (cmd === "detach 1") {
+                    if (cmd === "detach 1" || cmd === "detach Rupnil's PC") {
                         setHistory(prev => [...prev, newEntry]);
                         setPrompt("");
                         setInput("");
