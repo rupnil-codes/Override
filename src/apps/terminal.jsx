@@ -198,7 +198,7 @@ function Terminal() {
             }
 
             else if (isSSH && isSSHConnected && isDetaching) {
-                if (cmd === "yes" || cmd ==="y") {
+                if (cmd === "override" || cmd === "yes" || cmd ==="y") {
                     setInput("");
                     setPrompt("");
 
@@ -207,8 +207,8 @@ function Terminal() {
                     setIsSSH(false);
                     setIsDetaching(false);
 
-                    runAnimation("Revoking permissions", 400, "Revoking permissions... SUCCESS", 0);
-                    runAnimation("Terminating remote tunnels", 400, "Terminating remote tunnels... SUCCESS", 400 * 5);
+                    runAnimation("Overriding permissions", 400, "Overriding permissions... SUCCESS", 0);
+                    runAnimation("Forcing remote tunnels' termination", 400, "Forcing remote tunnels' termination... SUCCESS", 400 * 5);
                     runAnimation("Disconnecting attacker nodes", 600, "Disconnecting attacker nodes... SUCCESS", 400 * 10);
 
                     setTimeout(() => {
@@ -218,10 +218,8 @@ function Terminal() {
                                 `\nworkstation-c        - disconnected\n` +
                                 `hackclub-wifi-3f     - disconnected\n` +
                                 `unknown-device-8     - disconnected\n\n`
-                                // `HOLD UP I WILL MAKE THIS.\n\n`
                         };
                         setHistory(prev => [...prev, msg]);
-                        // setPrompt(DEFAULT_PROMPT);
                     }, 400*10 + 600*5);
 
                     runAnimation("Restoring original host control", 500, "Restoring original host control... SUCCESS", 400*10 + 600*5)
@@ -308,7 +306,7 @@ function Terminal() {
                                     `Detaching will terminate attacker's session.\n\n`
                             };
                             setHistory(prev => [...prev, welcomeMsg]);
-                            setPrompt("Proceed? (y/N): ");
+                            setPrompt("Type `override` to continue (y/N): ");
                         }, 600*5);
 
                         setIsDetaching(true);
