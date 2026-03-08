@@ -55,6 +55,8 @@ function Desktop() {
         chrome: { col: 2, row: 1 },
         terminal: { col: 2, row: 2 },
         readme_txt: { col: 3, row: 3 },
+        minecraft: { col: 3, row: 4 },
+        forlorn: { col: 3, row: 5 },
     });
 
     const [selectedIcon, setSelectedIcon] = useState(null);

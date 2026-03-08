@@ -4,6 +4,8 @@ import Settings from "../apps/settings.jsx";
 import VSCode from "../apps/vscode.jsx";
 import Terminal from "../apps/terminal.jsx";
 import Readme_txt from "../apps/README.txt.jsx";
+import Minecraft from "../apps/minecraft.jsx";
+import Forlorn from "../apps/Forlorn.jsx";
 
 export let INITIAL_Z = 1000;
 
@@ -52,5 +54,21 @@ export const APP_REGISTRY = {
         imgSrc: "/assets/icons/Notepad.png",
         tabs: true,
         cache: false,
-    }
+    },
+
+    minecraft: {
+        title: "Minecraft",
+        component: Minecraft,
+        imgSrc: "/assets/icons/Minecraft.png",
+        tabs: false,
+        cache: false,
+    },
+
+    forlorn: {
+        title: "Forlorn",
+        component: Forlorn,
+        imgSrc: "/assets/icons/Forlorn.svg",
+        tabs: false,
+        cache: false,
+    },
 };
