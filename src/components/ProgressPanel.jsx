@@ -3,6 +3,8 @@ import "../styles/components/ProgressPanel.css";
 import {Info} from "lucide-react";
 import {useElapsedTime} from "./DateTime.jsx";
 
+import {Accordion, Alert, Button} from "react-windows-ui";
+
 export function ProgressPanel({
      isOpenProgressPanel,
      setIsOpenProgressPanel
@@ -31,19 +33,50 @@ export function ProgressPanel({
                     <div className={`progress-sidebar-separator`}/>
                     <div className={"progress-item-container"}>
                         <div className={"progress-item"}>
-                            <p>Puzzle 1</p>
+                            <Accordion
+                                headerTitle="Some Title"
+                                headerStyle={{width: "250px"}}>
+                                <Accordion.Body>
+                                    <p style={{width: "270px"}}>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </Accordion.Body>
+                            </Accordion>
+                            <Alert
+                                title="Alert"
+                                isVisible={true}
+                                message="This is alert Box."
+                                onBackdropPress={() => {}}>
+                                <Alert.Footer>
+                                    <Button
+                                        type="primary"
+                                        value="OK to Close"
+                                        onClick={() => {}}
+                                    />
+                                </Alert.Footer>
+                            </Alert>
+                        </div>
+
+                        <div className={"progress-item"}>
+                            <p>0. Password!</p>
                         </div>
                         <div className={"progress-item"}>
-                            <p>Puzzle 2</p>
+                            <p>1. Decode</p>
                         </div>
                         <div className={"progress-item"}>
-                            <p>Puzzle 3</p>
+                            <p>2. Source Code</p>
                         </div>
                         <div className={"progress-item"}>
-                            <p>Puzzle 3</p>
+                            <p>3. Image CMD</p>
                         </div>
                         <div className={"progress-item"}>
-                            <p>Puzzle 3</p>
+                            <p>4. Video CMD</p>
+                        </div>
+                        <div className={"progress-item"}>
+                            <p>5. SSH</p>
+                        </div>
+                        <div className={"progress-item"}>
+                            <p>6. SSH CMDs</p>
                         </div>
                     </div>
                 </div>

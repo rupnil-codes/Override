@@ -75,6 +75,11 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] CRITICAL: THE COLORS OF UI ARE BY DEFAULT BLACK MAKE IT WHITE. (Bug reported by: Felix Gao) (Fixed v0.1.7.8(1))
 - [ ] GAME IMPROVEMENT: time pressure. increment like 2 min for each puzzle start with 7 min or sm.
 - [ ] Fix puzzle numbering.
+- [ ] Add a way to track progress.
+- [ ] Add a puzzle 1.txt or sm; time count starts after opening that file.
+- [ ] Lock some apps (Hacked yk)
+- [ ] Stress test the terminal.
+- [ ] Add games like MC(https://classic.minecraft.net/) and sm others.
 
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity

@@ -289,7 +289,7 @@ function Terminal() {
                 }
 
                 else if (cmd.startsWith("detach")) {
-                    if (cmd === "detach 1" || cmd === "detach Rupnil's PC") {
+                    if (cmd === "detach 1" || cmd === "detach rupnil's pc") {
                         setHistory(prev => [...prev, newEntry]);
                         setPrompt("");
                         setInput("");

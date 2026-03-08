@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client'
 import './styles/index.css'
 import './styles/variables.css'
 
+import "react-windows-ui/config/app-config.css";
+import "react-windows-ui/dist/react-windows-ui.min.css";
+import "react-windows-ui/icons/winui-icons.min.css";
+
 import App from './App.jsx'
 
 import {MemoryRouter} from "react-router-dom";

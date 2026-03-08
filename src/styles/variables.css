@@ -1,5 +1,5 @@
 :root{
-    color-scheme: dark;
+    color-scheme: dark !important;
 
     --mobile-breakpoint: 768px;
     --radius: 0.625rem;

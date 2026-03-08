@@ -51,10 +51,10 @@ function LockScreen() {
 
                 confirm("Remember to check README.txt in the desktop");
 
-                const elem = document.documentElement;
-                elem.requestFullscreen().catch(err => {
-                        console.error(`Error attempting to enable fullscreen: ${err.message}`);
-                });
+                // const elem = document.documentElement;
+                // elem.requestFullscreen().catch(err => {
+                //         console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                // });
 
                 setIsLoading(true);
 
