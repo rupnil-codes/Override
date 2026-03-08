@@ -51,6 +51,8 @@
     font-family: "JetBrains Mono", monospace;
     font-size: 0.94rem;
     font-weight: 250;
+    
+    caret-shape: block;
+    caret-color: white;
 
-    caret-shape: bar;
 }
