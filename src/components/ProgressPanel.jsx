@@ -1,6 +1,6 @@
 import "../styles/components/ProgressPanel.css";
 
-import {Info} from "lucide-react";
+import {Info, Spotlight} from "lucide-react";
 import {useElapsedTime} from "./DateTime.jsx";
 
 export function ProgressPanel({
@@ -12,6 +12,21 @@ export function ProgressPanel({
 
     return (
         <>
+            <div className={"alert-hint-viewport"}>
+                <div className={"alert-hint-header"}>
+                    <div className={"header"}>
+                        <Spotlight />
+                        <p className={"header-text"}>HINT</p>
+                    </div>
+                    <div className={"body"}>
+                        <p className={"body-text"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna <aliqua className=""></aliqua></p>
+                    </div>
+                </div>
+                <div className={"alert-hint-footer"}>
+                    <div className={"button cancel"}>Cancel</div>
+                    <div className={"button confirm"}>Confirm</div>
+                </div>
+            </div>
             <div
                 className={`progress-button ${ isOpenProgressPanel ? "progress-button-active" : "" }`}
                 onClick={() => setIsOpenProgressPanel(!isOpenProgressPanel)}

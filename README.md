@@ -80,6 +80,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Lock some apps (Hacked yk)
 - [ ] Stress test the terminal.
 - [ ] Add games like MC(https://classic.minecraft.net/) and sm others.
+- [ ] the grid snapping is offset from the place where icons snap when u release (Snxhit_)
 
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity
