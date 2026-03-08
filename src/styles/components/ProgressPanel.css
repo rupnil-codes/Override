@@ -11,6 +11,12 @@
     justify-content: center;
 
     background-color: #77777777;
+
+    transition: opacity var(--hover-animation) var(--hover-animation-type);
+}
+.alert-hint-viewport.hidden {
+    visibility: hidden;
+    opacity: 0;
 }
 
 .alert-hint-header {

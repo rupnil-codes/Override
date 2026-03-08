@@ -2,17 +2,20 @@ import "../styles/components/ProgressPanel.css";
 
 import {Info, Spotlight} from "lucide-react";
 import {useElapsedTime} from "./DateTime.jsx";
+import {useState} from "react";
 
 export function ProgressPanel({
      isOpenProgressPanel,
      setIsOpenProgressPanel
 }) {
 
+    const [isHintOpen, setIsHintOpen] = useState(false);
+
     const timeActive = useElapsedTime();
 
     return (
         <>
-            <div className={"alert-hint-viewport"}>
+            <div className={`alert-hint-viewport ${ isHintOpen ? "" : "hidden" }`}>
                 <div className={"alert-hint-header"}>
                     <div className={"header"}>
                         <Spotlight />
@@ -23,8 +26,18 @@ export function ProgressPanel({
                     </div>
                 </div>
                 <div className={"alert-hint-footer"}>
-                    <div className={"button cancel"}>Cancel</div>
-                    <div className={"button confirm"}>Confirm</div>
+                    <div
+                        className={"button cancel"}
+                        onClick={() => {setIsHintOpen(false)}}
+                    >
+                        Cancel
+                    </div>
+                    <div
+                        className={"button confirm"}
+                        onClick={() => {setIsHintOpen(false)}}
+                    >
+                        Confirm
+                    </div>
                 </div>
             </div>
             <div
@@ -45,7 +58,10 @@ export function ProgressPanel({
                     <p className={"elapsed-time"}>{ timeActive }</p>
                     <div className={`progress-sidebar-separator`}/>
                     <div className={"progress-item-container"}>
-                        <div className={"progress-item"}>
+                        <div
+                            className={"progress-item"}
+                            onClick={() => setIsHintOpen(true)}
+                        >
                             <p>0. Password!</p>
                         </div>
                         <div className={"progress-item"}>
