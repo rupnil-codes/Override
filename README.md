@@ -10,8 +10,6 @@
     Override.exe
 </h1>
 
----
-
 <p align="center">
   <img src="https://override.rupnil.codes/banner.png" width="100%" style="max-width: 400px;" alt="Override.exe">
 </p>
@@ -29,11 +27,25 @@
 
 ---
 
+## Table of Contents
+* [Overview](#overview)
+* [Backstory](#backstory)
+* [Requirements](#requirements)
+* [Usage: Quick Start](#usage-quick-start)
+    * [Pre-hosted](#pre-hosted)
+    * [Build from Source](#building-from-source)
+* [What I learnt](#what-i-learnt)
+* [Project Status](#project-status)
+* [Contributors](#contributors)
+
+---
+
 ## Overview
 **Override** _(Override.exe)_ is a simple **webOS** inspired by _**Microsoft Windows 11**_ (no hate pls) that includes a special bonus!
 The special bonus is, ofc, a **puzzle game** divided into **6** simple steps (or **7** if you count the lockscreen) each testing a different knowledge/skill.
 I've tried to make the puzzles very easy to solve, while also proving `info` and `hints`.
-> Note: **Hints** and **Info** can be found in the ProgressPanel on the top-right!
+> [!INFO]
+> **Hints** and **Info** can be found in the ProgressPanel on the top-right!
 
 ---
 
@@ -55,7 +67,7 @@ Can you regain control and show your skills?
 
 ---
 
-## Quick Start
+## Usage: Quick Start
 ### Pre-hosted
 An instance of the ReactJS app is hosted by me through [Vercel](https://vercel.com/).
 You can easily access this hosted instance at [override.rupnil.codes](https://override.rupnil.codes/)!
@@ -93,18 +105,53 @@ npm run build
 Then the final compiled webapp will be in the `build/` directory.
 
 ---
+## What I Learnt
+This project really taught me a ton of stuff and tbh i wannna work on this  in the future!
+### Technical Skills
+- **ReactJS:** This was honestly my first time using ReactJS + Vite for web development,
+    and I learnt so much during this journey! While there were some instances where I felt like giving up,
+    I struggled through and reached a fruitful end!
+- **CSS:** Being fr, before this project i want good at CSS but it changed!
+### Problem  Solving
+- Asynchronous stuff with JS
+- Managing large codebases (although this may not be so big)
+- Structuring the codebase
+- Writing README's in detail!
+### Personal Note:
+This project was really one of the fewest that I actually invested time and FINISHED with success!
+I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub for providing such an awesome platform!
+---
+## Project Status
+**Version:** v0.4.4-beta
+
+**Latest Release Version:** v0.4-beta
+
+**Status:** Actively developing as of now
+
+---
 
 ## Contributors
 There are several well-wishers and playtesters who have helped me improve the app,
 either by playtesting or providing valuable feedback. I've listed them in no particular order.
 1. [@Flux3tor](https://github.com/Flux3tor),
-2. [@Snxhit_](https://github.com/Snxhit), 
-3. [@Matthias](https://github.com/MatthiasLubbertsen), 
-4. [@Nx75](https://github.com/Nx75), 
-5. [@Keyboard1000n17](https://github.com/Keyboard1000n17/OSPedia), 
-6. [@abtheinnovator](https://hackclub.enterprise.slack.com/team/U0A6U1V879V), 
+2. [@Snxhit_](https://github.com/Snxhit),
+3. [@Matthias](https://github.com/MatthiasLubbertsen),
+4. [@Nx75](https://github.com/Nx75),
+5. [@Keyboard1000n17](https://github.com/Keyboard1000n17/OSPedia),
+6. [@abtheinnovator](https://hackclub.enterprise.slack.com/team/U0A6U1V879V),
 7. [@redac1ed](https://hackclub.enterprise.slack.com/team/U0A848RGULQ), ← Supplied the browser!
 8. [@TruthEntity](https://github.com/SatyamRaj67/), ← Thanks for the inspiration!
 9. [@SeradedStripes](https://github.com/SeradedStripes), &
 10. [@stunt](https://github.com/Stu67nt)
 
+---
+
+<h4 align="center">
+    Made with 💖 by @rupnil.codes
+</h4>
+<p align="center">
+    If you found this project interesting, consider giving it a star :D
+</p>
+<p align="center">
+    <a href="https://github.com/rupnil-codes/Override.exe/issues">Report a Bug</a> or <a href="https://github.com/rupnil-codes/Override.exe/issues">Suggest a new Feature</a>
+</p>
