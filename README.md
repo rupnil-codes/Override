@@ -24,7 +24,25 @@
 
 ---
 
+## Overview
+**Override** _(Override.exe)_ is a simple **webOS** inspired by _**Microsoft Windows 11**_ (no hate pls) that includes a special bonus!
+The special bonus is, ofc, a **puzzle game** divided into **6** simple steps (or **7** if you count the lockscreen) each testing a different knowledge/skill.
+I've tried to make the puzzles very easy to solve, while also proving `info` and `hints` in the ProgressPanel on the top-right.
 
+## Requirements
+- A modern browser with JS support,
+- A keyboard and a mouse,
+- Curiosity and sheer will, &
+- Basic problem-solving skills
+
+## Quick Start
+### Pre-hosted
+An instance of the ReactJS app is hosted by me through [Vercel](https://vercel.com/).
+You can easily access this hosted instance at [override.rupnil.codes](https://override.rupnil.codes/)!
+The hosted website is compatible with most modern browsers and thus most OS.
+
+### Building from source
+> SOON!
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity, SeradedStripes
 
