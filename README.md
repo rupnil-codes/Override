@@ -6,9 +6,14 @@
  Override.exe is free software: you can redistribute it and/or modify
  it under the terms of the AGPL-3.0 License.
 -->
+<h1 align="center">
+    Override.exe
+</h1>
+
+---
 
 <p align="center">
-  <img src="https://override.rupnil.codes/banner-text.png" width="100%" style="max-width: 400px;" alt="Override.exe">
+  <img src="https://override.rupnil.codes/banner.png" width="100%" style="max-width: 400px;" alt="Override.exe">
 </p>
 <p align="center">
     <img src="https://img.shields.io/badge/React%20JS-%5E19.2.4-blue?style=for-the-badge&logo=react&logoColor=white" alt="React.JS %5E19.2.4">
@@ -27,13 +32,28 @@
 ## Overview
 **Override** _(Override.exe)_ is a simple **webOS** inspired by _**Microsoft Windows 11**_ (no hate pls) that includes a special bonus!
 The special bonus is, ofc, a **puzzle game** divided into **6** simple steps (or **7** if you count the lockscreen) each testing a different knowledge/skill.
-I've tried to make the puzzles very easy to solve, while also proving `info` and `hints` in the ProgressPanel on the top-right.
+I've tried to make the puzzles very easy to solve, while also proving `info` and `hints`.
+> Note: **Hints** and **Info** can be found in the ProgressPanel on the top-right!
+
+---
+
+## Backstory
+You have applied for a Cybersecurity internship [@Hackclub's HQ](https://hackclub.com/).
+They receive 100s of applications but there are only a handful of seats.
+They have devised a plan.
+They have organized a `practical` test. They have taken control over your PC.
+Can you regain control and show your skills?
+> You can skip this test and just use the webOS normally. Its optional but I highly recommend it. 
+
+---
 
 ## Requirements
 - A modern browser with JS support,
 - A keyboard and a mouse,
 - Curiosity and sheer will, &
 - Basic problem-solving skills
+
+---
 
 ## Quick Start
 ### Pre-hosted
@@ -61,6 +81,9 @@ npm update
 ### 3. Run Development Server
 ```bash
 npm run dev
+```
+or
+```bash
 npx vite
 ```
 ### 4. Build for Production
@@ -69,7 +92,19 @@ npm run build
 ```
 Then the final compiled webapp will be in the `build/` directory.
 
+---
 
-Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity, SeradedStripes
+## Contributors
+There are several well-wishers and playtesters who have helped me improve the app,
+either by playtesting or providing valuable feedback. I've listed them in no particular order.
+1. [@Flux3tor](https://github.com/Flux3tor),
+2. [@Snxhit_](https://github.com/Snxhit), 
+3. [@Matthias](https://github.com/MatthiasLubbertsen), 
+4. [@Nx75](https://github.com/Nx75), 
+5. [@Keyboard1000n17](https://github.com/Keyboard1000n17/OSPedia), 
+6. [@abtheinnovator](https://hackclub.enterprise.slack.com/team/U0A6U1V879V), 
+7. [@redac1ed](https://hackclub.enterprise.slack.com/team/U0A848RGULQ), ← Supplied the browser!
+8. [@TruthEntity](https://github.com/SatyamRaj67/), ← Thanks for the inspiration!
+9. [@SeradedStripes](https://github.com/SeradedStripes), &
+10. [@stunt](https://github.com/Stu67nt)
 
-BROWSER SUPPLIED BY: redac1ed
