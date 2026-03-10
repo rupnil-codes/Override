@@ -18,7 +18,7 @@
     height: calc(100vh - 3rem);
     width: 100vw;
     display: grid;
-
+    inset: 0;
     grid-template-columns: repeat(auto-fill, 5.35rem);
     grid-template-rows: repeat(auto-fill, 6rem);
 
@@ -42,19 +42,19 @@
     height: 100%;
     width: 100%;
     gap: 0.25rem;
-}
 
-.grid-app-item:hover {
-    background-color: var(--border);
-}
-
-.grid-app-item {
-    transition: background 0.1s;
+    transition:
+            opacity var(--hover-animation) var(--hover-animation-type),
+            background 0.15s var(--hover-animation-type);
     border: 1px solid transparent;
     border-radius: 0.25rem;
     touch-action: none;
     user-select: none;
     cursor: pointer;
+}
+
+.grid-app-item:hover {
+    background-color: var(--border);
 }
 
 .grid-app-item.selected {
@@ -94,7 +94,7 @@
     position: fixed;
     width: 100vw;
     height: 3rem;
-    backdrop-filter: blur(2rem) brightness(0.2);
+    backdrop-filter: blur(2rem) brightness(0.75);
     transition: var(--animation-time) var(--hover-animation-type);
 
     display: flex;

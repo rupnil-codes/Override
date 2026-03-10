@@ -80,9 +80,9 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Lock some apps (Hacked yk)
 - [ ] Stress test the terminal.
 - [X] Add games like MC(https://classic.minecraft.net/) and sm others. (Added v0.3.2)
-- [ ] the grid snapping is offset from the place where icons snap when u release (Snxhit_)
+- [X] the grid snapping is offset from the place where icons snap when u release (Snxhit_)
 - [ ] Cmd opens on login and then the notepad opens automatically, remove the alert thing.
-- [ ] WINDOW_DEFAULTS: Now the position of the windows change with the width and height, added the vars in App.js (Done v0.3.7)
+- [X] WINDOW_DEFAULTS: Now the position of the windows change with the width and height, added the vars in App.js (Done v0.3.7)
 
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity, SeradedStripes

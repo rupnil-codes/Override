@@ -15,6 +15,11 @@ import * as React from "react";
 
 
 function Desktop() {
+    const GRID_WIDTH = 5.35 * 16; // in rem cuz yes sybau
+    const GRID_HEIGHT = 6 * 16;
+    const GRID_GAP  = 0.5 *  16;
+
+
     const [isOpenProgressPanel, setIsOpenProgressPanel] = useState(false);
     const [isStartMenuActive, setIsStartMenuActive] = useState(false);
 
@@ -76,7 +81,6 @@ function Desktop() {
     });
 
     const lastPos = useRef({ x: 100, y: 100 });
-    const OFFSET = 20;
 
     const nodeRefs = useMemo(() => {
         return Object.keys(APP_REGISTRY).reduce((acc, key) => {
@@ -94,23 +98,33 @@ function Desktop() {
     const [draggingIcon, setDraggingIcon] = useState(null);
 
     const handleIconStop = (e, data, id) => {
-        const gridX = 5.35 * 16;
-        const gridY = 6 * 16;
+        setDraggingIcon(null);
 
-        const newCol = Math.max(1, Math.round(data.x / gridX) + iconPositions[id].col) ;
-        const newRow = Math.max(1, Math.round(data.y / gridY) + iconPositions[id].row);
+        const maxCols = Math.floor(window.innerWidth / (GRID_WIDTH + GRID_GAP));
+        const maxRows = Math.floor((window.innerHeight - 48) / (GRID_HEIGHT + GRID_GAP));
+
+        const movedCols = Math.round(data.x / (GRID_WIDTH + GRID_GAP));
+        const movedRows = Math.round(data.y / (GRID_HEIGHT + GRID_GAP));
+
+        const newCol = Math.min(
+            Math.max(1, iconPositions[id].col + movedCols),
+            maxCols
+        );
+        const newRow = Math.min(
+            Math.max(1, iconPositions[id].row + movedRows),
+            maxRows
+        );
 
         const isOccupied = Object.entries(iconPositions).some(([appId, pos]) => {
             return appId !== id && pos.col === newCol && pos.row === newRow;
         });
 
-        if (isOccupied) {
-            return;
+        if (!isOccupied) {
+            setIconPositions(prev => ({
+                ...prev,
+                [id]: { col: newCol, row: newRow }
+            }));
         }
-        setIconPositions(prev => ({
-            ...prev,
-            [id]: { col: newCol, row: newRow }
-        }));
     };
 
     function openApp(name) {
@@ -211,7 +225,6 @@ function Desktop() {
                         key={id}
                         nodeRef={nodeRefs[id]}
                         position={{ x: 0, y: 0 }}
-                        grid={[window.innerWidth / 14, (window.innerHeight - 48) / 6]}
                         onStart={(e) => {
                             e.stopPropagation();
                             setSelectedIcon(id);
@@ -236,8 +249,8 @@ function Desktop() {
                                 gridRow: iconPositions[id].row,
 
                                 zIndex: draggingIcon === id ? 99999 : 1,
-                                opacity: draggingIcon === id ? 1 : undefined,
-                                position: 'relative'
+                                opacity: draggingIcon === id ? 0.6 : 1,
+                                position: 'relative',
                             }}
                         >
                             <img className="app-icon" src={APP_REGISTRY[id].imgSrc} draggable="false" alt="icon" />
