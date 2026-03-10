@@ -3,6 +3,8 @@ import { Rnd } from "react-rnd";
 import "../styles/core/WindowManager.css"
 import {X, Square, Copy, Minus, Plus} from 'lucide-react';
 
+import {WINDOW_DEFAULTS} from "../data/Apps.js";
+
 export default function AppWindow({
     title,
     AppComponent,
@@ -18,10 +20,10 @@ export default function AppWindow({
     posX,
     posY
 }) {
-    const DEFAULT_WIDTH = 600;
-    const DEFAULT_HEIGHT = 400;
-    const TASKBAR_HEIGHT = 48;
-    const PADDING = 36;
+    const DEFAULT_WIDTH = WINDOW_DEFAULTS.WIDTH;
+    const DEFAULT_HEIGHT = WINDOW_DEFAULTS.HEIGHT;
+    const TASKBAR_HEIGHT = WINDOW_DEFAULTS.TASKBAR_HEIGHT;
+    const PADDING = WINDOW_DEFAULTS.OFFSET;
 
     const [state, setState] = useState({
         x: posX,

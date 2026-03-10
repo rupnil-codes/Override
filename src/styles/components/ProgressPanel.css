@@ -28,14 +28,14 @@
 .progress-button-active {
     padding: 0.7rem 1.2rem;
 
-    backdrop-filter: blur(2rem) brightness(3);
+    backdrop-filter: blur(2rem) brightness(1.5);
 
     border: 1px solid wheat;
 }
 .progress-button:hover {
     padding: 0.7rem 1.2rem;
 
-    backdrop-filter: blur(2rem) brightness(3);
+    backdrop-filter: blur(2rem) brightness(2);
 }
 
 .progress-container {
@@ -54,7 +54,7 @@
 
 .progress-sidebar {
     border-radius: 0.625rem;
-    backdrop-filter: blur(2rem) brightness(2);
+    backdrop-filter: blur(2rem) brightness(1.5);
     width: 18rem;
     height: 65%;
 

@@ -14,6 +14,13 @@ export function getNextZ() {
     return INITIAL_Z;
 }
 
+export const WINDOW_DEFAULTS = {
+    WIDTH: 750,
+    HEIGHT: 450,
+    OFFSET: 30,
+    TASKBAR_HEIGHT: 48
+};
+
 export const APP_REGISTRY = {
     explorer: {
         title: "Explorer",

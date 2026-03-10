@@ -3,7 +3,7 @@ import '../styles/routes/desktop.css';
 import { Search } from 'lucide-react';
 import {createRef, useRef, useState, useMemo, useEffect} from "react";
 
-import { APP_REGISTRY, INITIAL_Z, getNextZ } from "../data/Apps.js";
+import {APP_REGISTRY, INITIAL_Z, getNextZ, WINDOW_DEFAULTS} from "../data/Apps.js";
 import AppWindow from "../core/WindowManager.jsx";
 
 import Draggable from 'react-draggable';
@@ -119,13 +119,13 @@ function Desktop() {
 
         if (!apps[name].isOpen) {
             if (openApps.length === 0) {
-                newX = (window.innerWidth / 2) - 300;
-                newY = (window.innerHeight / 2) - 250;
+                newX = (window.innerWidth / 2) - (WINDOW_DEFAULTS.WIDTH / 2);
+                newY = (window.innerHeight / 2) - (WINDOW_DEFAULTS.HEIGHT / 2) - (WINDOW_DEFAULTS.TASKBAR_HEIGHT);
             } else {
-                newX = lastPos.current.x + OFFSET;
-                newY = lastPos.current.y + OFFSET;
-                if (newY > window.innerHeight - 500) newY = 100;
-                if (newX > window.innerWidth - 700) newX = 100;
+                newX = lastPos.current.x + WINDOW_DEFAULTS.OFFSET;
+                newY = lastPos.current.y + WINDOW_DEFAULTS.OFFSET;
+                if (newY > window.innerHeight - WINDOW_DEFAULTS.HEIGHT) newY = 100;
+                if (newX > window.innerWidth - WINDOW_DEFAULTS.WIDTH) newX = 100;
             }
             lastPos.current = { x: newX, y: newY };
         }

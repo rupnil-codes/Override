@@ -74,7 +74,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Fix the Hex in README.txt & Add full url not just /../.. (Fixed v0.1.7.6)
 - [X] CRITICAL: THE COLORS OF UI ARE BY DEFAULT BLACK MAKE IT WHITE. (Bug reported by: Felix Gao) (Fixed v0.1.7.8(1))
 - [ ] GAME IMPROVEMENT: time pressure. increment like 2 min for each puzzle start with 7 min or sm.
-- [ ] Fix puzzle numbering.
+- [X] Fix puzzle numbering.
 - [ ] Add a way to track progress.
 - [ ] Add a puzzle 1.txt or sm; time count starts after opening that file.
 - [ ] Lock some apps (Hacked yk)
@@ -82,6 +82,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Add games like MC(https://classic.minecraft.net/) and sm others. (Added v0.3.2)
 - [ ] the grid snapping is offset from the place where icons snap when u release (Snxhit_)
 - [ ] Cmd opens on login and then the notepad opens automatically, remove the alert thing.
+- [ ] WINDOW_DEFAULTS: Now the position of the windows change with the width and height, added the vars in App.js (Done v0.3.7)
 
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity, SeradedStripes
