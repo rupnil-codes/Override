@@ -44,7 +44,7 @@
 **Override** _(Override.exe)_ is a simple **webOS** inspired by _**Microsoft Windows 11**_ (no hate pls) that includes a special bonus!
 The special bonus is, ofc, a **puzzle game** divided into **6** simple steps (or **7** if you count the lockscreen) each testing a different knowledge/skill.
 I've tried to make the puzzles very easy to solve, while also proving `info` and `hints`.
-> [!INFO]
+> [!CAUTION]
 > **Hints** and **Info** can be found in the ProgressPanel on the top-right!
 
 ---
@@ -125,11 +125,9 @@ I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub f
 
 ---
 ## Project Status
-**Version:** v0.4.4(1)-beta
-
-**Latest Release Version:** v0.4-beta
-
-**Status:** Actively developing as of now
+<p><b>Version:</b> v0.4.4(2)-beta</p>
+<p><b>Latest Release Version:</b> v0.4-beta</p>
+<p><b>Status:</b> Actively developing as of now</p>
 
 ---
 
@@ -146,6 +144,7 @@ either by playtesting or providing valuable feedback. I've listed them in no par
 8. [@TruthEntity](https://github.com/SatyamRaj67/), ← Thanks for the inspiration!
 9. [@SeradedStripes](https://github.com/SeradedStripes), &
 10. [@stunt](https://github.com/Stu67nt)
+> If i forgot to mention anyone, pls DM me on slack!
 
 ---
 
