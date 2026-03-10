@@ -42,7 +42,33 @@ You can easily access this hosted instance at [override.rupnil.codes](https://ov
 The hosted website is compatible with most modern browsers and thus most OS.
 
 ### Building from source
-> SOON!
+Idk why you would want to build from the source when i have it deployed, but here u go anyways.
+
+Before building make sure you have the following installed:
+- Node.js (Version 20 or higher)
+- npm (comes with Node.js) or similar, e.g. pnpm/yarn/etc.
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/rupnil-codes/Override.exe.git
+cd Override.exe
+```
+### 2. Install Dependencies
+```bash
+npm install
+npm update
+```
+### 3. Run Development Server
+```bash
+npm run dev
+npx vite
+```
+### 4. Build for Production
+```bash
+npm run build
+```
+Then the final compiled webapp will be in the `build/` directory.
+
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity, SeradedStripes
 
