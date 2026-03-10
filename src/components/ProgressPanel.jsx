@@ -62,7 +62,7 @@ export function ProgressPanel({
                                 <div
                                     className={"progress-icon-container"}
                                     onClick={() => {
-                                        setInfoText("WAIT  HOLD ON IM THINKING (INFO)")
+                                        setInfoText("Use your exploratory or webdev skills.")
                                         setIsInfoOpen(true);
                                     }}
                                 >
@@ -71,7 +71,7 @@ export function ProgressPanel({
                                 <div
                                     className={"progress-icon-container"}
                                     onClick={() => {
-                                        setHintText("WAIT  HOLD ON IM THINKING (HINT)")
+                                        setHintText("Check out the 2nd oldest devlog or use Devtools (usually F12) to check the console.")
                                         setIsHintOpen(true);
                                     }}
                                 >

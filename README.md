@@ -22,7 +22,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Make the input shake after failed try (+RED) (Done in v0.1.7.5(1))
 - [X] Hint beside the P.S. for my "other friends" (Added in v0.1.7.5)
 - [ ] Add more stuff to Lockscreen.
-- [ ] Cool Wallpapers
+- [X] Cool Wallpapers (Lockscreen: v0.1.7.8(1) & Desktop: v0.3.6)
 - [X] Animations in the Lockscreen.
 - [X] A loading screen on lockscreen after correct pass + SOUND. (Done v0.1.6.4)
 - [X] BUG: Whatever you click, delete a window, add a window, ALL THE TIMES, sound is played (Fixed v0.1.6.5)
@@ -63,7 +63,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Terminal (v0.1.6.0 ... v0.1.6.1)
 - [X] Terminal (Proper) Selection, Proper fonts, Polish (Done v0.1.6.1)
 - [X] Make a Progress Panel and HINT icon that always stays on top of the screen (below apps above desktop)
-- [ ] Progress Panel and Hint page with proper functionalities
+- [X] Progress Panel and Hint page with proper functionalities (Done v0.3.1...v0.3.5)
 - [X] Remove Border on Fullscreen (Fixed v0.1.5.8(2))
 - [X] BUG: The windows menu opens but the indicator is not shown in the taskbar (Fixed v0.1.6.3)
 - [ ] Make Progress Panel actually show progress.
@@ -81,7 +81,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Stress test the terminal.
 - [X] Add games like MC(https://classic.minecraft.net/) and sm others. (Added v0.3.2)
 - [ ] the grid snapping is offset from the place where icons snap when u release (Snxhit_)
-  - [ ] Cmd opens on login and then the notepad opens automatically, remove the alert thing.
+- [ ] Cmd opens on login and then the notepad opens automatically, remove the alert thing.
 
 
 Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity, SeradedStripes
