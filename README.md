@@ -118,11 +118,14 @@ This project really taught me a ton of stuff and tbh i wannna work on this  in t
 - Structuring the codebase
 - Writing README's in detail!
 ### Personal Note:
+<p>
 This project was really one of the fewest that I actually invested time and FINISHED with success!
 I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub for providing such an awesome platform!
+</p>
+
 ---
 ## Project Status
-**Version:** v0.4.4-beta
+**Version:** v0.4.4(1)-beta
 
 **Latest Release Version:** v0.4-beta
 
