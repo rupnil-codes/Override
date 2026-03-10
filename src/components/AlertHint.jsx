@@ -1,15 +1,37 @@
 import "../styles/components/AlertHint.css";
 
 import { Lightbulb } from "lucide-react";
+import {useEffect, useState} from "react";
 
 export function AlertHint({
     isHintOpen,
     setIsHintOpen,
     body,
 }) {
+    const [isHintRemoved, setIsHintRemoved] = useState(true);
+
+    useEffect(() => {
+        let timer;
+
+        if (isHintOpen) {
+            setIsHintRemoved(false);
+        }
+        else {
+            timer = setTimeout(() => {
+                setIsHintRemoved(prev => {
+                    if (!prev) {
+                        return true;
+                    }
+                    return prev;
+                });
+            }, 200);
+
+            return () => clearTimeout(timer);
+        }
+    },  [isHintOpen]);
 
     return (
-        <div className={`alert-hint-viewport ${ isHintOpen ? "" : "hidden" }`}>
+        <div className={`alert-hint-viewport ${ isHintOpen ? "" : "hidden" } ${ isHintRemoved ? "removed" : "" }`}>
             <div className={"alert-hint-header"}>
                 <div className={"header"}>
                     <Lightbulb size={24} />

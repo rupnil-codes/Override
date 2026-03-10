@@ -11,13 +11,17 @@
     align-items: center;
     justify-content: center;
 
-    background-color: #77777777;
+    /*background-color: #77777777;*/
+    backdrop-filter: blur(5px) brightness(0.8);
 
     transition: opacity var(--hover-animation) var(--hover-animation-type);
 }
 .alert-hint-viewport.hidden {
-    visibility: hidden;
+    /*visibility: hidden;*/
     opacity: 0;
+}
+.alert-hint-viewport.removed {
+    visibility: hidden;
 }
 
 .alert-hint-header {
