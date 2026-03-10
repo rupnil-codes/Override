@@ -1,24 +1,25 @@
-import "../styles/components/AlertHint.css";
+import "../styles/components/Alert.css";
 
-import { Lightbulb } from "lucide-react";
 import {useEffect, useState} from "react";
 
-export function AlertHint({
-    isHintOpen,
-    setIsHintOpen,
+export function Alert({
+    Icon,
+    title,
+    isOpen,
+    setIsOpen,
     body,
 }) {
-    const [isHintRemoved, setIsHintRemoved] = useState(true);
+    const [isRemoved, setIsRemoved] = useState(true);
 
     useEffect(() => {
         let timer;
 
-        if (isHintOpen) {
-            setIsHintRemoved(false);
+        if (isOpen) {
+            setIsRemoved(false);
         }
         else {
             timer = setTimeout(() => {
-                setIsHintRemoved(prev => {
+                setIsRemoved(prev => {
                     if (!prev) {
                         return true;
                     }
@@ -28,16 +29,16 @@ export function AlertHint({
 
             return () => clearTimeout(timer);
         }
-    },  [isHintOpen]);
+    },  [isOpen]);
 
     return (
         <div
-            className={`alert-hint-viewport ${ isHintOpen ? "" : "hidden" } ${ isHintRemoved ? "removed" : "" }`}
+            className={`alert-hint-viewport ${ isOpen ? "" : "hidden" } ${ isRemoved ? "removed" : "" }`}
         >
             <div className={"alert-hint-header"}>
                 <div className={"header"}>
-                    <Lightbulb size={24} />
-                    <p className={"header-text"}>HINT</p>
+                    <Icon size={24}/>
+                    <p className={"header-text"}>{title}</p>
                 </div>
                 <div className={"body"}>
                     <p className={"body-text"}>{body}</p>
@@ -46,13 +47,13 @@ export function AlertHint({
             <div className={"alert-hint-footer"}>
                 <div
                     className={"button cancel"}
-                    onClick={() => {setIsHintOpen(false)}}
+                    onClick={() => {setIsOpen(false)}}
                 >
                     Cancel
                 </div>
                 <div
                     className={"button confirm"}
-                    onClick={() => {setIsHintOpen(false)}}
+                    onClick={() => {setIsOpen(false)}}
                 >
                     Confirm
                 </div>

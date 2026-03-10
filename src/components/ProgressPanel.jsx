@@ -3,7 +3,7 @@ import "../styles/components/ProgressPanel.css";
 import {Info, Lightbulb} from "lucide-react";
 import {useElapsedTime} from "./DateTime.jsx";
 import {useState} from "react";
-import {AlertHint} from "./AlertHint.jsx";
+import {Alert} from "./Alert.jsx";
 
 import { HINTS_REGISTRY } from "../data/Hints.js";
 
@@ -15,14 +15,26 @@ export function ProgressPanel({
     const [isHintOpen, setIsHintOpen] = useState(false);
     const [hintText, setHintText] = useState("");
 
+    const [isInfoOpen, setIsInfoOpen] = useState(false);
+    const [infoText, setInfoText] = useState("");
+
     const timeActive = useElapsedTime();
 
     return (
         <>
-            <AlertHint
-                isHintOpen={isHintOpen}
-                setIsHintOpen={setIsHintOpen}
+            <Alert
+                Icon={Lightbulb}
+                title={"Hint"}
+                isOpen={isHintOpen}
+                setIsOpen={setIsHintOpen}
                 body={hintText}
+            />
+            <Alert
+                Icon={Info}
+                title={"Info"}
+                isOpen={isInfoOpen}
+                setIsOpen={setIsInfoOpen}
+                body={infoText}
             />
             <div
                 className={`progress-button ${ isOpenProgressPanel ? "progress-button-active" : "" }`}
@@ -50,8 +62,8 @@ export function ProgressPanel({
                                 <div
                                     className={"progress-icon-container"}
                                     onClick={() => {
-                                        setHintText("WAIT  HOLD ON IM THINKING (INFO)")
-                                        setIsHintOpen(true);
+                                        setInfoText("WAIT  HOLD ON IM THINKING (INFO)")
+                                        setIsInfoOpen(true);
                                     }}
                                 >
                                     <Info size={"16"} />
@@ -80,8 +92,8 @@ export function ProgressPanel({
                                         <div
                                             className={"progress-icon-container"}
                                             onClick={() => {
-                                                setHintText(HINTS_REGISTRY[key].description)
-                                                setIsHintOpen(true);
+                                                setInfoText(HINTS_REGISTRY[key].info)
+                                                setIsInfoOpen(true);
                                             }}
                                         >
                                             <Info size={"16"} />
