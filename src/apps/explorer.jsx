@@ -61,7 +61,7 @@ function Explorer() {
                             </div>
                         </div>
 
-                        <div className={"explorer-sidebar-separator"}><p>‎</p></div>
+                        <div className={"explorer-sidebar-separator"}>‎</div>
 
                         <div className={"explorer-sidebar-container"}>
                             <div className={"explorer-sidebar-icon-container sidebar-desktop-icon"}>
@@ -94,7 +94,7 @@ function Explorer() {
                             </div>
                         </div>
 
-                        <div className={"explorer-sidebar-separator"}><p>‎</p></div>
+                        <div className={"explorer-sidebar-separator"}>‎</div>
 
                         <div className={"explorer-sidebar-container"}>
                             <div className={"explorer-sidebar-icon-container sidebar-this-pc-icon"}>
@@ -110,11 +110,11 @@ function Explorer() {
                     </div>
                     <div className="explorer-main">
                         <div className={"explorer-grid"}>
-
+                            <p>Coming in the next update!</p>
                         </div>
                     </div>
                     <div className="explorer-details">
-                        <p>Details</p>
+                        {/*<p>Details</p>*/}
                     </div>
                 </div>
             </div>

@@ -55,13 +55,13 @@ function Desktop() {
 
     const [iconPositions, setIconPositions] = useState({
         explorer: { col: 1, row: 1 },
-        vscode: { col: 1, row: 2 },
-        settings: { col: 1, row: 3 },
-        chrome: { col: 2, row: 1 },
-        terminal: { col: 2, row: 2 },
+        vscode: { col: 1, row: 3 },
+        // settings: { col: 1, row: 3 },
+        chrome: { col: 1, row: 2 },
+        terminal: { col: 1, row: 4 },
         readme_txt: { col: 3, row: 3 },
-        minecraft: { col: 3, row: 4 },
-        forlorn: { col: 3, row: 5 },
+        minecraft: { col: 2, row: 1 },
+        forlorn: { col: 2, row: 2 },
     });
 
     const [selectedIcon, setSelectedIcon] = useState(null);

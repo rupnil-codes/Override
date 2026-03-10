@@ -52,6 +52,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [X] Animation (like transform into a small rectangle) on minimize! (Done v0.1.6.3)
 - [X] Make the system tray on the taskbar(right) more accurate to windows. (Done in v0.1.5.1)
 - [ ] Explorer App. (Started in v0.1.5.1). Sidebar (v0.1.5.2)
+- [ ] Make Settings app: Change wallpaper, show About, Brightness
 - [X] Tabs v0.1.5.3 BUG: TITLE IS OVERFLOWING (Fixed v0.1.5.4)
 - [X] Universal tab feature (generalised) using `tabs: true` in App.js (Added in v0.1.5.4)
 - [X] Notepad App. (Made in v0.1.5.5)
@@ -80,7 +81,7 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Lock some apps (Hacked yk)
 - [ ] Stress test the terminal.
 - [X] Add games like MC(https://classic.minecraft.net/) and sm others. (Added v0.3.2)
-- [X] the grid snapping is offset from the place where icons snap when u release (Snxhit_)
+- [X] the grid snapping is offset from the place where icons snap when u release (Snxhit_) (Fixed v0.3.8)
 - [ ] Cmd opens on login and then the notepad opens automatically, remove the alert thing.
 - [X] WINDOW_DEFAULTS: Now the position of the windows change with the width and height, added the vars in App.js (Done v0.3.7)
 

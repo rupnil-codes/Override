@@ -4,7 +4,7 @@ function Settings() {
 
     return (
         <>
-            <p>Settings</p>
+            <p>Coming soon!</p>
         </>
     )
 }
