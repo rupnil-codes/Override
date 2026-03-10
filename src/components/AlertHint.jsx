@@ -31,7 +31,9 @@ export function AlertHint({
     },  [isHintOpen]);
 
     return (
-        <div className={`alert-hint-viewport ${ isHintOpen ? "" : "hidden" } ${ isHintRemoved ? "removed" : "" }`}>
+        <div
+            className={`alert-hint-viewport ${ isHintOpen ? "" : "hidden" } ${ isHintRemoved ? "removed" : "" }`}
+        >
             <div className={"alert-hint-header"}>
                 <div className={"header"}>
                     <Lightbulb size={24} />

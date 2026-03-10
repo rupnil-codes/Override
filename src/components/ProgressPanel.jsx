@@ -1,9 +1,11 @@
 import "../styles/components/ProgressPanel.css";
 
-import {Info, Spotlight} from "lucide-react";
+import {Info, Lightbulb} from "lucide-react";
 import {useElapsedTime} from "./DateTime.jsx";
 import {useState} from "react";
 import {AlertHint} from "./AlertHint.jsx";
+
+import { HINTS_REGISTRY } from "../data/Hints.js";
 
 export function ProgressPanel({
      isOpenProgressPanel,
@@ -38,35 +40,65 @@ export function ProgressPanel({
                 <div className={`progress-sidebar ${isOpenProgressPanel ? "progress-active" : "progress-hidden"}`}>
                     <p>Elapsed time:</p>
                     <p className={"elapsed-time"}>{ timeActive }</p>
+
                     <div className={`progress-sidebar-separator`}/>
+
                     <div className={"progress-item-container"}>
-                        <div
-                            className={"progress-item"}
-                            onClick={() => {
-                                setHintText("LMAO U CANT EVEN SOLVE PUZZLE 0")
-                                setIsHintOpen(true)
-                            }}
-                        >
-                            <p>0. Password!</p>
+                        <div className={"progress-0-item"}>
+                            <p>0. Password</p>
+                            <div className={"progress-item-icons-group"}>
+                                <div
+                                    className={"progress-icon-container"}
+                                    onClick={() => {
+                                        setHintText("WAIT  HOLD ON IM THINKING (INFO)")
+                                        setIsHintOpen(true);
+                                    }}
+                                >
+                                    <Info size={"16"} />
+                                </div>
+                                <div
+                                    className={"progress-icon-container"}
+                                    onClick={() => {
+                                        setHintText("WAIT  HOLD ON IM THINKING (HINT)")
+                                        setIsHintOpen(true);
+                                    }}
+                                >
+                                    <Lightbulb size={"16"} />
+                                </div>
+                            </div>
                         </div>
-                        <div className={"progress-item"}>
-                            <p>1. Decode</p>
+
+                        <div className={`progress-0-sidebar-separator`}>
+                            A
                         </div>
-                        <div className={"progress-item"}>
-                            <p>2. Source Code</p>
-                        </div>
-                        <div className={"progress-item"}>
-                            <p>3. Image CMD</p>
-                        </div>
-                        <div className={"progress-item"}>
-                            <p>4. Video CMD</p>
-                        </div>
-                        <div className={"progress-item"}>
-                            <p>5. SSH</p>
-                        </div>
-                        <div className={"progress-item"}>
-                            <p>6. SSH CMDs</p>
-                        </div>
+
+                        { Object.keys(HINTS_REGISTRY).map((key) =>
+                            (
+                                <div key={key} className={"progress-item"}>
+                                    <p>{key}. {HINTS_REGISTRY[key].title}</p>
+                                    <div className={"progress-item-icons-group"}>
+                                        <div
+                                            className={"progress-icon-container"}
+                                            onClick={() => {
+                                                setHintText(HINTS_REGISTRY[key].description)
+                                                setIsHintOpen(true);
+                                            }}
+                                        >
+                                            <Info size={"16"} />
+                                        </div>
+                                        <div
+                                            className={"progress-icon-container"}
+                                            onClick={() => {
+                                                setHintText(HINTS_REGISTRY[key].hint)
+                                                setIsHintOpen(true);
+                                            }}
+                                        >
+                                            <Lightbulb size={"16"} />
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        )}
                     </div>
                 </div>
             </div>
