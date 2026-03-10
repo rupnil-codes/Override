@@ -11,6 +11,7 @@ export function ProgressPanel({
 }) {
 
     const [isHintOpen, setIsHintOpen] = useState(false);
+    const [hintText, setHintText] = useState("");
 
     const timeActive = useElapsedTime();
 
@@ -19,7 +20,7 @@ export function ProgressPanel({
             <AlertHint
                 isHintOpen={isHintOpen}
                 setIsHintOpen={setIsHintOpen}
-                body={"uhh lemme think for now"}
+                body={hintText}
             />
             <div
                 className={`progress-button ${ isOpenProgressPanel ? "progress-button-active" : "" }`}
@@ -41,7 +42,10 @@ export function ProgressPanel({
                     <div className={"progress-item-container"}>
                         <div
                             className={"progress-item"}
-                            onClick={() => setIsHintOpen(true)}
+                            onClick={() => {
+                                setHintText("LMAO U CANT EVEN SOLVE PUZZLE 0")
+                                setIsHintOpen(true)
+                            }}
                         >
                             <p>0. Password!</p>
                         </div>

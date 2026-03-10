@@ -1,6 +1,6 @@
 import "../styles/components/AlertHint.css";
 
-import { Spotlight } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 
 export function AlertHint({
     isHintOpen,
@@ -12,7 +12,7 @@ export function AlertHint({
         <div className={`alert-hint-viewport ${ isHintOpen ? "" : "hidden" }`}>
             <div className={"alert-hint-header"}>
                 <div className={"header"}>
-                    <Spotlight />
+                    <Lightbulb size={24} />
                     <p className={"header-text"}>HINT</p>
                 </div>
                 <div className={"body"}>

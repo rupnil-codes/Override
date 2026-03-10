@@ -55,8 +55,8 @@
 .progress-sidebar {
     border-radius: 0.625rem;
     backdrop-filter: blur(2rem) brightness(2);
-    width: 15rem;
-    height: 60%;
+    width: 18rem;
+    height: 70%;
 
     transform-origin: top;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
@@ -95,7 +95,7 @@
 
 .progress-item-container{
     width: 80%;
-    height: 68%;
+    height: 72%;
 
     display: flex;
     flex-direction: column;

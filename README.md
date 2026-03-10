@@ -79,10 +79,11 @@ Your PC has been compromised by a group called the "HackClub". Can you regain co
 - [ ] Add a puzzle 1.txt or sm; time count starts after opening that file.
 - [ ] Lock some apps (Hacked yk)
 - [ ] Stress test the terminal.
-- [ ] Add games like MC(https://classic.minecraft.net/) and sm others.
+- [X] Add games like MC(https://classic.minecraft.net/) and sm others. (Added v0.3.2)
 - [ ] the grid snapping is offset from the place where icons snap when u release (Snxhit_)
+  - [ ] Cmd opens on login and then the notepad opens automatically, remove the alert thing.
 
 
-Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity
+Playtesters & Contributors: Flux3tor, Snxhit_, Matthias, Nx75, Keyboard1000n17, abtheinnovator, redac1ed, TruthEntity, SeradedStripes
 
 BROWSER SUPPLIED BY: redac1ed
