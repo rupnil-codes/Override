@@ -137,7 +137,7 @@ I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub f
 
 ---
 ## Project Status
-<p><b>Version:</b> v0.4.5(1)-beta</p>
+<p><b>Version:</b> v0.4.6-beta</p>
 <p><b>Latest Release Version:</b> v0.4-beta</p>
 <p><b>Status:</b> Actively developing as of now</p>
 
