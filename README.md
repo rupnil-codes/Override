@@ -42,6 +42,7 @@
 * [Usage: Quick Start](#usage-quick-start)
     * [Pre-hosted](#pre-hosted)
     * [Building from Source](#building-from-source)
+* [Features](#features)
 * [What I learnt](#what-i-learnt)
 * [Project Status](#project-status)
 * [Contributors](#contributors)
@@ -117,6 +118,23 @@ npm run build
 Then the final compiled webapp will be in the `dist/` directory.
 
 ---
+
+## Features:
+I've tried adding as many features as I could, here are some:
+- Windows like lockscreen and login animation
+- 1:1 replica of the taskbar (atleast i hope so)
+- Different apps!
+- Games!
+- Puzzles/ARG stuff!
+
+### Unfinished Features:
+- Start menu
+- Settings App
+- Explorer App
+- Other QOL changes check out `CHANGELOG.md`
+
+---
+
 ## What I Learnt
 This project really taught me a ton of stuff and tbh i wanna work on this  in the future!
 ### Technical Skills
@@ -137,7 +155,7 @@ I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub f
 
 ---
 ## Project Status
-<p><b>Version:</b> v0.4.6-beta</p>
+<p><b>Version:</b> v0.4.6(2)-beta</p>
 <p><b>Latest Release Version:</b> v0.4-beta</p>
 <p><b>Status:</b> Actively developing as of now</p>
 

@@ -3,7 +3,7 @@
 ### Next Steps:
 - ~~Actual Gameplay~~ (DONEEEEE)
 - ~~Polishes n stuff (Doinnggg)~~
-- Pre-ship stuff like README and other polishes
+- ~~Pre-ship stuff like README and other polishes~~
 ---
 ### Notes:
 
@@ -40,7 +40,5 @@ This project really taught me a ton of stuff and tbh i wanna work on this  in th
 - Structuring the codebase
 - Writing README's in detail!
 ### Personal Note:
-<p>
-This project was really one of the fewest that I actually invested time and FINISHED with success!
+- This project was really one of the fewest that I actually invested time and FINISHED with success!
 I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub for providing such an awesome platform!
-</p>
