@@ -128,9 +128,9 @@ I've tried adding as many features as I could, here are some:
 - Puzzles/ARG stuff!
 
 ### Unfinished Features:
-- Start menu
-- Settings App
-- Explorer App
+- Start menu (non-functional)
+- Settings App (non-functional)
+- Explorer App (non-functional)
 - Other QOL changes check out `CHANGELOG.md`
 
 ---
@@ -155,7 +155,7 @@ I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub f
 
 ---
 ## Project Status
-<p><b>Version:</b> v0.4.6(2)-beta</p>
+<p><b>Version:</b> v0.4.7-beta</p>
 <p><b>Latest Release Version:</b> v0.4-beta</p>
 <p><b>Status:</b> Actively developing as of now</p>
 

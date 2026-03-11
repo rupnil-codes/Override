@@ -13,6 +13,7 @@ export const WIDOW_COMMANDS = {
         "  13380.flux3tor.xyz\n" +
         "  ------------------------------------\n" +
         "  No records of type A\n\n" +
+        "Make sure to visit the site mentioned above!!\n" +
         "Need hints? See 'Progress' panel on the top-right\n\n",
         // "  google.com\n" +
         // "  ----------------------------------\n" +

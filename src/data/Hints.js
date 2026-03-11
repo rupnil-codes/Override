@@ -18,7 +18,7 @@ export const HINTS_REGISTRY = {
     4: {
         title: "Video Cmd.",
         info: "Listen closely at the voice.",
-        hint: "Extract the code from the video and run it in the terminal."
+        hint: "Extract the code from the video and run it in the terminal. Do NOT trust the subtitles trust your hearing skills!"
     },
     5: {
         title: "SSH Pass.",
