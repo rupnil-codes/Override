@@ -9,12 +9,17 @@
 <h1 align="center">
     Override.exe
 </h1>
+<h6 align="center">
+    <a href="https://override.rupnil.codes">
+        <b>▶ Play Now!</b>
+    </a>
+</h6>
 
 <p align="center">
   <img src="https://override.rupnil.codes/banner.png" width="100%" style="max-width: 400px;" alt="Override.exe">
 </p>
 <p align="center">
-    <img src="https://img.shields.io/badge/React%20JS-%5E19.2.4-blue?style=for-the-badge&logo=react&logoColor=white" alt="React.JS %5E19.2.4">
+    <img src="https://img.shields.io/badge/React%20JS-%5E19.2.0-blue?style=for-the-badge&logo=react&logoColor=white" alt="React.JS %5E19.2.4">
     <img src="https://img.shields.io/github/license/rupnil-codes/Override.exe?style=for-the-badge" alt="GNU AGPL 3.0">
     <img src="https://hackatime-badge.hackclub.com/U0A4UTULSLE/Override?style=for-the-badge" alt="Hackatime Badge">
     <img src="https://img.shields.io/github/commit-activity/w/rupnil-codes/Override.exe?style=for-the-badge" alt="Commit Activity">
@@ -33,20 +38,24 @@
 * [Requirements](#requirements)
 * [Usage: Quick Start](#usage-quick-start)
     * [Pre-hosted](#pre-hosted)
-    * [Build from Source](#building-from-source)
+    * [Building from Source](#building-from-source)
 * [What I learnt](#what-i-learnt)
 * [Project Status](#project-status)
 * [Contributors](#contributors)
+* [License](LICENSE)
 
 ---
 
 ## Overview
 **Override** _(Override.exe)_ is a simple **webOS** inspired by _**Microsoft Windows 11**_ (no hate pls) that includes a special bonus!
 The special bonus is, ofc, a **puzzle game** divided into **6** simple steps (or **7** if you count the lockscreen) each testing a different knowledge/skill.
-I've tried to make the puzzles very easy to solve, while also proving `info` and `hints`.
+I've tried to make the puzzles very easy to solve, while also providing `info` and `hints`.
 > [!CAUTION]
 > **Hints** and **Info** can be found in the ProgressPanel on the top-right!
 
+> [!CAUTION]
+> If you don't want to play the puzzles but want to view the puzzles,
+> you can go to `decrypt/puzzle.md`
 ---
 
 ## Backstory
@@ -102,16 +111,16 @@ npx vite
 ```bash
 npm run build
 ```
-Then the final compiled webapp will be in the `build/` directory.
+Then the final compiled webapp will be in the `dist/` directory.
 
 ---
 ## What I Learnt
-This project really taught me a ton of stuff and tbh i wannna work on this  in the future!
+This project really taught me a ton of stuff and tbh i wanna work on this  in the future!
 ### Technical Skills
 - **ReactJS:** This was honestly my first time using ReactJS + Vite for web development,
     and I learnt so much during this journey! While there were some instances where I felt like giving up,
     I struggled through and reached a fruitful end!
-- **CSS:** Being fr, before this project i want good at CSS but it changed!
+- **CSS:** Being fr, before this project i wasn't good at CSS but it changed!
 ### Problem  Solving
 - Asynchronous stuff with JS
 - Managing large codebases (although this may not be so big)
@@ -125,7 +134,7 @@ I'm sooo proud of my creation. I would like to extend my gratitude to Hackclub f
 
 ---
 ## Project Status
-<p><b>Version:</b> v0.4.4(2)-beta</p>
+<p><b>Version:</b> v0.4.5-beta</p>
 <p><b>Latest Release Version:</b> v0.4-beta</p>
 <p><b>Status:</b> Actively developing as of now</p>
 
